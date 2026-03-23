@@ -1,12 +1,10 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://vpntrust.ru',
-  integrations: [sitemap(), tailwind()],
+  site: 'https://vpn-russia.ru',
+  output: 'static',
   build: {
-    inlineStylesheets: 'auto'
+    inlineStylesheets: 'always'
   },
   compressHTML: true
 });
