@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Главная', href: '/' },
+  { label: 'Политика конфиденциальности' }
+];
+
+const title = 'Политика конфиденциальности — VPN Россия';
+const description = 'Политика конфиденциальности сайта VPN Россия. Узнайте, как мы собираем, используем и защищаем ваши персональные данные.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="main-content">
+    <div class="container">
+      <Breadcrumbs items={breadcrumbs} />
+      
+      <article class="legal-page">
+        <header class="page-header">
+          <h1>Политика конфиденциальности</h1>
+          <p class="last-updated">Последнее обновление: 1 января 2025</p>
+        </header>
+
+        <section class="legal-section">
+          <h2>1. Общие положения</h2>
+          <p>
+            Настоящая Политика конфиденциальности описывает, как VPN Россия (далее — «мы», «наш», «сайт») 
+            собирает, использует и защищает информацию, которую вы предоставляете при использовании 
+            нашего веб-сайта vpn-russia.ru.
+          </p>
+          <p>
+            Мы уважаем вашу конфиденциальность и стремимся защитить ваши персональные данные. 
+            Пожалуйста, внимательно ознакомьтесь с данной политикой.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>2. Какую информацию мы собираем</h2>
+          <p>Мы можем собирать следующие типы информации:</p>
+          <ul>
+            <li>
+              <strong>Данные об использовании сайта:</strong> информация о страницах, которые вы посещаете, 
+              времени посещения, источниках перехода и действиях на сайте.
+            </li>
+            <li>
+              <strong>Технические данные:</strong> IP-адрес, тип браузера, операционная система, 
+              разрешение экрана и другие технические параметры.
+            </li>
+            <li>
+              <strong>Контактные данные:</strong> если вы связываетесь с нами через форму обратной связи 
+              или email, мы сохраняем вашу переписку.
+            </li>
+            <li>
+              <strong>Cookies:</strong> файлы cookie для улучшения работы сайта и аналитики.
+            </li>
+          </ul>
+        </section>
+
+        <section class="legal-section">
+          <h2>3. Как мы используем информацию</h2>
+          <p>Собранная информация используется для:</p>
+          <ul>
+            <li>Улучшения содержания и функциональности сайта</li>
+            <li>Анализа статистики посещений и поведения пользователей</li>
+            <li>Ответов на ваши вопросы и обращения</li>
+            <li>Предотвращения мошенничества и обеспечения безопасности</li>
+            <li>Соблюдения законодательных требований</li>
+          </ul>
+        </section>
+
+        <section class="legal-section">
+          <h2>4. Cookies и аналитика</h2>
+          <p>
+            Наш сайт использует файлы cookie для обеспечения корректной работы и сбора аналитических данных. 
+            Мы используем:
+          </p>
+          <ul>
+            <li>
+              <strong>Необходимые cookies:</strong> обеспечивают базовую функциональность сайта
+            </li>
+            <li>
+              <strong>Аналитические cookies:</strong> помогают понять, как посетители взаимодействуют с сайтом
+            </li>
+          </ul>
+          <p>
+            Вы можете отключить cookies в настройках браузера, однако это может повлиять 
+            на функциональность сайта.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>5. Передача данных третьим лицам</h2>
+          <p>
+            Мы не продаём и не передаём ваши персональные данные третьим лицам, 
+            за исключением следующих случаев:
+          </p>
+          <ul>
+            <li>При наличии вашего явного согласия</li>
+            <li>Для выполнения требований законодательства</li>
+            <li>Для защиты наших законных прав и интересов</li>
+            <li>Поставщикам услуг аналитики (данные обезличены)</li>
+          </ul>
+        </section>
+
+        <section class="legal-section">
+          <h2>6. Безопасность данных</h2>
+          <p>
+            Мы принимаем разумные меры для защиты вашей информации от несанкционированного доступа, 
+            изменения, раскрытия или уничтожения. Сайт использует HTTPS-шифрование для защиты 
+            передаваемых данных.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>7. Ваши права</h2>
+          <p>Вы имеете право:</p>
+          <ul>
+            <li>Запросить информацию о собранных данных</li>
+            <li>Потребовать исправления неточных данных</li>
+            <li>Запросить удаление ваших данных</li>
+            <li>Отозвать согласие на обработку данных</li>
+          </ul>
+          <p>
+            Для реализации этих прав свяжитесь с нами через 
+            <a href="/kontakty">страницу контактов</a>.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>8. Ссылки на внешние сайты</h2>
+          <p>
+            Наш сайт может содержать ссылки на внешние ресурсы. Мы не несём ответственности 
+            за политику конфиденциальности и содержание сторонних сайтов. Рекомендуем ознакомиться 
+            с политикой конфиденциальности каждого посещаемого ресурса.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>9. Изменения политики</h2>
+          <p>
+            Мы можем периодически обновлять данную политику конфиденциальности. 
+            Все изменения публикуются на этой странице с указанием даты последнего обновления. 
+            Рекомендуем периодически проверять эту страницу.
+          </p>
+        </section>
+
+        <section class="legal-section">
+          <h2>10. Контактная информация</h2>
+          <p>
+            Если у вас есть вопросы относительно данной политики конфиденциальности, 
+            вы можете связаться с нами:
+          </p>
+          <ul>
+            <li>Email: <a href="mailto:info@vpn-russia.ru">info@vpn-russia.ru</a></li>
+            <li>Telegram: <a href="https://t.me/vpnrussia" target="_blank" rel="noopener noreferrer">@vpnrussia</a></li>
+          </ul>
+        </section>
+      </article>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .main-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .legal-page {
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .last-updated {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .legal-section {
+    margin-bottom: 2rem;
+  }
+
+  .legal-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-section h2 {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .legal-section p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .legal-section ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .legal-section li {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-section li strong {
+    color: var(--color-text);
+  }
+
+  .legal-section a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .legal-section a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-page {
+      padding: 1.5rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

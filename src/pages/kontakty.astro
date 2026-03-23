@@ -1,0 +1,402 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Главная', href: '/' },
+  { label: 'Контакты' }
+];
+
+const title = 'Контакты — VPN Россия | Связаться с нами';
+const description = 'Свяжитесь с командой VPN Россия. Email для вопросов и предложений, Telegram для быстрой связи. Мы отвечаем в течение 24 часов.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="main-content">
+    <div class="container">
+      <Breadcrumbs items={breadcrumbs} />
+      
+      <article class="contacts-page">
+        <header class="page-header">
+          <h1>Свяжитесь с нами</h1>
+          <p class="lead">
+            У вас есть вопросы о VPN или предложения по сотрудничеству? 
+            Мы всегда рады помочь и ответим в течение 24 часов.
+          </p>
+        </header>
+
+        <div class="contacts-grid">
+          <div class="contact-card primary">
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+              </svg>
+            </div>
+            <h2>Telegram</h2>
+            <p>Самый быстрый способ связи. Подпишитесь на наш канал и задайте вопрос.</p>
+            <a href="https://t.me/vpnrussia" class="contact-link" target="_blank" rel="noopener noreferrer">
+              @vpnrussia
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon email-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <h2>Email</h2>
+            <p>Для детальных вопросов, сотрудничества и деловых предложений.</p>
+            <a href="mailto:info@vpn-russia.ru" class="contact-link">
+              info@vpn-russia.ru
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon twitter-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </div>
+            <h2>X (Twitter)</h2>
+            <p>Следите за новостями и обновлениями в социальных сетях.</p>
+            <a href="https://x.com/vpnrussia" class="contact-link" target="_blank" rel="noopener noreferrer">
+              @vpnrussia
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <section class="faq-contact">
+          <h2>Часто задаваемые вопросы</h2>
+          
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Как быстро вы отвечаете на вопросы?</summary>
+              <p>
+                Мы стараемся отвечать на все обращения в течение 24 часов. 
+                В Telegram ответы обычно приходят быстрее — в течение нескольких часов.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Можно ли заказать обзор VPN-сервиса?</summary>
+              <p>
+                Да, мы рассматриваем заявки от VPN-провайдеров на независимый обзор. 
+                Напишите нам на email с информацией о вашем сервисе. Обратите внимание, 
+                что мы публикуем только честные обзоры и не гарантируем положительную оценку.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Вы помогаете с настройкой VPN?</summary>
+              <p>
+                Мы публикуем подробные инструкции по настройке VPN на нашем сайте. 
+                Если вы не нашли нужную информацию, напишите нам, и мы постараемся помочь 
+                или создать новую инструкцию.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Как сообщить об ошибке на сайте?</summary>
+              <p>
+                Если вы нашли ошибку или неточность в наших материалах, пожалуйста, 
+                сообщите нам через Telegram или email. Мы ценим обратную связь и 
+                оперативно вносим исправления.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Можно ли разместить рекламу на сайте?</summary>
+              <p>
+                Мы рассматриваем рекламные предложения только от проверенных VPN-сервисов 
+                и компаний, связанных с кибербезопасностью. Свяжитесь с нами по email 
+                для обсуждения условий.
+              </p>
+            </details>
+          </div>
+        </section>
+
+        <section class="response-info">
+          <div class="info-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <div>
+              <h3>Время ответа</h3>
+              <p>Обычно мы отвечаем в течение 24 часов в рабочие дни</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <div>
+              <h3>Язык общения</h3>
+              <p>Русский и английский</p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .main-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .contacts-page {
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .contact-card.primary {
+    background: linear-gradient(135deg, #0088cc, #0077b5);
+    border: none;
+    color: white;
+  }
+
+  .contact-card.primary p {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .contact-card.primary h2 {
+    color: white;
+  }
+
+  .contact-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+  }
+
+  .contact-card:not(.primary) .contact-icon {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  }
+
+  .email-icon {
+    background: linear-gradient(135deg, #ea4335, #c5221f) !important;
+  }
+
+  .twitter-icon {
+    background: linear-gradient(135deg, #1a1a1a, #333) !important;
+  }
+
+  .contact-card h2 {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+  }
+
+  .contact-card.primary .contact-link {
+    color: white;
+  }
+
+  .contact-link:hover {
+    gap: 0.5rem;
+  }
+
+  .faq-contact {
+    margin-bottom: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .faq-contact h2 {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    padding: 1rem 1.25rem;
+    font-weight: 500;
+    color: var(--color-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s ease;
+  }
+
+  .faq-item summary:hover {
+    background: var(--color-surface);
+  }
+
+  .faq-item summary::marker {
+    display: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    font-weight: 300;
+  }
+
+  .faq-item[open] summary::after {
+    content: '−';
+  }
+
+  .faq-item p {
+    padding: 0 1.25rem 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .response-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+
+  .info-card svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  .info-card h3 {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+  }
+
+  .info-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .contacts-page {
+      padding: 1.5rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.75rem;
+    }
+
+    .contacts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .response-info {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

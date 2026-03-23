@@ -1,0 +1,396 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Главная', href: '/' },
+  { label: 'О нас' }
+];
+
+const title = 'О нас — VPN Россия | Команда экспертов по интернет-безопасности';
+const description = 'Узнайте о команде VPN Россия. Мы помогаем пользователям защищать конфиденциальность и обходить блокировки с 2020 года. Независимые обзоры и экспертные рекомендации.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="main-content">
+    <div class="container">
+      <Breadcrumbs items={breadcrumbs} />
+      
+      <article class="about-page">
+        <header class="page-header">
+          <h1>О проекте VPN Россия</h1>
+          <p class="lead">
+            Мы — независимая команда экспертов по кибербезопасности, помогающая пользователям 
+            защищать свою приватность и свободно пользоваться интернетом
+          </p>
+        </header>
+
+        <section class="about-section">
+          <h2>Наша миссия</h2>
+          <p>
+            С 2020 года мы помогаем русскоязычным пользователям находить надёжные VPN-сервисы 
+            для защиты конфиденциальности и обхода интернет-ограничений. Наша цель — предоставить 
+            честную, объективную информацию о VPN-сервисах без рекламного влияния.
+          </p>
+          <p>
+            Мы верим, что каждый человек имеет право на свободный доступ к информации и защиту 
+            персональных данных. В условиях растущей цензуры и слежки VPN становится необходимым 
+            инструментом цифровой безопасности.
+          </p>
+        </section>
+
+        <section class="about-section values-section">
+          <h2>Наши принципы</h2>
+          <div class="values-grid">
+            <div class="value-card">
+              <div class="value-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </div>
+              <h3>Независимость</h3>
+              <p>
+                Мы не принимаем оплату от VPN-провайдеров за положительные отзывы. 
+                Наши рейтинги основаны только на реальном тестировании.
+              </p>
+            </div>
+            <div class="value-card">
+              <div class="value-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+              </div>
+              <h3>Честность</h3>
+              <p>
+                Мы указываем как преимущества, так и недостатки каждого сервиса. 
+                Читатели получают полную картину перед принятием решения.
+              </p>
+            </div>
+            <div class="value-card">
+              <div class="value-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+              </div>
+              <h3>Экспертиза</h3>
+              <p>
+                Наша команда состоит из специалистов по кибербезопасности с многолетним 
+                опытом работы в IT-индустрии.
+              </p>
+            </div>
+            <div class="value-card">
+              <div class="value-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h3>Поддержка</h3>
+              <p>
+                Мы всегда готовы помочь пользователям с выбором VPN и решением 
+                технических вопросов через наши каналы связи.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-section">
+          <h2>Как мы тестируем VPN</h2>
+          <p>
+            Каждый VPN-сервис в наших обзорах проходит комплексное тестирование по следующим критериям:
+          </p>
+          <ul class="testing-list">
+            <li>
+              <strong>Скорость соединения</strong> — замеры на серверах в разных странах 
+              с использованием стандартизированной методологии
+            </li>
+            <li>
+              <strong>Работа в России</strong> — проверка обхода блокировок Роскомнадзора 
+              и стабильность работы из российских сетей
+            </li>
+            <li>
+              <strong>Безопасность</strong> — анализ протоколов шифрования, политики логирования 
+              и независимых аудитов безопасности
+            </li>
+            <li>
+              <strong>Удобство использования</strong> — оценка интерфейса приложений 
+              на всех платформах и качества русификации
+            </li>
+            <li>
+              <strong>Цена/качество</strong> — сравнение стоимости подписки с предоставляемыми 
+              возможностями и конкурентами
+            </li>
+            <li>
+              <strong>Поддержка стриминга</strong> — тестирование доступа к Netflix, YouTube Premium, 
+              Spotify и другим сервисам
+            </li>
+          </ul>
+        </section>
+
+        <section class="about-section stats-section">
+          <h2>Наши достижения</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Протестированных VPN</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100K+</span>
+              <span class="stat-label">Читателей в месяц</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">5 лет</span>
+              <span class="stat-label">Опыта работы</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Поддержка пользователей</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-section">
+          <h2>Свяжитесь с нами</h2>
+          <p>
+            Если у вас есть вопросы, предложения или вы хотите сотрудничать с нами, 
+            посетите нашу <a href="/kontakty">страницу контактов</a>. Мы всегда рады 
+            обратной связи от наших читателей.
+          </p>
+          <p>
+            Также подписывайтесь на наш Telegram-канал, чтобы получать актуальные 
+            новости о VPN и интернет-безопасности.
+          </p>
+          <a href="https://t.me/vpnrussia" class="telegram-btn" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            </svg>
+            Подписаться на Telegram
+          </a>
+        </section>
+      </article>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .main-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .about-page {
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .about-section {
+    margin-bottom: 3rem;
+  }
+
+  .about-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-section h2 {
+    font-size: 1.75rem;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-section p {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .about-section a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .about-section a:hover {
+    text-decoration: underline;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .value-card {
+    background: var(--color-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .value-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .value-card h3 {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .value-card p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .testing-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+  }
+
+  .testing-list li {
+    padding: 1rem 0 1rem 2rem;
+    position: relative;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .testing-list li:last-child {
+    border-bottom: none;
+  }
+
+  .testing-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.35rem;
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+  }
+
+  .testing-list li strong {
+    color: var(--color-text);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    border-radius: 12px;
+    color: white;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+  }
+
+  .telegram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #0088cc;
+    color: white;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: background 0.2s ease;
+  }
+
+  .telegram-btn:hover {
+    background: #0077b5;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .about-page {
+      padding: 1.5rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.75rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+    }
+  }
+</style>
