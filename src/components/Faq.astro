@@ -1,0 +1,106 @@
+---
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  items: FaqItem[];
+  title?: string;
+}
+
+const { items, title = 'Часто задаваемые вопросы' } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": items.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+<section class="faq section">
+  <div class="container">
+    <h2 class="faq-title">{title}</h2>
+    <div class="faq-list">
+      {items.map((item, index) => (
+        <details class="faq-item">
+          <summary class="faq-question">
+            {item.question}
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<style>
+  .faq-title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none;
+    background: var(--color-bg);
+    transition: background 0.2s;
+  }
+  
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq-question:hover {
+    background: var(--color-bg-alt);
+  }
+  
+  .faq-icon {
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    color: var(--color-text-light);
+  }
+  
+  details[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+  
+  .faq-answer {
+    padding: 0 1.25rem 1.25rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+</style>

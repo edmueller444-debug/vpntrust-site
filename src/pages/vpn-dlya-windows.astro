@@ -1,0 +1,326 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Faq from '@/components/Faq.astro';
+
+const apps = [
+  { name: 'Proton VPN', type: 'Бесплатный', features: ['Безлимитный трафик', 'Kill Switch', 'Secure Core'] },
+  { name: 'Windscribe', type: 'Freemium', features: ['10 ГБ бесплатно', 'Firewall', 'Split tunneling'] },
+  { name: 'Nekoray', type: 'Бесплатный', features: ['VLESS/VMess', 'Обход DPI', 'Открытый код'] },
+  { name: 'Hiddify', type: 'Бесплатный', features: ['Множество протоколов', 'Авто-выбор сервера', 'Простой интерфейс'] },
+];
+
+const faqItems = [
+  {
+    question: 'Какой VPN лучше для Windows 10/11?',
+    answer: 'Proton VPN — лучший выбор для большинства. Бесплатная версия без ограничений трафика, удобный клиент, функции Kill Switch и Secure Core. Для обхода блокировок рекомендуем Nekoray или Hiddify с протоколом VLESS.'
+  },
+  {
+    question: 'Как установить VPN на Windows?',
+    answer: 'Скачайте установщик с официального сайта VPN-сервиса. Запустите файл .exe и следуйте инструкциям мастера установки. После установки запустите приложение и войдите в аккаунт.'
+  },
+  {
+    question: 'Что такое Kill Switch?',
+    answer: 'Kill Switch — функция, которая блокирует весь интернет-трафик при обрыве VPN-соединения. Это защищает от случайных утечек данных и раскрытия реального IP-адреса.'
+  },
+  {
+    question: 'VPN замедляет интернет на компьютере?',
+    answer: 'Качественные VPN с протоколом WireGuard практически не влияют на скорость. Снижение обычно составляет 5-15% в зависимости от расстояния до сервера.'
+  }
+];
+---
+
+<BaseLayout 
+  title="VPN для Windows — Лучшие программы для ПК 2025" 
+  description="Лучшие VPN для Windows 10 и 11. Бесплатные программы Proton VPN, Windscribe, Nekoray. Инструкции по установке и настройке VPN на компьютере."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'VPN для Windows' }]} />
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h1>VPN для Windows</h1>
+      <p class="intro">
+        Лучшие VPN-клиенты для компьютеров и ноутбуков на Windows. 
+        Бесплатные программы с хорошей скоростью и функциями защиты.
+      </p>
+
+      <div class="apps-grid">
+        {apps.map((app, index) => (
+          <article class="app-card">
+            <div class="app-header">
+              <span class="app-rank">#{index + 1}</span>
+              <h2 class="app-name">{app.name}</h2>
+              <span class="app-type">{app.type}</span>
+            </div>
+            <ul class="app-features">
+              {app.features.map(feature => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section guide">
+    <div class="container">
+      <h2>Установка и настройка</h2>
+      
+      <div class="guide-content">
+        <h3>Стандартная установка (Proton VPN, Windscribe)</h3>
+        <ol>
+          <li>Перейдите на официальный сайт VPN-сервиса</li>
+          <li>Скачайте установщик для Windows (.exe файл)</li>
+          <li>Запустите файл и следуйте инструкциям</li>
+          <li>После установки откройте программу и войдите в аккаунт</li>
+          <li>Выберите сервер и нажмите «Подключиться»</li>
+        </ol>
+
+        <h3>Установка Nekoray (для VLESS)</h3>
+        <ol>
+          <li>Скачайте последнюю версию с GitHub</li>
+          <li>Распакуйте архив в удобную папку</li>
+          <li>Запустите nekoray.exe</li>
+          <li>Импортируйте конфигурацию VLESS (ссылка или файл)</li>
+          <li>Включите системный прокси или режим VPN</li>
+        </ol>
+
+        <div class="tip-box">
+          <strong>Совет:</strong> Если стандартные VPN плохо работают из-за блокировок, 
+          используйте <a href="/v2raytun">протокол VLESS</a> через Nekoray или Hiddify.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section features-explained">
+    <div class="container">
+      <h2>Важные функции VPN для Windows</h2>
+      
+      <div class="features-grid">
+        <article class="feature-item">
+          <h3>Kill Switch</h3>
+          <p>Блокирует весь интернет-трафик при обрыве VPN. Защищает от утечек данных и раскрытия IP.</p>
+        </article>
+        
+        <article class="feature-item">
+          <h3>Split Tunneling</h3>
+          <p>Позволяет выбрать, какие программы будут использовать VPN, а какие — обычное соединение.</p>
+        </article>
+        
+        <article class="feature-item">
+          <h3>Автозапуск</h3>
+          <p>VPN автоматически включается при старте Windows и подключается к выбранному серверу.</p>
+        </article>
+        
+        <article class="feature-item">
+          <h3>Системный прокси</h3>
+          <p>Направляет трафик всех программ через VPN без необходимости настраивать каждую отдельно.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <section class="section related">
+    <div class="container">
+      <h2>Читайте также</h2>
+      <div class="related-links">
+        <a href="/vpn-dlya-android">VPN для Android</a>
+        <a href="/vpn-dlya-iphone">VPN для iPhone</a>
+        <a href="/v2raytun">Настройка V2RayTun</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .intro {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+  
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 700px) {
+    .apps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .app-card {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  
+  .app-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-alt);
+  }
+  
+  .app-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    flex-shrink: 0;
+  }
+  
+  .app-name {
+    font-size: 1.0625rem;
+    margin: 0;
+    flex: 1;
+  }
+  
+  .app-type {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 1rem;
+  }
+  
+  .app-features {
+    list-style: none;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  
+  .app-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+  }
+  
+  .app-features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+  
+  .guide {
+    background: var(--color-bg-alt);
+  }
+  
+  .guide-content {
+    max-width: 800px;
+  }
+  
+  .guide-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .guide-content h3:first-child {
+    margin-top: 0;
+  }
+  
+  .guide-content ol {
+    padding-left: 1.5rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+  }
+  
+  .guide-content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .tip-box {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 0.5rem;
+  }
+  
+  .tip-box strong {
+    color: var(--color-primary);
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 700px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .feature-item {
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+  
+  .feature-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature-item p {
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  
+  .related {
+    text-align: center;
+  }
+  
+  .related h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .related-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .related-links a {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+  
+  .related-links a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+</style>

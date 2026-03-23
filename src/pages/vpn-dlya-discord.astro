@@ -1,0 +1,388 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Faq from '@/components/Faq.astro';
+
+const faqItems = [
+  {
+    question: 'Discord заблокирован в России?',
+    answer: 'Discord не заблокирован полностью, но может работать нестабильно из-за технических ограничений. VPN помогает обеспечить стабильное соединение и доступ ко всем функциям.'
+  },
+  {
+    question: 'Какой VPN лучше для Discord?',
+    answer: 'Для голосового общения важна низкая задержка. Рекомендуем Proton VPN или Windscribe с серверами в Европе. Для геймеров подойдет VLESS с собственным сервером.'
+  },
+  {
+    question: 'VPN увеличивает пинг в Discord?',
+    answer: 'Качественный VPN добавляет минимальную задержку (10-30 мс). Выбирайте серверы ближе к серверам Discord (Европа) для оптимального пинга.'
+  },
+  {
+    question: 'Как настроить VPN только для Discord?',
+    answer: 'Используйте функцию Split Tunneling в настройках VPN. Добавьте Discord в список приложений, которые должны использовать VPN, остальной трафик пойдет напрямую.'
+  }
+];
+---
+
+<BaseLayout 
+  title="VPN для Discord — Стабильное соединение 2025" 
+  description="Как использовать Discord в России через VPN. Бесплатные решения для стабильного голосового общения и обхода ограничений."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'VPN для Discord' }]} />
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h1>VPN для Discord</h1>
+      <p class="intro">
+        Как обеспечить стабильную работу Discord в России. 
+        Решения для голосового общения, стриминга и обхода возможных ограничений.
+      </p>
+
+      <div class="info-box">
+        <strong>Важно:</strong> Discord официально не заблокирован, но может работать нестабильно. 
+        VPN помогает избежать проблем с подключением и обеспечивает стабильное качество связи.
+      </div>
+    </div>
+  </section>
+
+  <section class="section why">
+    <div class="container">
+      <h2>Зачем нужен VPN для Discord</h2>
+      
+      <div class="reasons-grid">
+        <article class="reason-card">
+          <h3>Стабильное соединение</h3>
+          <p>VPN обеспечивает стабильный маршрут до серверов Discord, минуя возможные проблемы с провайдером.</p>
+        </article>
+        
+        <article class="reason-card">
+          <h3>Качество голоса</h3>
+          <p>Стабильное соединение = меньше обрывов и помех в голосовых каналах во время игр и общения.</p>
+        </article>
+        
+        <article class="reason-card">
+          <h3>Доступ к контенту</h3>
+          <p>Некоторые стикеры, эмодзи и функции могут быть ограничены по региону. VPN открывает полный доступ.</p>
+        </article>
+        
+        <article class="reason-card">
+          <h3>Безопасность</h3>
+          <p>VPN шифрует трафик, защищая вашу переписку и голосовые разговоры от перехвата.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section recommended">
+    <div class="container">
+      <h2>Рекомендуемые VPN</h2>
+      
+      <div class="vpn-cards">
+        <article class="vpn-card">
+          <h3>Proton VPN</h3>
+          <span class="badge">Лучший для голоса</span>
+          <p>Безлимитный трафик и хорошая скорость. Серверы в Европе обеспечивают низкий пинг для Discord.</p>
+          <ul>
+            <li>Безлимитный трафик</li>
+            <li>Низкая задержка</li>
+            <li>Стабильное соединение</li>
+          </ul>
+        </article>
+        
+        <article class="vpn-card">
+          <h3>Windscribe</h3>
+          <span class="badge">Split Tunneling</span>
+          <p>Функция Split Tunneling позволяет направлять через VPN только Discord, не затрагивая остальной трафик.</p>
+          <ul>
+            <li>10 ГБ бесплатно</li>
+            <li>Split Tunneling</li>
+            <li>Минимальное влияние на игры</li>
+          </ul>
+        </article>
+        
+        <article class="vpn-card">
+          <h3>VLESS</h3>
+          <span class="badge">Для геймеров</span>
+          <p>Собственный сервер с минимальной задержкой. Идеально для тех, кому важен каждый миллисекунд пинга.</p>
+          <ul>
+            <li>Минимальный пинг</li>
+            <li>Максимальная скорость</li>
+            <li>Полный контроль</li>
+          </ul>
+          <a href="/v2raytun">Настроить VLESS</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section setup">
+    <div class="container">
+      <h2>Как настроить VPN для Discord</h2>
+      
+      <div class="setup-steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>
+            <h3>Установите VPN</h3>
+            <p>Скачайте Proton VPN или Windscribe. Создайте аккаунт и войдите в приложение.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>
+            <h3>Выберите сервер</h3>
+            <p>Подключитесь к серверу в Европе (Германия, Нидерланды) для минимальной задержки с Discord.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">3</span>
+          <div>
+            <h3>Настройте Split Tunneling (опционально)</h3>
+            <p>Если хотите, чтобы VPN работал только для Discord, включите Split Tunneling и добавьте Discord в список.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">4</span>
+          <div>
+            <h3>Запустите Discord</h3>
+            <p>Откройте Discord после подключения к VPN. Проверьте качество связи в голосовом канале.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <strong>Совет для геймеров:</strong> Используйте Split Tunneling, чтобы VPN работал только для Discord. 
+        Игровой трафик пойдет напрямую без дополнительной задержки.
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <section class="section related">
+    <div class="container">
+      <h2>Читайте также</h2>
+      <div class="related-links">
+        <a href="/telegram-ne-rabotaet">Telegram не работает</a>
+        <a href="/best-free-vpn-russia">Рейтинг VPN</a>
+        <a href="/v2raytun">Настройка V2RayTun</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .intro {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-box {
+    background: rgba(37, 99, 235, 0.1);
+    border-left: 4px solid var(--color-primary);
+    padding: 1rem 1.25rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  
+  .info-box strong {
+    color: var(--color-primary);
+  }
+  
+  .why {
+    background: var(--color-bg-alt);
+  }
+  
+  .why h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .reasons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .reasons-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .reason-card {
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border-radius: 0.75rem;
+  }
+  
+  .reason-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .reason-card p {
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+  
+  .recommended h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .vpn-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .vpn-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .vpn-card {
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+  
+  .vpn-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .vpn-card .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .vpn-card p {
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .vpn-card ul {
+    list-style: none;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+  
+  .vpn-card li {
+    padding-left: 1.25rem;
+    position: relative;
+    margin-bottom: 0.375rem;
+  }
+  
+  .vpn-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-success);
+  }
+  
+  .vpn-card a {
+    font-weight: 500;
+  }
+  
+  .setup h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .setup-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+  
+  .step {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  
+  .step h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .step p {
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+  }
+  
+  .tip-box {
+    padding: 1rem 1.25rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 0.5rem;
+    max-width: 700px;
+  }
+  
+  .tip-box strong {
+    color: var(--color-primary);
+  }
+  
+  .related {
+    text-align: center;
+  }
+  
+  .related h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .related-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .related-links a {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+  
+  .related-links a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+</style>

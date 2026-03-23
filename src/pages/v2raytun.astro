@@ -1,0 +1,559 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Faq from '@/components/Faq.astro';
+
+const faqItems = [
+  {
+    question: 'Что такое V2RayTun?',
+    answer: 'V2RayTun — это приложение для Android, которое позволяет подключаться к VPN-серверам по протоколам VLESS, VMess, Trojan и другим. Особенно хорошо подходит для обхода DPI-блокировок.'
+  },
+  {
+    question: 'Что такое VLESS?',
+    answer: 'VLESS — современный протокол для обхода блокировок. Он маскирует VPN-трафик под обычный HTTPS, что делает его практически неотличимым от обычного веб-серфинга. Это затрудняет обнаружение и блокировку.'
+  },
+  {
+    question: 'Где взять сервер для VLESS?',
+    answer: 'Можно арендовать VPS у зарубежного провайдера (DigitalOcean, Vultr, Hetzner) за $3-5 в месяц и настроить сервер самостоятельно. Или купить готовую подписку у провайдеров VLESS/V2Ray.'
+  },
+  {
+    question: 'VLESS безопасен?',
+    answer: 'Да, VLESS использует TLS-шифрование, аналогичное банковским сайтам. Трафик защищен и не может быть прочитан третьими лицами. Важно использовать только доверенные серверы.'
+  },
+  {
+    question: 'Чем VLESS лучше обычного VPN?',
+    answer: 'VLESS сложнее заблокировать, так как его трафик выглядит как обычный HTTPS. Обычные VPN используют характерные протоколы (OpenVPN, WireGuard), которые легко определяются DPI-системами.'
+  }
+];
+---
+
+<BaseLayout 
+  title="V2RayTun — Настройка VLESS для обхода блокировок" 
+  description="Как настроить V2RayTun с протоколом VLESS. Пошаговая инструкция для Android, iPhone, Windows. Обход DPI-блокировок."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'V2RayTun' }]} />
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h1>V2RayTun — настройка VLESS</h1>
+      <p class="intro">
+        Пошаговая инструкция по настройке V2RayTun и протокола VLESS. 
+        Самый надежный способ обхода блокировок, который работает даже при жестких ограничениях.
+      </p>
+
+      <div class="highlight-box">
+        <h2>Что такое VLESS простыми словами</h2>
+        <p>
+          VLESS — это протокол, который маскирует ваш VPN-трафик под обычное посещение сайтов. 
+          Когда вы подключаетесь через VLESS, провайдер видит только зашифрованный HTTPS-трафик — 
+          как если бы вы просто зашли на какой-то сайт. Это делает VLESS очень устойчивым к блокировкам.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section apps">
+    <div class="container">
+      <h2>Приложения для разных платформ</h2>
+      
+      <div class="apps-grid">
+        <article class="app-card">
+          <h3>Android</h3>
+          <ul>
+            <li><strong>V2RayTun</strong> — простой интерфейс, стабильная работа</li>
+            <li><strong>V2RayNG</strong> — больше настроек, открытый код</li>
+            <li><strong>Hiddify</strong> — авто-выбор сервера, современный UI</li>
+          </ul>
+          <p class="note">Скачивайте из Google Play или с GitHub</p>
+        </article>
+        
+        <article class="app-card">
+          <h3>iPhone / iPad</h3>
+          <ul>
+            <li><strong>V2Box</strong> — бесплатное приложение в App Store</li>
+            <li><strong>Shadowrocket</strong> — платное, много функций</li>
+            <li><strong>Streisand</strong> — бесплатная альтернатива</li>
+          </ul>
+          <p class="note">Может потребоваться аккаунт Apple ID другого региона</p>
+        </article>
+        
+        <article class="app-card">
+          <h3>Windows</h3>
+          <ul>
+            <li><strong>Nekoray</strong> — удобный GUI, много протоколов</li>
+            <li><strong>Hiddify</strong> — простой интерфейс</li>
+            <li><strong>V2RayN</strong> — классический клиент</li>
+          </ul>
+          <p class="note">Скачивайте с официальных репозиториев GitHub</p>
+        </article>
+        
+        <article class="app-card">
+          <h3>macOS</h3>
+          <ul>
+            <li><strong>V2RayX</strong> — нативное приложение</li>
+            <li><strong>Nekoray</strong> — кроссплатформенный</li>
+            <li><strong>ClashX</strong> — альтернативный клиент</li>
+          </ul>
+          <p class="note">Установка через Homebrew или DMG с GitHub</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section setup">
+    <div class="container">
+      <h2>Настройка V2RayTun (Android)</h2>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">1</span>
+            <h3>Установите приложение</h3>
+          </div>
+          <div class="step-content">
+            <p>Скачайте V2RayTun из Google Play или APK с GitHub. Установите приложение и разрешите необходимые доступы.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">2</span>
+            <h3>Получите конфигурацию</h3>
+          </div>
+          <div class="step-content">
+            <p>Вам понадобится конфигурация VLESS-сервера. Варианты получения:</p>
+            <ul>
+              <li>Купить подписку у провайдера VLESS/V2Ray</li>
+              <li>Настроить собственный сервер на VPS</li>
+              <li>Получить бесплатную конфигурацию (менее надежно)</li>
+            </ul>
+            <p>Конфигурация выглядит как ссылка: <code>vless://...</code> или QR-код.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">3</span>
+            <h3>Импортируйте конфигурацию</h3>
+          </div>
+          <div class="step-content">
+            <p>В приложении нажмите «+» или «Добавить». Выберите способ добавления:</p>
+            <ul>
+              <li><strong>Из буфера</strong> — скопируйте ссылку и нажмите «Вставить»</li>
+              <li><strong>QR-код</strong> — отсканируйте код с экрана или изображения</li>
+              <li><strong>Подписка</strong> — вставьте URL подписки для авто-обновления</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-header">
+            <span class="step-num">4</span>
+            <h3>Подключитесь</h3>
+          </div>
+          <div class="step-content">
+            <p>Выберите добавленный сервер и нажмите кнопку подключения. 
+            При первом запуске Android попросит разрешение на VPN-соединение — нажмите «ОК».</p>
+            <p>Проверьте работу: откройте заблокированный сайт или проверьте IP на сервисе типа 2ip.ru.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section server">
+    <div class="container">
+      <h2>Как настроить свой сервер</h2>
+      
+      <div class="server-info">
+        <p>
+          Собственный сервер — самый надежный вариант. Вы полностью контролируете инфраструктуру, 
+          IP-адрес не будет в базах блокировок, скорость не ограничена.
+        </p>
+
+        <h3>Что потребуется:</h3>
+        <ul>
+          <li>VPS-сервер за рубежом (от $3/мес — DigitalOcean, Vultr, Hetzner)</li>
+          <li>Доменное имя (можно бесплатно на Freenom или дешевое .xyz)</li>
+          <li>Базовые навыки работы с Linux (или готовые скрипты установки)</li>
+        </ul>
+
+        <h3>Упрощенная установка через скрипты:</h3>
+        <p>Существуют скрипты, которые автоматически настраивают VLESS-сервер:</p>
+        <ul>
+          <li><strong>X-UI</strong> — веб-панель для управления V2Ray</li>
+          <li><strong>3X-UI</strong> — улучшенная версия с дополнительными функциями</li>
+          <li><strong>Marzban</strong> — современная панель с красивым интерфейсом</li>
+        </ul>
+
+        <div class="code-box">
+          <p>Пример установки 3X-UI (выполните на VPS через SSH):</p>
+          <code>bash &lt;(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)</code>
+        </div>
+
+        <p class="warning">
+          <strong>Важно:</strong> Используйте только официальные репозитории скриптов. 
+          Проверяйте код перед запуском или используйте проверенные источники.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section troubleshooting">
+    <div class="container">
+      <h2>Решение проблем</h2>
+      
+      <div class="problems-grid">
+        <article class="problem-card">
+          <h3>Не подключается</h3>
+          <ul>
+            <li>Проверьте правильность конфигурации</li>
+            <li>Убедитесь, что сервер работает</li>
+            <li>Попробуйте другой порт (443, 8443)</li>
+            <li>Проверьте время на устройстве (должно быть точным)</li>
+          </ul>
+        </article>
+        
+        <article class="problem-card">
+          <h3>Медленная скорость</h3>
+          <ul>
+            <li>Выберите сервер географически ближе</li>
+            <li>Проверьте нагрузку на сервер</li>
+            <li>Попробуйте другой transport (WebSocket, gRPC)</li>
+            <li>Увеличьте тариф VPS</li>
+          </ul>
+        </article>
+        
+        <article class="problem-card">
+          <h3>Работает нестабильно</h3>
+          <ul>
+            <li>Обновите приложение до последней версии</li>
+            <li>Попробуйте другой клиент</li>
+            <li>Проверьте настройки DNS</li>
+            <li>Используйте reality вместо обычного TLS</li>
+          </ul>
+        </article>
+        
+        <article class="problem-card">
+          <h3>Заблокировали IP сервера</h3>
+          <ul>
+            <li>Смените IP-адрес VPS</li>
+            <li>Используйте CDN (Cloudflare) для маскировки</li>
+            <li>Настройте несколько серверов для резерва</li>
+            <li>Используйте VLESS+Reality</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <section class="section related">
+    <div class="container">
+      <h2>Читайте также</h2>
+      <div class="related-links">
+        <a href="/obhod-blokirovok">Обход блокировок</a>
+        <a href="/best-free-vpn-russia">Рейтинг VPN</a>
+        <a href="/vpn-dlya-android">VPN для Android</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .intro {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+  
+  .highlight-box {
+    background: rgba(37, 99, 235, 0.1);
+    border-left: 4px solid var(--color-primary);
+    padding: 1.5rem;
+    border-radius: 0 0.75rem 0.75rem 0;
+  }
+  
+  .highlight-box h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .highlight-box p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+  
+  .apps {
+    background: var(--color-bg-alt);
+  }
+  
+  .apps h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 1000px) {
+    .apps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .apps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .app-card {
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border-radius: 0.75rem;
+  }
+  
+  .app-card h3 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+  
+  .app-card ul {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  
+  .app-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.9375rem;
+  }
+  
+  .app-card li:last-child {
+    border-bottom: none;
+  }
+  
+  .app-card .note {
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+  }
+  
+  .setup h2 {
+    margin-bottom: 2rem;
+  }
+  
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+  }
+  
+  .step {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-alt);
+  }
+  
+  .step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  
+  .step-header h3 {
+    margin: 0;
+    font-size: 1.0625rem;
+  }
+  
+  .step-content {
+    padding: 1.25rem;
+  }
+  
+  .step-content p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  
+  .step-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .step-content ul {
+    padding-left: 1.5rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+  
+  .step-content code {
+    background: var(--color-bg-alt);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .server {
+    background: var(--color-bg-alt);
+  }
+  
+  .server h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .server-info {
+    max-width: 800px;
+  }
+  
+  .server-info p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  
+  .server-info h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .server-info ul {
+    padding-left: 1.5rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  
+  .code-box {
+    background: var(--color-bg);
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+  }
+  
+  .code-box p {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .code-box code {
+    display: block;
+    background: #1f2937;
+    color: #10b981;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.8125rem;
+    overflow-x: auto;
+  }
+  
+  .warning {
+    background: rgba(245, 158, 11, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--color-warning);
+  }
+  
+  .warning strong {
+    color: var(--color-warning);
+  }
+  
+  .troubleshooting h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 700px) {
+    .problems-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .problem-card {
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+  
+  .problem-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .problem-card ul {
+    list-style: none;
+  }
+  
+  .problem-card li {
+    padding: 0.375rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+  }
+  
+  .problem-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+  }
+  
+  .related {
+    text-align: center;
+  }
+  
+  .related h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .related-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .related-links a {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+  
+  .related-links a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+</style>

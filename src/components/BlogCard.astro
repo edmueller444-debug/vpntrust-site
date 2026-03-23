@@ -1,0 +1,111 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  date: string;
+  category: string;
+}
+
+const { title, description, slug, date, category } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('ru-RU', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+});
+---
+
+<article class="blog-card">
+  <a href={`/blog/${slug}`} class="blog-card-link">
+    <div class="blog-card-content">
+      <div class="blog-card-meta">
+        <span class="blog-card-category">{category}</span>
+        <time datetime={date}>{formattedDate}</time>
+      </div>
+      <h2 class="blog-card-title">{title}</h2>
+      <p class="blog-card-desc">{description}</p>
+      <span class="blog-card-read">
+        Читать статью
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .blog-card {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+  
+  .blog-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+  }
+  
+  .blog-card-link {
+    display: block;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  
+  .blog-card-content {
+    padding: 1.5rem;
+  }
+  
+  .blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.8125rem;
+  }
+  
+  .blog-card-category {
+    padding: 0.25rem 0.75rem;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--color-primary);
+    border-radius: 1rem;
+    font-weight: 500;
+  }
+  
+  .blog-card-meta time {
+    color: var(--color-text-light);
+  }
+  
+  .blog-card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  
+  .blog-card:hover .blog-card-title {
+    color: var(--color-primary);
+  }
+  
+  .blog-card-desc {
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .blog-card-read {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+  
+  .blog-card:hover .blog-card-read {
+    gap: 0.625rem;
+  }
+</style>

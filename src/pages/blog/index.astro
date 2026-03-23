@@ -1,0 +1,110 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import { getAllPosts } from '@/data/posts';
+
+const posts = getAllPosts();
+---
+
+<BaseLayout 
+  title="Блог о VPN — Статьи и инструкции" 
+  description="Статьи о VPN, обходе блокировок, настройке VLESS и V2RayTun. Практические инструкции и обзоры для всех устройств."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Блог' }]} />
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <header class="blog-header">
+        <h1>Блог VPNTrust</h1>
+        <p class="blog-subtitle">
+          Статьи о VPN, обходе блокировок и защите конфиденциальности. 
+          Практические инструкции и честные обзоры.
+        </p>
+      </header>
+
+      <div class="posts-grid">
+        {posts.map(post => (
+          <BlogCard 
+            title={post.title}
+            description={post.description}
+            slug={post.slug}
+            date={post.date}
+            category={post.category}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Не нашли ответ?</h2>
+        <p>Посмотрите наши подробные руководства по VPN для разных устройств и сценариев</p>
+        <div class="cta-links">
+          <a href="/best-free-vpn-russia" class="btn btn-primary">Рейтинг VPN</a>
+          <a href="/v2raytun" class="btn btn-outline">Настройка V2RayTun</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+  
+  .blog-header h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .blog-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+  
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 700px) {
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .cta {
+    background: var(--color-bg-alt);
+    text-align: center;
+  }
+  
+  .cta-content {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .cta-content h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .cta-content p {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

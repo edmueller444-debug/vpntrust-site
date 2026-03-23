@@ -1,0 +1,270 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Faq from '@/components/Faq.astro';
+
+const apps = [
+  { name: 'Proton VPN', rating: 5, size: '45 МБ', features: ['Безлимитный трафик', 'Без рекламы', 'Kill Switch'] },
+  { name: 'Windscribe', rating: 4, size: '35 МБ', features: ['10 ГБ бесплатно', 'Блокировка рекламы', 'Split tunneling'] },
+  { name: 'V2RayTun', rating: 5, size: '15 МБ', features: ['Протокол VLESS', 'Обход DPI', 'Свой сервер'] },
+  { name: 'Hide.me', rating: 4, size: '30 МБ', features: ['10 ГБ бесплатно', 'WireGuard', 'Простой интерфейс'] },
+];
+
+const faqItems = [
+  {
+    question: 'Какой VPN лучше для Android?',
+    answer: 'Для большинства пользователей рекомендуем Proton VPN — безлимитный трафик, никакой рекламы, простая настройка. Для продвинутых пользователей подойдет V2RayTun с собственным сервером.'
+  },
+  {
+    question: 'Как установить VPN на Android?',
+    answer: 'Скачайте приложение из Google Play или APK с официального сайта. Запустите приложение, создайте аккаунт (если требуется) и нажмите кнопку подключения. Разрешите VPN-соединение в системном диалоге.'
+  },
+  {
+    question: 'VPN для Android разряжает батарею?',
+    answer: 'Современные VPN-протоколы (WireGuard, VLESS) потребляют минимум энергии. Влияние на батарею обычно составляет 5-10% дополнительного расхода при активном использовании.'
+  },
+  {
+    question: 'Можно ли использовать VPN на Android TV?',
+    answer: 'Да, большинство VPN-приложений работают на Android TV. Proton VPN и Windscribe имеют адаптированные версии для телевизоров с удобным интерфейсом.'
+  }
+];
+---
+
+<BaseLayout 
+  title="VPN для Android — Лучшие бесплатные VPN-приложения 2025" 
+  description="Лучшие VPN для Android-смартфонов и планшетов. Бесплатные приложения Proton VPN, Windscribe, V2RayTun. Инструкции по установке и настройке."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'VPN для Android' }]} />
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h1>VPN для Android</h1>
+      <p class="intro">
+        Подборка лучших VPN-приложений для смартфонов и планшетов на Android. 
+        Все приложения протестированы, работают в России и не требуют сложной настройки.
+      </p>
+
+      <div class="apps-grid">
+        {apps.map((app, index) => (
+          <article class="app-card">
+            <header class="app-header">
+              <span class="app-rank">#{index + 1}</span>
+              <div>
+                <h2 class="app-name">{app.name}</h2>
+                <span class="app-meta">{app.size} • {'★'.repeat(app.rating)}{'☆'.repeat(5 - app.rating)}</span>
+              </div>
+            </header>
+            <ul class="app-features">
+              {app.features.map(feature => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section guide">
+    <div class="container">
+      <h2>Как выбрать VPN для Android</h2>
+      
+      <div class="guide-content">
+        <h3>На что обратить внимание</h3>
+        <ul>
+          <li><strong>Размер приложения</strong> — легкие приложения быстрее работают и меньше нагружают систему</li>
+          <li><strong>Расход батареи</strong> — современные протоколы (WireGuard) экономичнее устаревших (OpenVPN)</li>
+          <li><strong>Split tunneling</strong> — позволяет выбрать, какие приложения будут использовать VPN</li>
+          <li><strong>Kill Switch</strong> — блокирует интернет при обрыве VPN, защищая от утечек</li>
+        </ul>
+
+        <h3>Установка из Google Play</h3>
+        <ol>
+          <li>Откройте Google Play на устройстве</li>
+          <li>Найдите приложение по названию</li>
+          <li>Нажмите «Установить» и дождитесь загрузки</li>
+          <li>Запустите приложение и создайте аккаунт</li>
+          <li>Нажмите кнопку подключения и разрешите VPN-соединение</li>
+        </ol>
+
+        <h3>Установка APK (если Google Play недоступен)</h3>
+        <ol>
+          <li>Скачайте APK-файл с официального сайта VPN-сервиса</li>
+          <li>Разрешите установку из неизвестных источников в настройках</li>
+          <li>Откройте скачанный файл и нажмите «Установить»</li>
+          <li>После установки отключите разрешение на неизвестные источники</li>
+        </ol>
+
+        <div class="tip-box">
+          <strong>Совет:</strong> Если VPN-приложения плохо работают из-за блокировок, 
+          попробуйте <a href="/v2raytun">V2RayTun</a> с протоколом VLESS — он специально разработан для обхода DPI.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <section class="section related">
+    <div class="container">
+      <h2>Читайте также</h2>
+      <div class="related-links">
+        <a href="/vpn-dlya-iphone">VPN для iPhone</a>
+        <a href="/vpn-dlya-youtube">VPN для YouTube</a>
+        <a href="/best-free-vpn-russia">Рейтинг VPN</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .intro {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+  
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 700px) {
+    .apps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .app-card {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  
+  .app-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--color-bg-alt);
+  }
+  
+  .app-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+  
+  .app-name {
+    font-size: 1.125rem;
+    margin: 0;
+  }
+  
+  .app-meta {
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+  }
+  
+  .app-features {
+    list-style: none;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .app-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+  }
+  
+  .app-features svg {
+    color: var(--color-success);
+    flex-shrink: 0;
+  }
+  
+  .guide {
+    background: var(--color-bg-alt);
+  }
+  
+  .guide-content {
+    max-width: 800px;
+  }
+  
+  .guide-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .guide-content ul,
+  .guide-content ol {
+    padding-left: 1.5rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+  }
+  
+  .guide-content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .tip-box {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 0.5rem;
+  }
+  
+  .tip-box strong {
+    color: var(--color-primary);
+  }
+  
+  .related {
+    text-align: center;
+  }
+  
+  .related h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .related-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .related-links a {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+  
+  .related-links a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+</style>

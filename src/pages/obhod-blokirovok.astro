@@ -1,0 +1,405 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Faq from '@/components/Faq.astro';
+
+const methods = [
+  {
+    name: 'VPN-сервисы',
+    difficulty: 'Легко',
+    speed: 'Высокая',
+    reliability: 'Средняя',
+    description: 'Готовые приложения от коммерческих провайдеров. Самый простой способ.'
+  },
+  {
+    name: 'Протокол VLESS',
+    difficulty: 'Средне',
+    speed: 'Высокая',
+    reliability: 'Высокая',
+    description: 'Современный протокол с маскировкой трафика. Работает при жестких блокировках.'
+  },
+  {
+    name: 'Shadowsocks',
+    difficulty: 'Средне',
+    speed: 'Высокая',
+    reliability: 'Высокая',
+    description: 'Прокси с шифрованием. Популярен в Китае, хорошо обходит DPI.'
+  },
+  {
+    name: 'Tor Browser',
+    difficulty: 'Легко',
+    speed: 'Низкая',
+    reliability: 'Средняя',
+    description: 'Анонимная сеть. Медленный, но максимальная приватность.'
+  },
+];
+
+const faqItems = [
+  {
+    question: 'Что такое DPI и как его обходят?',
+    answer: 'DPI (Deep Packet Inspection) — технология анализа трафика. Провайдеры используют её для определения и блокировки VPN. Современные протоколы (VLESS, Shadowsocks) маскируют трафик под обычный HTTPS, что затрудняет обнаружение.'
+  },
+  {
+    question: 'Законно ли обходить блокировки в России?',
+    answer: 'Использование VPN и других инструментов для личных целей законно. Запрещено только распространение информации о способах обхода блокировок для доступа к запрещенному контенту.'
+  },
+  {
+    question: 'Какой метод самый надежный?',
+    answer: 'VLESS с маскировкой под HTTPS — самый устойчивый к блокировкам метод на данный момент. Требует больше настройки, но работает даже в условиях жестких ограничений.'
+  },
+  {
+    question: 'Почему VPN перестал работать?',
+    answer: 'VPN-протоколы постоянно блокируются. Провайдеры обновляют DPI-системы, которые учатся распознавать VPN-трафик. Решение — использовать протоколы с обфускацией (VLESS, Shadowsocks).'
+  },
+  {
+    question: 'Можно ли создать свой VPN-сервер?',
+    answer: 'Да, это лучший вариант для надежного обхода блокировок. Арендуйте VPS за рубежом и настройте VLESS или WireGuard. Подробная инструкция — в разделе V2RayTun.'
+  }
+];
+---
+
+<BaseLayout 
+  title="Обход блокировок в России — Способы и инструменты 2025" 
+  description="Как обойти блокировки сайтов в России. VPN, VLESS, Shadowsocks, Tor — сравнение методов, инструкции по настройке."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Обход блокировок' }]} />
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h1>Обход блокировок в России</h1>
+      <p class="intro">
+        Разбираем способы обхода блокировок сайтов и сервисов. 
+        От простых VPN-приложений до продвинутых протоколов с маскировкой трафика.
+      </p>
+    </div>
+  </section>
+
+  <section class="section methods">
+    <div class="container">
+      <h2>Сравнение методов</h2>
+      
+      <div class="methods-table-wrapper">
+        <table class="methods-table">
+          <thead>
+            <tr>
+              <th>Метод</th>
+              <th>Сложность</th>
+              <th>Скорость</th>
+              <th>Надежность</th>
+              <th>Описание</th>
+            </tr>
+          </thead>
+          <tbody>
+            {methods.map(method => (
+              <tr>
+                <td><strong>{method.name}</strong></td>
+                <td>{method.difficulty}</td>
+                <td>{method.speed}</td>
+                <td>{method.reliability}</td>
+                <td>{method.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="methods-cards">
+        {methods.map(method => (
+          <article class="method-card">
+            <h3>{method.name}</h3>
+            <div class="method-stats">
+              <span>Сложность: {method.difficulty}</span>
+              <span>Скорость: {method.speed}</span>
+              <span>Надежность: {method.reliability}</span>
+            </div>
+            <p>{method.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section detailed">
+    <div class="container">
+      <h2>Подробнее о каждом методе</h2>
+
+      <article class="method-detail">
+        <h3>VPN-сервисы</h3>
+        <p>
+          Самый простой способ обхода блокировок. Устанавливаете приложение, 
+          подключаетесь к серверу — готово. Подходит для большинства пользователей.
+        </p>
+        <h4>Плюсы:</h4>
+        <ul>
+          <li>Простая установка и использование</li>
+          <li>Работает на всех устройствах</li>
+          <li>Есть бесплатные варианты (Proton VPN, Windscribe)</li>
+        </ul>
+        <h4>Минусы:</h4>
+        <ul>
+          <li>Популярные VPN активно блокируются</li>
+          <li>Бесплатные версии имеют ограничения</li>
+          <li>Не работают при жестких блокировках DPI</li>
+        </ul>
+        <a href="/best-free-vpn-russia" class="method-link">Рейтинг VPN-сервисов →</a>
+      </article>
+
+      <article class="method-detail">
+        <h3>Протокол VLESS</h3>
+        <p>
+          Современный протокол, разработанный для обхода DPI. Маскирует VPN-трафик 
+          под обычный HTTPS, что делает его практически неотличимым от обычного веб-серфинга.
+        </p>
+        <h4>Плюсы:</h4>
+        <ul>
+          <li>Высокая устойчивость к блокировкам</li>
+          <li>Отличная скорость</li>
+          <li>Работает даже в Китае и Иране</li>
+        </ul>
+        <h4>Минусы:</h4>
+        <ul>
+          <li>Требует настройки сервера</li>
+          <li>Нужен VPS за рубежом</li>
+          <li>Сложнее для новичков</li>
+        </ul>
+        <a href="/v2raytun" class="method-link">Инструкция по настройке V2RayTun →</a>
+      </article>
+
+      <article class="method-detail">
+        <h3>Shadowsocks</h3>
+        <p>
+          Прокси-протокол с шифрованием, созданный в Китае для обхода «Золотого щита». 
+          Легкий, быстрый, хорошо маскируется.
+        </p>
+        <h4>Плюсы:</h4>
+        <ul>
+          <li>Проверен годами использования в Китае</li>
+          <li>Низкое потребление ресурсов</li>
+          <li>Много клиентов под все платформы</li>
+        </ul>
+        <h4>Минусы:</h4>
+        <ul>
+          <li>Требует настройки сервера</li>
+          <li>Менее надежен, чем VLESS</li>
+          <li>Некоторые версии уже научились блокировать</li>
+        </ul>
+      </article>
+
+      <article class="method-detail">
+        <h3>Tor Browser</h3>
+        <p>
+          Браузер для анонимного серфинга. Трафик проходит через несколько узлов, 
+          что обеспечивает максимальную приватность, но снижает скорость.
+        </p>
+        <h4>Плюсы:</h4>
+        <ul>
+          <li>Максимальная анонимность</li>
+          <li>Бесплатный и открытый код</li>
+          <li>Не требует регистрации</li>
+        </ul>
+        <h4>Минусы:</h4>
+        <ul>
+          <li>Очень медленный</li>
+          <li>Не подходит для видео и загрузок</li>
+          <li>Точки входа могут блокироваться</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section recommendation">
+    <div class="container">
+      <div class="rec-box">
+        <h2>Что выбрать?</h2>
+        <div class="rec-grid">
+          <div class="rec-item">
+            <h3>Для начинающих</h3>
+            <p>Начните с <a href="/best-free-vpn-russia">Proton VPN</a> — бесплатный, простой, надежный. Если не работает — переходите к VLESS.</p>
+          </div>
+          <div class="rec-item">
+            <h3>Для продвинутых</h3>
+            <p>Настройте собственный сервер с <a href="/v2raytun">VLESS</a>. Полный контроль, максимальная надежность, отличная скорость.</p>
+          </div>
+          <div class="rec-item">
+            <h3>Для максимальной анонимности</h3>
+            <p>Используйте Tor для чувствительных задач. Для повседневного использования он слишком медленный.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .intro {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+  }
+  
+  .methods {
+    background: var(--color-bg-alt);
+  }
+  
+  .methods h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .methods-table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .methods-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .methods-table th,
+  .methods-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .methods-table th {
+    background: var(--color-bg);
+    font-weight: 600;
+  }
+  
+  .methods-table tr:hover td {
+    background: var(--color-bg);
+  }
+  
+  .methods-cards {
+    display: none;
+  }
+  
+  @media (max-width: 800px) {
+    .methods-table-wrapper {
+      display: none;
+    }
+    
+    .methods-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+  
+  .method-card {
+    padding: 1.25rem;
+    background: var(--color-bg);
+    border-radius: 0.75rem;
+  }
+  
+  .method-card h3 {
+    margin-bottom: 0.75rem;
+  }
+  
+  .method-stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+  }
+  
+  .method-card p {
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+  }
+  
+  .detailed h2 {
+    margin-bottom: 2rem;
+  }
+  
+  .method-detail {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .method-detail:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  .method-detail h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+  
+  .method-detail p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  
+  .method-detail h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .method-detail ul {
+    padding-left: 1.5rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+  }
+  
+  .method-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+  
+  .recommendation {
+    background: var(--color-bg-alt);
+  }
+  
+  .rec-box h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .rec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 800px) {
+    .rec-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .rec-item {
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border-radius: 0.75rem;
+    text-align: center;
+  }
+  
+  .rec-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .rec-item p {
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+</style>

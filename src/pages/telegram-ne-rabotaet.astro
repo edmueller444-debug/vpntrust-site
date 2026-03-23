@@ -1,0 +1,409 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Faq from '@/components/Faq.astro';
+
+const faqItems = [
+  {
+    question: 'Telegram заблокирован в России?',
+    answer: 'Telegram официально разблокирован в России с 2020 года. Однако периодически возникают технические проблемы с подключением, связанные с работой провайдеров или DPI-оборудования.'
+  },
+  {
+    question: 'Почему Telegram не загружает медиа?',
+    answer: 'Проблемы с загрузкой фото и видео обычно связаны с ограничением трафика к CDN-серверам Telegram. VPN или встроенный прокси решают эту проблему.'
+  },
+  {
+    question: 'Какой прокси лучше для Telegram?',
+    answer: 'Telegram поддерживает MTProto-прокси, которые оптимизированы специально для мессенджера. Они быстрее обычных SOCKS5-прокси и маскируют трафик под HTTPS.'
+  },
+  {
+    question: 'VPN или прокси — что лучше?',
+    answer: 'Для Telegram достаточно прокси — он защитит только трафик мессенджера и не повлияет на скорость интернета. VPN нужен, если вы хотите защитить весь трафик устройства.'
+  },
+  {
+    question: 'Как проверить, работает ли Telegram?',
+    answer: 'Откройте приложение и попробуйте отправить сообщение. Если видите индикатор «Подключение...» дольше 10 секунд или сообщения не отправляются — есть проблема с соединением.'
+  }
+];
+---
+
+<BaseLayout 
+  title="Telegram не работает — Причины и решения 2025" 
+  description="Почему Telegram не работает и как это исправить. Решения проблем с подключением, загрузкой медиа и отправкой сообщений в России."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Telegram не работает' }]} />
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h1>Telegram не работает — что делать</h1>
+      <p class="intro">
+        Разбираем причины, почему Telegram может не работать, и способы решения. 
+        От простых проверок до настройки прокси и VPN.
+      </p>
+    </div>
+  </section>
+
+  <section class="section causes">
+    <div class="container">
+      <h2>Возможные причины</h2>
+      
+      <div class="causes-grid">
+        <article class="cause-card">
+          <div class="cause-icon warning">!</div>
+          <h3>Проблемы у провайдера</h3>
+          <p>Некоторые провайдеры ограничивают трафик к серверам Telegram или используют DPI для фильтрации.</p>
+        </article>
+        
+        <article class="cause-card">
+          <div class="cause-icon">?</div>
+          <h3>Сбой на серверах Telegram</h3>
+          <p>Редко, но случается. Проверьте статус на downdetector.ru или в Twitter @telegram.</p>
+        </article>
+        
+        <article class="cause-card">
+          <div class="cause-icon">⚙</div>
+          <h3>Устаревшее приложение</h3>
+          <p>Старые версии могут работать некорректно. Обновите Telegram до последней версии.</p>
+        </article>
+        
+        <article class="cause-card">
+          <div class="cause-icon">📶</div>
+          <h3>Проблемы с сетью</h3>
+          <p>Нестабильный Wi-Fi или мобильный интернет. Попробуйте переключиться на другую сеть.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section solutions">
+    <div class="container">
+      <h2>Как исправить</h2>
+      
+      <div class="solutions-list">
+        <article class="solution">
+          <div class="solution-header">
+            <span class="solution-num">1</span>
+            <h3>Проверьте базовые вещи</h3>
+          </div>
+          <div class="solution-content">
+            <ul>
+              <li>Перезапустите приложение Telegram</li>
+              <li>Проверьте интернет-соединение (откройте любой сайт)</li>
+              <li>Переключитесь с Wi-Fi на мобильный интернет или наоборот</li>
+              <li>Обновите Telegram до последней версии</li>
+              <li>Перезагрузите устройство</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="solution">
+          <div class="solution-header">
+            <span class="solution-num">2</span>
+            <h3>Включите встроенный прокси</h3>
+          </div>
+          <div class="solution-content">
+            <p>Telegram имеет встроенную поддержку прокси. Это самый простой способ обойти ограничения:</p>
+            <ol>
+              <li>Откройте Настройки → Данные и память → Тип соединения</li>
+              <li>Выберите «Использовать прокси»</li>
+              <li>Нажмите «Добавить прокси» и введите данные MTProto-прокси</li>
+              <li>Или найдите бот @MTProxybot для получения рабочего прокси</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="solution">
+          <div class="solution-header">
+            <span class="solution-num">3</span>
+            <h3>Используйте VPN</h3>
+          </div>
+          <div class="solution-content">
+            <p>Если прокси не помогает, установите VPN-приложение:</p>
+            <ul>
+              <li><strong>Proton VPN</strong> — бесплатный, безлимитный, надежный</li>
+              <li><strong>Windscribe</strong> — 10 ГБ бесплатно, встроенный файрвол</li>
+              <li><strong>V2RayTun</strong> — для сложных случаев с протоколом VLESS</li>
+            </ul>
+            <p>Подключитесь к VPN перед запуском Telegram.</p>
+            <a href="/best-free-vpn-russia">Рейтинг бесплатных VPN →</a>
+          </div>
+        </article>
+
+        <article class="solution">
+          <div class="solution-header">
+            <span class="solution-num">4</span>
+            <h3>Настройте V2RayTun (продвинутое)</h3>
+          </div>
+          <div class="solution-content">
+            <p>Если стандартные VPN не работают из-за блокировок DPI, используйте протокол VLESS:</p>
+            <ul>
+              <li>VLESS маскирует трафик под обычный HTTPS</li>
+              <li>Работает даже при жестких блокировках</li>
+              <li>Требует собственный сервер или подписку</li>
+            </ul>
+            <a href="/v2raytun">Инструкция по настройке V2RayTun →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section specific-issues">
+    <div class="container">
+      <h2>Специфические проблемы</h2>
+      
+      <div class="issues-grid">
+        <article class="issue-card">
+          <h3>Не загружаются фото и видео</h3>
+          <p>Проблема с CDN-серверами. Текстовые сообщения работают, медиа — нет.</p>
+          <p><strong>Решение:</strong> Включите прокси или VPN. Это перенаправит трафик к медиа-серверам через защищенный канал.</p>
+        </article>
+        
+        <article class="issue-card">
+          <h3>Звонки не работают</h3>
+          <p>Голосовые и видеозвонки используют отдельные серверы, которые могут блокироваться.</p>
+          <p><strong>Решение:</strong> Используйте VPN. Прокси может не помочь, так как звонки идут через UDP.</p>
+        </article>
+        
+        <article class="issue-card">
+          <h3>Telegram Web не открывается</h3>
+          <p>Веб-версия может блокироваться отдельно от приложения.</p>
+          <p><strong>Решение:</strong> Используйте VPN или расширение для браузера. Попробуйте альтернативный адрес web.telegram.org/k/</p>
+        </article>
+        
+        <article class="issue-card">
+          <h3>Работает только через Wi-Fi</h3>
+          <p>Мобильный оператор может ограничивать Telegram, а домашний провайдер — нет.</p>
+          <p><strong>Решение:</strong> Настройте прокси или VPN для использования через мобильную сеть.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <section class="section related">
+    <div class="container">
+      <h2>Читайте также</h2>
+      <div class="related-links">
+        <a href="/obhod-blokirovok">Обход блокировок</a>
+        <a href="/v2raytun">Настройка V2RayTun</a>
+        <a href="/best-free-vpn-russia">Рейтинг VPN</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .intro {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+  }
+  
+  .causes {
+    background: var(--color-bg-alt);
+  }
+  
+  .causes h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .causes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .causes-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .causes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .cause-card {
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border-radius: 0.75rem;
+    text-align: center;
+  }
+  
+  .cause-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-bg-alt);
+    border-radius: 50%;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cause-icon.warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--color-warning);
+  }
+  
+  .cause-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cause-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+  
+  .solutions h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .solutions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+  }
+  
+  .solution {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  
+  .solution-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-alt);
+  }
+  
+  .solution-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  
+  .solution-header h3 {
+    margin: 0;
+    font-size: 1.0625rem;
+  }
+  
+  .solution-content {
+    padding: 1.25rem;
+  }
+  
+  .solution-content p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  
+  .solution-content ul,
+  .solution-content ol {
+    padding-left: 1.5rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+  
+  .solution-content li {
+    margin-bottom: 0.375rem;
+  }
+  
+  .solution-content a {
+    font-weight: 500;
+  }
+  
+  .specific-issues {
+    background: var(--color-bg-alt);
+  }
+  
+  .specific-issues h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .issues-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 700px) {
+    .issues-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .issue-card {
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border-radius: 0.75rem;
+  }
+  
+  .issue-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .issue-card p {
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  
+  .issue-card p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .related {
+    text-align: center;
+  }
+  
+  .related h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .related-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .related-links a {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+  
+  .related-links a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+</style>

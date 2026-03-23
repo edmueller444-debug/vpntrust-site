@@ -1,0 +1,280 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureCard from '@/components/FeatureCard.astro';
+import Faq from '@/components/Faq.astro';
+
+const features = [
+  {
+    title: 'Лучшие бесплатные VPN',
+    description: 'Рейтинг проверенных VPN-сервисов, которые работают в России. Сравнение скорости, безопасности и функций.',
+    href: '/best-free-vpn-russia',
+    icon: 'shield'
+  },
+  {
+    title: 'VPN для Android',
+    description: 'Подборка лучших VPN-приложений для смартфонов и планшетов на Android.',
+    href: '/vpn-dlya-android',
+    icon: 'phone'
+  },
+  {
+    title: 'VPN для iPhone',
+    description: 'Надежные VPN для iOS, которые легко настроить и использовать на iPhone и iPad.',
+    href: '/vpn-dlya-iphone',
+    icon: 'phone'
+  },
+  {
+    title: 'VPN для Windows',
+    description: 'VPN-клиенты для компьютеров и ноутбуков на Windows 10 и 11.',
+    href: '/vpn-dlya-windows',
+    icon: 'laptop'
+  },
+  {
+    title: 'VPN для YouTube',
+    description: 'Как смотреть YouTube без ограничений скорости и с доступом ко всем видео.',
+    href: '/vpn-dlya-youtube',
+    icon: 'youtube'
+  },
+  {
+    title: 'Обход блокировок',
+    description: 'Способы обхода блокировок сайтов и сервисов в России.',
+    href: '/obhod-blokirovok',
+    icon: 'unlock'
+  }
+];
+
+const faqItems = [
+  {
+    question: 'Что такое VPN и зачем он нужен?',
+    answer: 'VPN (Virtual Private Network) — это технология, которая создает зашифрованное соединение между вашим устройством и интернетом. VPN помогает защитить ваши данные, скрыть реальный IP-адрес и получить доступ к заблокированным ресурсам.'
+  },
+  {
+    question: 'Законно ли использовать VPN в России?',
+    answer: 'Да, использование VPN в России полностью легально. Закон запрещает только распространение информации о способах обхода блокировок, но не само использование VPN для личных целей.'
+  },
+  {
+    question: 'Какой VPN лучше выбрать для России?',
+    answer: 'Выбирайте VPN с хорошей репутацией, быстрыми серверами и поддержкой современных протоколов (WireGuard, VLESS). Обращайте внимание на политику конфиденциальности и наличие серверов в нужных странах.'
+  },
+  {
+    question: 'Бесплатные VPN безопасны?',
+    answer: 'Не все. Многие бесплатные VPN собирают и продают данные пользователей. Мы рекомендуем только проверенные бесплатные VPN с прозрачной политикой или freemium-версии надежных платных сервисов.'
+  },
+  {
+    question: 'VPN замедляет интернет?',
+    answer: 'Любой VPN добавляет небольшую задержку из-за шифрования и маршрутизации трафика. Качественные VPN-сервисы минимизируют это влияние, и разница в скорости практически незаметна при обычном использовании.'
+  }
+];
+---
+
+<BaseLayout 
+  title="VPNTrust — Лучшие работающие VPN для России" 
+  description="Выбираем лучшие VPN-сервисы для России. Честные обзоры, сравнения и инструкции по настройке. Обход блокировок, защита конфиденциальности."
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Работающие VPN для России</h1>
+      <p class="hero-subtitle">
+        Помогаем выбрать надежный VPN-сервис. Тестируем скорость, проверяем безопасность, 
+        даем практические инструкции по настройке.
+      </p>
+      <div class="hero-actions">
+        <a href="/best-free-vpn-russia" class="btn btn-primary">Рейтинг VPN</a>
+        <a href="/obhod-blokirovok" class="btn btn-outline">Обход блокировок</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Выберите подходящий VPN</h2>
+      <p class="section-subtitle">Рекомендации по устройствам и сценариям использования</p>
+      <div class="features-grid">
+        {features.map(feature => (
+          <FeatureCard {...feature} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Choose -->
+  <section class="section how-to-choose">
+    <div class="container">
+      <h2 class="section-title">Как выбрать VPN</h2>
+      <div class="criteria-grid">
+        <article class="criteria-item">
+          <span class="criteria-number">1</span>
+          <h3>Определите цель</h3>
+          <p>Для просмотра YouTube достаточно базового VPN. Для защиты данных нужен сервис с надежным шифрованием и политикой no-logs.</p>
+        </article>
+        <article class="criteria-item">
+          <span class="criteria-number">2</span>
+          <h3>Проверьте скорость</h3>
+          <p>Хороший VPN не должен сильно снижать скорость интернета. Ищите сервисы с серверами ближе к вашему региону.</p>
+        </article>
+        <article class="criteria-item">
+          <span class="criteria-number">3</span>
+          <h3>Изучите протоколы</h3>
+          <p>Современные протоколы (WireGuard, VLESS) быстрее и надежнее устаревших. Убедитесь, что VPN их поддерживает.</p>
+        </article>
+        <article class="criteria-item">
+          <span class="criteria-number">4</span>
+          <h3>Читайте отзывы</h3>
+          <p>Проверяйте независимые обзоры и отзывы пользователей. Избегайте VPN с плохой репутацией или скандалами.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <Faq items={faqItems} />
+
+  <!-- CTA -->
+  <section class="section cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Нужна помощь с настройкой?</h2>
+        <p>Читайте наши пошаговые инструкции по настройке VPN на разных устройствах</p>
+        <a href="/v2raytun" class="btn btn-primary">Инструкция V2RayTun</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 4rem 0;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    text-wrap: balance;
+  }
+  
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 0;
+    }
+    
+    .hero-title {
+      font-size: 2rem;
+    }
+  }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .section-subtitle {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .how-to-choose {
+    background: var(--color-bg-alt);
+  }
+  
+  .criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .criteria-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .criteria-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .criteria-item {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .criteria-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .criteria-item h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .criteria-item p {
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+  
+  .cta {
+    text-align: center;
+  }
+  
+  .cta-content {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .cta-content h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .cta-content p {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+  }
+</style>

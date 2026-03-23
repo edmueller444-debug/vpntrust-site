@@ -1,0 +1,399 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Faq from '@/components/Faq.astro';
+
+const faqItems = [
+  {
+    question: 'Почему YouTube замедляется в России?',
+    answer: 'YouTube может замедляться из-за технических ограничений или ограничения пропускной способности провайдерами. VPN позволяет обойти эти ограничения, направляя трафик через серверы в других странах.'
+  },
+  {
+    question: 'Какой бесплатный VPN лучше для YouTube?',
+    answer: 'Proton VPN — лучший выбор благодаря безлимитному трафику и хорошей скорости. Windscribe подойдет для умеренного просмотра (10 ГБ в месяц хватит на несколько часов видео в HD).'
+  },
+  {
+    question: 'VPN замедляет просмотр видео?',
+    answer: 'Качественный VPN практически не влияет на скорость потокового видео. Выбирайте серверы географически ближе к вам или к серверам YouTube (Европа, США) для минимальной задержки.'
+  },
+  {
+    question: 'Можно ли смотреть YouTube в 4K через VPN?',
+    answer: 'Да, но для этого нужен быстрый VPN и хорошее базовое соединение. Proton VPN и Windscribe справляются с 4K-видео при подключении к ближайшим серверам.'
+  },
+  {
+    question: 'Как смотреть YouTube на Smart TV через VPN?',
+    answer: 'Установите VPN на роутер или используйте Smart DNS. Некоторые Smart TV на Android поддерживают VPN-приложения напрямую. Альтернатива — подключить TV к компьютеру с VPN через HDMI.'
+  }
+];
+---
+
+<BaseLayout 
+  title="VPN для YouTube — Как смотреть без ограничений 2025" 
+  description="Лучшие VPN для просмотра YouTube без ограничений скорости. Бесплатные решения для обхода замедления и блокировок видео."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'VPN для YouTube' }]} />
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h1>VPN для YouTube</h1>
+      <p class="intro">
+        Как смотреть YouTube без ограничений скорости и с доступом ко всем видео. 
+        Бесплатные решения и пошаговые инструкции для всех устройств.
+      </p>
+
+      <div class="problem-box">
+        <h2>Почему YouTube работает медленно?</h2>
+        <p>
+          YouTube может работать медленно по нескольким причинам: технические ограничения на уровне провайдера, 
+          перегрузка каналов связи, или целенаправленное замедление. VPN решает эти проблемы, 
+          направляя ваш трафик через серверы в других странах.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section solutions">
+    <div class="container">
+      <h2>Решения для разных устройств</h2>
+      
+      <div class="devices-grid">
+        <article class="device-card">
+          <div class="device-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="5" y="2" width="14" height="20" rx="2"/>
+              <line x1="12" y1="18" x2="12" y2="18"/>
+            </svg>
+          </div>
+          <h3>Смартфон</h3>
+          <p>Установите Proton VPN или Windscribe из магазина приложений. Подключитесь к серверу и откройте YouTube.</p>
+          <a href="/vpn-dlya-android">Инструкция для Android</a>
+        </article>
+        
+        <article class="device-card">
+          <div class="device-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="2" y1="20" x2="22" y2="20"/>
+            </svg>
+          </div>
+          <h3>Компьютер</h3>
+          <p>Скачайте VPN-клиент для Windows или Mac. Либо используйте расширение для браузера.</p>
+          <a href="/vpn-dlya-windows">Инструкция для Windows</a>
+        </article>
+        
+        <article class="device-card">
+          <div class="device-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="15" rx="2"/>
+              <polyline points="17 2 12 7 7 2"/>
+            </svg>
+          </div>
+          <h3>Smart TV</h3>
+          <p>Настройте VPN на роутере или используйте Smart DNS. Для Android TV можно установить VPN-приложение.</p>
+          <span class="tip">Смотрите раздел ниже</span>
+        </article>
+        
+        <article class="device-card">
+          <div class="device-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="6" width="20" height="12" rx="2"/>
+              <line x1="6" y1="10" x2="6" y2="14"/>
+              <line x1="18" y1="10" x2="18" y2="10"/>
+            </svg>
+          </div>
+          <h3>Роутер</h3>
+          <p>Настройте VPN на роутере — все устройства в сети будут защищены автоматически.</p>
+          <span class="tip">Требует технических знаний</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section recommended">
+    <div class="container">
+      <h2>Рекомендуемые VPN для YouTube</h2>
+      
+      <div class="vpn-list">
+        <article class="vpn-item">
+          <div class="vpn-header">
+            <h3>Proton VPN</h3>
+            <span class="badge best">Лучший выбор</span>
+          </div>
+          <p>Безлимитный бесплатный трафик. Хорошая скорость для просмотра видео в HD. Серверы в США, Европе и Японии.</p>
+          <ul>
+            <li>Безлимитный трафик</li>
+            <li>HD-видео без буферизации</li>
+            <li>Все платформы</li>
+          </ul>
+        </article>
+        
+        <article class="vpn-item">
+          <div class="vpn-header">
+            <h3>Windscribe</h3>
+            <span class="badge">10 ГБ бесплатно</span>
+          </div>
+          <p>10 ГБ хватит на 5-10 часов видео в HD качестве. Встроенный блокировщик рекламы.</p>
+          <ul>
+            <li>10 ГБ ежемесячно</li>
+            <li>Блокировка рекламы</li>
+            <li>Расширение для браузера</li>
+          </ul>
+        </article>
+        
+        <article class="vpn-item">
+          <div class="vpn-header">
+            <h3>VLESS (V2RayTun)</h3>
+            <span class="badge">Свой сервер</span>
+          </div>
+          <p>Собственный VPN-сервер с протоколом VLESS. Максимальная скорость и стабильность.</p>
+          <ul>
+            <li>Максимальная скорость</li>
+            <li>Обход любых блокировок</li>
+            <li>Полный контроль</li>
+          </ul>
+          <a href="/v2raytun" class="vpn-link">Инструкция по настройке</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section smart-tv">
+    <div class="container">
+      <h2>YouTube на Smart TV через VPN</h2>
+      
+      <div class="methods">
+        <article class="method">
+          <h3>Способ 1: VPN на роутере</h3>
+          <p>Настройте VPN непосредственно на роутере. Все устройства, включая Smart TV, будут автоматически использовать VPN.</p>
+          <p><strong>Плюсы:</strong> Работает со всеми устройствами без настройки каждого.</p>
+          <p><strong>Минусы:</strong> Требует совместимый роутер, может снижать скорость всей сети.</p>
+        </article>
+        
+        <article class="method">
+          <h3>Способ 2: Android TV + приложение</h3>
+          <p>Если у вас телевизор на Android TV, установите VPN-приложение из Google Play (Proton VPN, Windscribe).</p>
+          <p><strong>Плюсы:</strong> Простая установка, как на смартфоне.</p>
+          <p><strong>Минусы:</strong> Работает только на Android TV.</p>
+        </article>
+        
+        <article class="method">
+          <h3>Способ 3: Подключение через ПК</h3>
+          <p>Подключите телевизор к компьютеру через HDMI. Включите VPN на компьютере и смотрите YouTube в браузере.</p>
+          <p><strong>Плюсы:</strong> Работает с любым телевизором с HDMI.</p>
+          <p><strong>Минусы:</strong> Нужен компьютер рядом с телевизором.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .intro {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+  
+  .problem-box {
+    background: var(--color-bg-alt);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-left: 4px solid var(--color-primary);
+  }
+  
+  .problem-box h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .problem-box p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+  
+  .solutions {
+    background: var(--color-bg-alt);
+  }
+  
+  .solutions h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .devices-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .devices-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .devices-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .device-card {
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border-radius: 0.75rem;
+    text-align: center;
+  }
+  
+  .device-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 0.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+  
+  .device-card h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .device-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+  
+  .device-card a {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .device-card .tip {
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+  }
+  
+  .recommended h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .vpn-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .vpn-list {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .vpn-item {
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+  
+  .vpn-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  .vpn-header h3 {
+    margin: 0;
+  }
+  
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+    background: var(--color-bg-alt);
+    border-radius: 1rem;
+    color: var(--color-text-light);
+  }
+  
+  .badge.best {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  
+  .vpn-item p {
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .vpn-item ul {
+    list-style: none;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+  
+  .vpn-item li {
+    padding-left: 1.25rem;
+    position: relative;
+    margin-bottom: 0.375rem;
+  }
+  
+  .vpn-item li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-success);
+  }
+  
+  .vpn-link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+  
+  .smart-tv h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+  }
+  
+  .method {
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+  
+  .method h3 {
+    margin-bottom: 0.75rem;
+  }
+  
+  .method p {
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  
+  .method p:last-child {
+    margin-bottom: 0;
+  }
+</style>

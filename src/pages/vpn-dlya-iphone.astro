@@ -1,0 +1,325 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Faq from '@/components/Faq.astro';
+
+const apps = [
+  { name: 'Proton VPN', rating: 5, features: ['Безлимитный трафик', 'IKEv2 и WireGuard', 'Поддержка iOS 14+'] },
+  { name: 'Windscribe', rating: 4, features: ['10 ГБ в месяц', 'Блокировка рекламы', 'Простой интерфейс'] },
+  { name: 'V2Box', rating: 5, features: ['Протокол VLESS', 'Обход блокировок', 'Свой сервер'] },
+  { name: 'Shadowrocket', rating: 4, features: ['Множество протоколов', 'Продвинутые настройки', 'Платное приложение'] },
+];
+
+const faqItems = [
+  {
+    question: 'Какой VPN лучше для iPhone?',
+    answer: 'Proton VPN — лучший выбор для большинства пользователей. Бесплатная версия без ограничений трафика, современные протоколы, интеграция с iOS. Для обхода блокировок рекомендуем V2Box с протоколом VLESS.'
+  },
+  {
+    question: 'Как установить VPN на iPhone?',
+    answer: 'Скачайте приложение из App Store, запустите его и создайте аккаунт. При первом подключении iOS попросит разрешение на добавление VPN-профиля — нажмите «Разрешить» и подтвердите через Face ID или код.'
+  },
+  {
+    question: 'VPN на iPhone безопасен?',
+    answer: 'Да, если используете проверенные приложения. iOS строго контролирует VPN-приложения в App Store. Все рекомендуемые нами сервисы прошли проверку Apple и соблюдают политику конфиденциальности.'
+  },
+  {
+    question: 'Как настроить VLESS на iPhone?',
+    answer: 'Установите приложение V2Box или Shadowrocket из App Store. Получите конфигурацию VLESS (ссылку или QR-код) от провайдера и импортируйте её в приложение. Подробная инструкция в разделе V2RayTun.'
+  }
+];
+---
+
+<BaseLayout 
+  title="VPN для iPhone — Лучшие приложения для iOS 2025" 
+  description="Лучшие VPN для iPhone и iPad. Proton VPN, Windscribe, V2Box для обхода блокировок. Инструкции по установке и настройке VPN на iOS."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'VPN для iPhone' }]} />
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h1>VPN для iPhone и iPad</h1>
+      <p class="intro">
+        Подборка лучших VPN-приложений для iOS. Все приложения доступны в App Store, 
+        работают в России и обеспечивают надежную защиту.
+      </p>
+
+      <div class="apps-list">
+        {apps.map((app, index) => (
+          <article class="app-item">
+            <div class="app-main">
+              <span class="app-rank">#{index + 1}</span>
+              <div class="app-info">
+                <h2 class="app-name">{app.name}</h2>
+                <span class="app-rating">{'★'.repeat(app.rating)}{'☆'.repeat(5 - app.rating)}</span>
+              </div>
+            </div>
+            <ul class="app-features">
+              {app.features.map(feature => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section guide">
+    <div class="container">
+      <h2>Установка VPN на iPhone</h2>
+      
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>
+            <h3>Скачайте приложение</h3>
+            <p>Откройте App Store и найдите VPN-приложение. Нажмите «Загрузить» и дождитесь установки.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>
+            <h3>Создайте аккаунт</h3>
+            <p>Запустите приложение и зарегистрируйтесь. Для Proton VPN достаточно email, для других сервисов может потребоваться подтверждение.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">3</span>
+          <div>
+            <h3>Разрешите VPN-профиль</h3>
+            <p>При первом подключении iOS запросит разрешение на добавление VPN-конфигурации. Нажмите «Разрешить» и подтвердите через Face ID или Touch ID.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">4</span>
+          <div>
+            <h3>Подключитесь</h3>
+            <p>Выберите сервер и нажмите кнопку подключения. В статус-баре появится значок VPN — соединение активно.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tips">
+    <div class="container">
+      <h2>Советы по использованию</h2>
+      
+      <div class="tips-grid">
+        <article class="tip-card">
+          <h3>Автоподключение</h3>
+          <p>Включите автоматическое подключение в настройках VPN, чтобы защита активировалась при использовании публичных Wi-Fi сетей.</p>
+        </article>
+        
+        <article class="tip-card">
+          <h3>Выбор протокола</h3>
+          <p>WireGuard — самый быстрый и экономичный протокол. IKEv2 хорошо работает при переключении между Wi-Fi и мобильной сетью.</p>
+        </article>
+        
+        <article class="tip-card">
+          <h3>Если приложение недоступно</h3>
+          <p>Некоторые VPN удалены из российского App Store. Создайте аккаунт Apple ID в другой стране или используйте <a href="/v2raytun">V2RayTun</a>.</p>
+        </article>
+        
+        <article class="tip-card">
+          <h3>Экономия батареи</h3>
+          <p>Современные протоколы минимально влияют на батарею. Если расход высокий — попробуйте переключиться на WireGuard.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqItems} />
+
+  <section class="section related">
+    <div class="container">
+      <h2>Читайте также</h2>
+      <div class="related-links">
+        <a href="/vpn-dlya-android">VPN для Android</a>
+        <a href="/v2raytun">Настройка V2RayTun</a>
+        <a href="/best-free-vpn-russia">Рейтинг VPN</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .intro {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin-bottom: 2rem;
+  }
+  
+  .apps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .app-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .app-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .app-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+  }
+  
+  .app-name {
+    font-size: 1.125rem;
+    margin: 0;
+  }
+  
+  .app-rating {
+    color: var(--color-warning);
+    font-size: 0.875rem;
+  }
+  
+  .app-features {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  
+  .app-features li {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    padding: 0.375rem 0.75rem;
+    background: var(--color-bg-alt);
+    border-radius: 1rem;
+  }
+  
+  .guide {
+    background: var(--color-bg-alt);
+  }
+  
+  .guide h2 {
+    margin-bottom: 2rem;
+  }
+  
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 700px;
+  }
+  
+  .step {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  
+  .step h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .step p {
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+  }
+  
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 700px) {
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .tip-card {
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+  
+  .tip-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tip-card p {
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  
+  .related {
+    text-align: center;
+  }
+  
+  .related h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .related-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .related-links a {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+  
+  .related-links a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+</style>
