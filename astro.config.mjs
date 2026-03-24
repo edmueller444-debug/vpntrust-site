@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://vpntrust.ru',
   output: 'static',
+  prefetch: true,
   build: {
     inlineStylesheets: 'always'
   },
