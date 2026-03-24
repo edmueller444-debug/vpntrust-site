@@ -2,13 +2,15 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BlogCard from '@/components/BlogCard.astro';
-import { getCollection, getEntry, render } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+
+const allPosts = await getCollection('blog');
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
 
   return posts.map((post) => ({
-    params: { slug: post.id.replace(/\.md$/, '') },
+    params: { slug: post.slug },
   }));
 }
 
@@ -18,7 +20,7 @@ if (!slug) {
   return Astro.redirect('/404/');
 }
 
-const post = await getEntry('blog', `${slug}.md`);
+const post = allPosts.find((item) => item.slug === slug);
 
 if (!post) {
   return Astro.redirect('/404/');
@@ -32,8 +34,8 @@ const formattedDate = post.data.pubDate.toLocaleDateString('ru-RU', {
   year: 'numeric',
 });
 
-const relatedPosts = (await getCollection('blog'))
-  .filter((item) => item.id !== post.id)
+const relatedPosts = allPosts
+  .filter((item) => item.slug !== post.slug)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
 ---
@@ -41,7 +43,7 @@ const relatedPosts = (await getCollection('blog'))
 <BaseLayout
   title={post.data.title}
   description={post.data.description}
-  canonical={`/blog/${post.id}/`}
+  canonical={`/blog/${post.slug}/`}
   ogImage={post.data.heroImage}
 >
   <section class="section">
@@ -82,7 +84,7 @@ const relatedPosts = (await getCollection('blog'))
               <BlogCard
                 title={relatedPost.data.title}
                 description={relatedPost.data.description}
-                slug={relatedPost.id}
+                slug={relatedPost.slug}
                 date={relatedPost.data.pubDate.toISOString()}
                 category={relatedPost.data.category}
               />
