@@ -23,58 +23,124 @@ const infoLinks = [
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-slate-200 bg-white">
-  <div class="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:px-8 lg:grid-cols-[1.2fr_1fr_1fr_1fr] lg:px-12">
-    <div>
-      <a href="/" class="text-xl font-bold tracking-tight text-slate-900">VPNTrust</a>
-      <p class="mt-4 max-w-sm text-slate-600">
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">VPNTrust</a>
+      <p>
         Помогаем выбрать работающий VPN и обойти блокировки в России. Честные обзоры и практические инструкции.
       </p>
     </div>
 
     <div>
-      <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-900">По устройствам</h3>
-      <ul class="mt-4 space-y-3">
+      <h3>По устройствам</h3>
+      <ul class="footer-list">
         {deviceLinks.map((link) => (
-          <li>
-            <a href={link.href} class="text-slate-600 transition hover:text-sky-700">
-              {link.label}
-            </a>
-          </li>
+          <li><a href={link.href}>{link.label}</a></li>
         ))}
       </ul>
     </div>
 
     <div>
-      <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-900">Применение</h3>
-      <ul class="mt-4 space-y-3">
+      <h3>Применение</h3>
+      <ul class="footer-list">
         {useCaseLinks.map((link) => (
-          <li>
-            <a href={link.href} class="text-slate-600 transition hover:text-sky-700">
-              {link.label}
-            </a>
-          </li>
+          <li><a href={link.href}>{link.label}</a></li>
         ))}
       </ul>
     </div>
 
     <div>
-      <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-900">Информация</h3>
-      <ul class="mt-4 space-y-3">
+      <h3>Информация</h3>
+      <ul class="footer-list">
         {infoLinks.map((link) => (
-          <li>
-            <a href={link.href} class="text-slate-600 transition hover:text-sky-700">
-              {link.label}
-            </a>
-          </li>
+          <li><a href={link.href}>{link.label}</a></li>
         ))}
       </ul>
     </div>
   </div>
 
-  <div class="border-t border-slate-200">
-    <div class="mx-auto max-w-6xl px-6 py-6 text-sm text-slate-500 sm:px-8 lg:px-12">
+  <div class="footer-bottom">
+    <div class="container">
       © {currentYear} VPNTrust. Все материалы носят информационный характер.
     </div>
   </div>
 </footer>
+
+<style>
+  .site-footer {
+    margin-top: auto;
+    background: #ffffff;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .footer-logo {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand p {
+    color: var(--color-text-light);
+    max-width: 320px;
+  }
+
+  .site-footer h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .footer-list {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .footer-list a {
+    color: var(--color-text-light);
+  }
+
+  .footer-list a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding: 1.25rem 0;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .footer-brand p {
+      max-width: none;
+    }
+  }
+</style>
