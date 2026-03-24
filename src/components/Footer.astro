@@ -1,152 +1,80 @@
 ---
 const deviceLinks = [
-  { href: '/vpn-dlya-android', label: 'VPN для Android' },
-  { href: '/vpn-dlya-iphone', label: 'VPN для iPhone' },
-  { href: '/vpn-dlya-windows', label: 'VPN для Windows' },
+  { href: '/vpn-dlya-android/', label: 'VPN для Android' },
+  { href: '/vpn-dlya-iphone/', label: 'VPN для iPhone' },
+  { href: '/vpn-dlya-windows/', label: 'VPN для Windows' },
 ];
 
 const useCaseLinks = [
-  { href: '/vpn-dlya-youtube', label: 'VPN для YouTube' },
-  { href: '/vpn-dlya-discord', label: 'VPN для Discord' },
-  { href: '/telegram-ne-rabotaet', label: 'Telegram не работает' },
+  { href: '/vpn-dlya-youtube/', label: 'VPN для YouTube' },
+  { href: '/vpn-dlya-discord/', label: 'VPN для Discord' },
+  { href: '/telegram-ne-rabotaet/', label: 'Telegram не работает' },
 ];
 
 const infoLinks = [
-  { href: '/best-free-vpn-russia', label: 'Лучшие VPN' },
-  { href: '/obhod-blokirovok', label: 'Обход белых списков' },
-  { href: '/v2raytun', label: 'V2RayTun' },
-  { href: '/blog', label: 'Блог' },
-  { href: '/o-nas', label: 'О проекте' },
-  { href: '/kontakty', label: 'Контакты' },
+  { href: '/best-free-vpn-russia/', label: 'Лучшие VPN' },
+  { href: '/obhod-blokirovok/', label: 'Обход белых списков' },
+  { href: '/v2raytun/', label: 'V2RayTun' },
+  { href: '/blog/', label: 'Блог' },
+  { href: '/o-nas/', label: 'О проекте' },
+  { href: '/kontakty/', label: 'Контакты' },
 ];
 
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="footer-logo">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect width="32" height="32" rx="6" fill="#2563eb"/>
-            <path d="M16 6L8 10v6c0 5.5 3.4 10.6 8 12 4.6-1.4 8-6.5 8-12v-6l-8-4z" fill="#fff"/>
-            <path d="M14 15l2 2 4-4" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>VPNTrust</span>
-        </a>
-        <p class="footer-desc">Помогаем выбрать работающий VPN и обойти блокировки в России. Честные обзоры и практические инструкции.</p>
-      </div>
-      
-      <nav class="footer-nav" aria-label="VPN по устройствам">
-        <h3 class="footer-title">По устройствам</h3>
-        <ul class="footer-list">
-          {deviceLinks.map(link => (
-            <li><a href={link.href}>{link.label}</a></li>
-          ))}
-        </ul>
-      </nav>
-      
-      <nav class="footer-nav" aria-label="VPN по применению">
-        <h3 class="footer-title">Применение</h3>
-        <ul class="footer-list">
-          {useCaseLinks.map(link => (
-            <li><a href={link.href}>{link.label}</a></li>
-          ))}
-        </ul>
-      </nav>
-      
-      <nav class="footer-nav" aria-label="Информация">
-        <h3 class="footer-title">Информация</h3>
-        <ul class="footer-list">
-          {infoLinks.map(link => (
-            <li><a href={link.href}>{link.label}</a></li>
-          ))}
-        </ul>
-      </nav>
+<footer class="border-t border-slate-200 bg-white">
+  <div class="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:px-8 lg:grid-cols-[1.2fr_1fr_1fr_1fr] lg:px-12">
+    <div>
+      <a href="/" class="text-xl font-bold tracking-tight text-slate-900">VPNTrust</a>
+      <p class="mt-4 max-w-sm text-slate-600">
+        Помогаем выбрать работающий VPN и обойти блокировки в России. Честные обзоры и практические инструкции.
+      </p>
     </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; {currentYear} VPNTrust. Все материалы носят информационный характер.</p>
+
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-900">По устройствам</h3>
+      <ul class="mt-4 space-y-3">
+        {deviceLinks.map((link) => (
+          <li>
+            <a href={link.href} class="text-slate-600 transition hover:text-sky-700">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-900">Применение</h3>
+      <ul class="mt-4 space-y-3">
+        {useCaseLinks.map((link) => (
+          <li>
+            <a href={link.href} class="text-slate-600 transition hover:text-sky-700">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-900">Информация</h3>
+      <ul class="mt-4 space-y-3">
+        {infoLinks.map((link) => (
+          <li>
+            <a href={link.href} class="text-slate-600 transition hover:text-sky-700">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-slate-200">
+    <div class="mx-auto max-w-6xl px-6 py-6 text-sm text-slate-500 sm:px-8 lg:px-12">
+      © {currentYear} VPNTrust. Все материалы носят информационный характер.
     </div>
   </div>
 </footer>
-
-<style>
-  .footer {
-    background: var(--color-bg-alt);
-    border-top: 1px solid var(--color-border);
-    padding: 3rem 0 1.5rem;
-    margin-top: auto;
-  }
-  
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 2rem;
-  }
-  
-  @media (max-width: 900px) {
-    .footer-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-    
-    .footer-brand {
-      grid-column: 1 / -1;
-    }
-  }
-  
-  @media (max-width: 500px) {
-    .footer-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  .footer-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    font-size: 1.125rem;
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
-  }
-  
-  .footer-desc {
-    color: var(--color-text-light);
-    font-size: 0.875rem;
-    max-width: 300px;
-  }
-  
-  .footer-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: var(--color-text);
-  }
-  
-  .footer-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .footer-list a {
-    color: var(--color-text-light);
-    font-size: 0.875rem;
-  }
-  
-  .footer-list a:hover {
-    color: var(--color-primary);
-  }
-  
-  .footer-bottom {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-border);
-    text-align: center;
-    font-size: 0.8125rem;
-    color: var(--color-text-light);
-  }
-</style>
