@@ -9,7 +9,7 @@ const methods = [
     difficulty: 'Легко',
     speed: 'Высокая',
     reliability: 'Средняя',
-    description: 'Готовые приложения от коммерческих провайдеров. Самый простой способ.'
+    description: 'Готовые приложения: Ops VPN, Durev VPN, DedVPN. Самый простой способ.'
   },
   {
     name: 'Протокол VLESS',
@@ -36,12 +36,12 @@ const methods = [
 
 const faqItems = [
   {
-    question: 'Что такое DPI и как его обходят?',
-    answer: 'DPI (Deep Packet Inspection) — технология анализа трафика. Провайдеры используют её для определения и блокировки VPN. Современные протоколы (VLESS, Shadowsocks) маскируют трафик под обычный HTTPS, что затрудняет обнаружение.'
+    question: 'Что такое белые списки и как их обходят?',
+    answer: 'Белые списки — это технология, при которой разрешен доступ только к определённым ресурсам. Обход осуществляется через VPN или прокси, которые маскируют ваш трафик под разрешённый.'
   },
   {
-    question: 'Законно ли обходить блокировки в России?',
-    answer: 'Использование VPN и других инструментов для личных целей законно. Запрещено только распространение информации о способах обхода блокировок для доступа к запрещенному контенту.'
+    question: 'Законно ли обходить ограничения в России?',
+    answer: 'Использование VPN и других инструментов для личных целей законно. Запрещено только распространение информации о способах обхода для доступа к запрещенному контенту.'
   },
   {
     question: 'Какой метод самый надежный?',
@@ -59,18 +59,18 @@ const faqItems = [
 ---
 
 <BaseLayout 
-  title="Обход блокировок в России — Способы и инструменты 2025" 
-  description="Как обойти блокировки сайтов в России. VPN, VLESS, Shadowsocks, Tor — сравнение методов, инструкции по настройке."
+  title="Обход белых списков — Способы и инструменты 2025" 
+  description="Как обойти белые списки и ограничения доступа. VPN, VLESS, Shadowsocks — сравнение методов, инструкции по настройке."
 >
   <div class="container">
-    <Breadcrumbs items={[{ label: 'Обход блокировок' }]} />
+    <Breadcrumbs items={[{ label: 'Обход белых списков' }]} />
   </div>
 
   <section class="section">
     <div class="container">
-      <h1>Обход блокировок в России</h1>
+      <h1>Обход белых списков</h1>
       <p class="intro">
-        Разбираем способы обхода блокировок сайтов и сервисов. 
+        Разбираем способы обхода ограничений доступа к сайтам и сервисам. 
         От простых VPN-приложений до продвинутых протоколов с маскировкой трафика.
       </p>
     </div>
@@ -128,14 +128,15 @@ const faqItems = [
       <article class="method-detail">
         <h3>VPN-сервисы</h3>
         <p>
-          Самый простой способ обхода блокировок. Устанавливаете приложение, 
+          Самый простой способ обхода ограничений. Устанавливаете приложение, 
           подключаетесь к серверу — готово. Подходит для большинства пользователей.
         </p>
-        <h4>Плюсы:</h4>
+        <h4>Рекомендуемые сервисы:</h4>
         <ul>
-          <li>Простая установка и использование</li>
-          <li>Работает на всех устройствах</li>
-          <li>Есть бесплатные варианты (Proton VPN, Windscribe)</li>
+          <li><a href="https://t.me/opsvpnbot" target="_blank" rel="noopener">Ops VPN</a> — через Telegram-бот, быстрое подключение</li>
+          <li><a href="https://t.me/durevvpn" target="_blank" rel="noopener">Durev VPN</a> — простой и надёжный</li>
+          <li><a href="https://dedmax.com/" target="_blank" rel="noopener">DedVPN</a> — много серверов, веб-интерфейс</li>
+          <li><a href="https://sotavpn.net/" target="_blank" rel="noopener">Sota VPN</a> — мобильные приложения</li>
         </ul>
         <h4>Минусы:</h4>
         <ul>
@@ -143,7 +144,7 @@ const faqItems = [
           <li>Бесплатные версии имеют ограничения</li>
           <li>Не работают при жестких блокировках DPI</li>
         </ul>
-        <a href="/best-free-vpn-russia" class="method-link">Рейтинг VPN-сервисов →</a>
+        <a href="/best-free-vpn-russia" class="method-link">Полный рейтинг VPN-сервисов</a>
       </article>
 
       <article class="method-detail">
@@ -164,7 +165,7 @@ const faqItems = [
           <li>Нужен VPS за рубежом</li>
           <li>Сложнее для новичков</li>
         </ul>
-        <a href="/v2raytun" class="method-link">Инструкция по настройке V2RayTun →</a>
+        <a href="/v2raytun" class="method-link">Инструкция по настройке V2RayTun</a>
       </article>
 
       <article class="method-detail">
@@ -216,7 +217,7 @@ const faqItems = [
         <div class="rec-grid">
           <div class="rec-item">
             <h3>Для начинающих</h3>
-            <p>Начните с <a href="/best-free-vpn-russia">Proton VPN</a> — бесплатный, простой, надежный. Если не работает — переходите к VLESS.</p>
+            <p>Начните с <a href="https://t.me/opsvpnbot" target="_blank" rel="noopener">Ops VPN</a> — бесплатный, простой, работает через Telegram. Если не справляется — переходите к VLESS.</p>
           </div>
           <div class="rec-item">
             <h3>Для продвинутых</h3>
