@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
 
 const breadcrumbs = [
   { label: 'Главная', href: '/' },
@@ -148,6 +148,16 @@ const description = 'Свяжитесь с командой VPN Россия. Em
               <h3>Язык общения</h3>
               <p>Русский и английский</p>
             </div>
+          </div>
+        </section>
+
+        <section class="helpful-links">
+          <h2>Полезные ссылки</h2>
+          <div class="links-grid">
+            <a href="/best-free-vpn-russia">Рейтинг VPN</a>
+            <a href="/v2raytun">Настройка V2RayTun</a>
+            <a href="/obhod-blokirovok">Обход блокировок</a>
+            <a href="/blog">Блог</a>
           </div>
         </section>
       </article>
@@ -380,6 +390,37 @@ const description = 'Свяжитесь с командой VPN Россия. Em
     font-size: 0.875rem;
     color: var(--color-text-secondary);
     margin: 0;
+  }
+
+  .helpful-links {
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .helpful-links h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .links-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .links-grid a {
+    padding: 0.75rem 1.25rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .links-grid a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 
   @media (max-width: 768px) {
