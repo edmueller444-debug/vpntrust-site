@@ -6,22 +6,21 @@ const breadcrumbs = [
   { label: 'Главная', href: '/' },
   { label: 'Контакты' }
 ];
-
-const title = 'Контакты — VPN Россия | Связаться с нами';
-const description = 'Свяжитесь с командой VPN Россия. Email для вопросов и предложений, Telegram для быстрой связи. Мы отвечаем в течение 24 часов.';
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout 
+  title="Контакты — Как с нами связаться" 
+  description="Telegram, email и другие способы связи. Отвечаем на вопросы, принимаем предложения и исправляем ошибки."
+>
   <main class="main-content">
     <div class="container">
       <Breadcrumbs items={breadcrumbs} />
       
       <article class="contacts-page">
         <header class="page-header">
-          <h1>Свяжитесь с нами</h1>
+          <h1>Контакты</h1>
           <p class="lead">
-            У вас есть вопросы о VPN или предложения по сотрудничеству? 
-            Мы всегда рады помочь и ответим в течение 24 часов.
+            Есть вопрос или нашли ошибку? Напишите — постараемся ответить в течение дня.
           </p>
         </header>
 
@@ -33,7 +32,7 @@ const description = 'Свяжитесь с командой VPN Россия. Em
               </svg>
             </div>
             <h2>Telegram</h2>
-            <p>Самый быстрый способ связи. Подпишитесь на наш канал и задайте вопрос.</p>
+            <p>Быстрее всего отвечаем здесь. Можно задать вопрос или просто подписаться на обновления.</p>
             <a href="https://t.me/vpnrussia" class="contact-link" target="_blank" rel="noopener noreferrer">
               @vpnrussia
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -51,26 +50,9 @@ const description = 'Свяжитесь с командой VPN Россия. Em
               </svg>
             </div>
             <h2>Email</h2>
-            <p>Для детальных вопросов, сотрудничества и деловых предложений.</p>
+            <p>Для подробных вопросов и деловых предложений. Отвечаем в течение суток.</p>
             <a href="mailto:info@vpn-russia.ru" class="contact-link">
               info@vpn-russia.ru
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </a>
-          </div>
-
-          <div class="contact-card">
-            <div class="contact-icon twitter-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-            </div>
-            <h2>X (Twitter)</h2>
-            <p>Следите за новостями и обновлениями в социальных сетях.</p>
-            <a href="https://x.com/vpnrussia" class="contact-link" target="_blank" rel="noopener noreferrer">
-              @vpnrussia
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
                 <polyline points="7 7 17 7 17 17"></polyline>
@@ -80,84 +62,51 @@ const description = 'Свяжитесь с командой VPN Россия. Em
         </div>
 
         <section class="faq-contact">
-          <h2>Часто задаваемые вопросы</h2>
+          <h2>Частые вопросы</h2>
           
           <div class="faq-list">
             <details class="faq-item">
-              <summary>Как быстро вы отвечаете на вопросы?</summary>
+              <summary>Можете помочь с настройкой?</summary>
               <p>
-                Мы стараемся отвечать на все обращения в течение 24 часов. 
-                В Telegram ответы обычно приходят быстрее — в течение нескольких часов.
+                Мы публикуем подробные инструкции на сайте. Если чего-то не хватает — 
+                напишите, и мы добавим нужный материал. Индивидуальную настройку 
+                не делаем, но всегда подскажем направление.
               </p>
             </details>
 
             <details class="faq-item">
-              <summary>Можно ли заказать обзор VPN-сервиса?</summary>
+              <summary>Размещаете рекламу?</summary>
               <p>
-                Да, мы рассматриваем заявки от VPN-провайдеров на независимый обзор. 
-                Напишите нам на email с информацией о вашем сервисе. Обратите внимание, 
-                что мы публикуем только честные обзоры и не гарантируем положительную оценку.
+                Рассматриваем предложения от проверенных сервисов, но не обещаем 
+                положительный отзыв за деньги. Если продукт плохой — честно об этом напишем.
               </p>
             </details>
 
             <details class="faq-item">
-              <summary>Вы помогаете с настройкой VPN?</summary>
+              <summary>Нашёл ошибку на сайте</summary>
               <p>
-                Мы публикуем подробные инструкции по настройке VPN на нашем сайте. 
-                Если вы не нашли нужную информацию, напишите нам, и мы постараемся помочь 
-                или создать новую инструкцию.
+                Спасибо! Напишите в Telegram или на почту — исправим. 
+                Особенно полезны сообщения о неработающих инструкциях или устаревшей информации.
               </p>
             </details>
 
             <details class="faq-item">
-              <summary>Как сообщить об ошибке на сайте?</summary>
+              <summary>Можно ли заказать обзор сервиса?</summary>
               <p>
-                Если вы нашли ошибку или неточность в наших материалах, пожалуйста, 
-                сообщите нам через Telegram или email. Мы ценим обратную связь и 
-                оперативно вносим исправления.
+                Можно предложить сервис для обзора. Мы протестируем его по нашей методологии 
+                и напишем честное мнение. Гарантий на положительную оценку не даём.
               </p>
             </details>
-
-            <details class="faq-item">
-              <summary>Можно ли разместить рекламу на сайте?</summary>
-              <p>
-                Мы рассматриваем рекламные предложения только от проверенных VPN-сервисов 
-                и компаний, связанных с кибербезопасностью. Свяжитесь с нами по email 
-                для обсуждения условий.
-              </p>
-            </details>
-          </div>
-        </section>
-
-        <section class="response-info">
-          <div class="info-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            <div>
-              <h3>Время ответа</h3>
-              <p>Обычно мы отвечаем в течение 24 часов в рабочие дни</p>
-            </div>
-          </div>
-          <div class="info-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-            <div>
-              <h3>Язык общения</h3>
-              <p>Русский и английский</p>
-            </div>
           </div>
         </section>
 
         <section class="helpful-links">
-          <h2>Полезные ссылки</h2>
+          <h2>Полезные разделы</h2>
           <div class="links-grid">
-            <a href="/best-free-vpn-russia">Рейтинг VPN</a>
-            <a href="/v2raytun">Настройка V2RayTun</a>
-            <a href="/obhod-blokirovok">Обход блокировок</a>
-            <a href="/blog">Блог</a>
+            <a href="/best-free-vpn-russia">Рейтинг сервисов</a>
+            <a href="/v2raytun">Настройка VLESS</a>
+            <a href="/obhod-blokirovok">Способы обхода</a>
+            <a href="/blog">Статьи</a>
           </div>
         </section>
       </article>
@@ -204,7 +153,7 @@ const description = 'Свяжитесь с командой VPN Россия. Em
 
   .contacts-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin-bottom: 3rem;
   }
@@ -215,12 +164,6 @@ const description = 'Свяжитесь с командой VPN Россия. Em
     border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .contact-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   }
 
   .contact-card.primary {
@@ -257,10 +200,6 @@ const description = 'Свяжитесь с командой VPN Россия. Em
     background: linear-gradient(135deg, #ea4335, #c5221f) !important;
   }
 
-  .twitter-icon {
-    background: linear-gradient(135deg, #1a1a1a, #333) !important;
-  }
-
   .contact-card h2 {
     font-size: 1.25rem;
     color: var(--color-text);
@@ -281,15 +220,10 @@ const description = 'Свяжитесь с командой VPN Россия. Em
     color: var(--color-primary);
     font-weight: 600;
     text-decoration: none;
-    transition: gap 0.2s ease;
   }
 
   .contact-card.primary .contact-link {
     color: white;
-  }
-
-  .contact-link:hover {
-    gap: 0.5rem;
   }
 
   .faq-contact {
@@ -325,7 +259,6 @@ const description = 'Свяжитесь с командой VPN Россия. Em
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: background 0.2s ease;
   }
 
   .faq-item summary:hover {
@@ -358,40 +291,6 @@ const description = 'Свяжитесь с командой VPN Россия. Em
     margin: 0;
   }
 
-  .response-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  .info-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.25rem;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-  }
-
-  .info-card svg {
-    color: var(--color-primary);
-    flex-shrink: 0;
-    margin-top: 0.125rem;
-  }
-
-  .info-card h3 {
-    font-size: 1rem;
-    color: var(--color-text);
-    margin-bottom: 0.25rem;
-  }
-
-  .info-card p {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    margin: 0;
-  }
-
   .helpful-links {
     padding-top: 2rem;
     border-top: 1px solid var(--color-border);
@@ -415,7 +314,6 @@ const description = 'Свяжитесь с командой VPN Россия. Em
     border-radius: 8px;
     color: var(--color-text);
     text-decoration: none;
-    transition: all 0.2s;
   }
 
   .links-grid a:hover {
@@ -433,10 +331,6 @@ const description = 'Свяжитесь с командой VPN Россия. Em
     }
 
     .contacts-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .response-info {
       grid-template-columns: 1fr;
     }
   }
