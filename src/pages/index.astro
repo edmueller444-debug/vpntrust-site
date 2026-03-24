@@ -70,87 +70,71 @@ const faqItems = [
   title="VPNTrust — честно о VPN, обходе блокировок и конфиденциальности"
   description="Тестируем VPN-сервисы, сравниваем протоколы и делаем понятные инструкции для пользователей из России."
 >
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-sky-50 via-white to-emerald-50"></div>
-    <div class="relative mx-auto max-w-6xl px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
-      <div class="max-w-3xl">
-        <span class="mb-6 inline-flex items-center rounded-full border border-sky-200 bg-white px-4 py-1.5 text-sm font-medium text-sky-700 shadow-sm">
-          Честные обзоры и инструкции
-        </span>
-        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-          Разбираемся в VPN вместе с вами
-        </h1>
-        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-          Тестируем сервисы, сравниваем протоколы, пишем понятные инструкции. Без маркетинговой чепухи — только то, что реально работает.
-        </p>
-        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-          <a
-            href="/best-free-vpn-russia/"
-            class="inline-flex items-center justify-center rounded-2xl bg-sky-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-sky-200 transition hover:bg-sky-700"
-          >
-            Смотреть рейтинг
-          </a>
-          <a
-            href="/obhod-blokirovok/"
-            class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
-          >
-            Способы обхода
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-6xl px-6 py-16 sm:px-8 lg:px-12">
-    <div class="mb-10 max-w-2xl">
-      <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">С чего начать</h2>
-      <p class="mt-4 text-lg text-slate-600">
-        Выберите тему в зависимости от вашего устройства или задачи
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__badge">Честные обзоры и инструкции</div>
+      <h1 class="hero__title">Разбираемся в VPN вместе с вами</h1>
+      <p class="hero__text">
+        Тестируем сервисы, сравниваем протоколы, пишем понятные инструкции. Без маркетинговой чепухи — только то, что реально работает.
       </p>
-    </div>
 
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {features.map((feature) => (
-        <FeatureCard {...feature} />
-      ))}
+      <div class="hero__actions">
+        <a href="/best-free-vpn-russia/" class="btn btn-primary">Смотреть рейтинг</a>
+        <a href="/obhod-blokirovok/" class="btn btn-outline">Способы обхода</a>
+      </div>
     </div>
   </section>
 
-  <section class="bg-slate-50">
-    <div class="mx-auto max-w-6xl px-6 py-16 sm:px-8 lg:px-12">
-      <div class="mb-10 max-w-2xl">
-        <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Как мы выбираем</h2>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2 class="mb-2">С чего начать</h2>
+        <p class="text-light">Выберите тему в зависимости от вашего устройства или задачи</p>
       </div>
 
-      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-          <div class="mb-4 text-sm font-semibold text-sky-600">1</div>
-          <h3 class="text-xl font-semibold text-slate-900">Задача</h3>
-          <p class="mt-3 text-slate-600">
+      <div class="features-grid">
+        {features.map((feature) => (
+          <FeatureCard {...feature} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2 class="mb-3">Как мы выбираем</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-card__num">1</div>
+          <h3>Задача</h3>
+          <p>
             Для просмотра заблокированных сайтов и для защиты конфиденциальности нужны разные решения. Сначала определяем, что именно нужно.
           </p>
         </div>
 
-        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-          <div class="mb-4 text-sm font-semibold text-sky-600">2</div>
-          <h3 class="text-xl font-semibold text-slate-900">Тестирование</h3>
-          <p class="mt-3 text-slate-600">
+        <div class="step-card">
+          <div class="step-card__num">2</div>
+          <h3>Тестирование</h3>
+          <p>
             Проверяем скорость из России, стабильность соединения, работу с популярными сервисами. Не верим рекламе — проверяем сами.
           </p>
         </div>
 
-        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-          <div class="mb-4 text-sm font-semibold text-sky-600">3</div>
-          <h3 class="text-xl font-semibold text-slate-900">Репутация</h3>
-          <p class="mt-3 text-slate-600">
+        <div class="step-card">
+          <div class="step-card__num">3</div>
+          <h3>Репутация</h3>
+          <p>
             Изучаем историю компании, политику конфиденциальности, результаты независимых аудитов. Были скандалы — пишем об этом.
           </p>
         </div>
 
-        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-          <div class="mb-4 text-sm font-semibold text-sky-600">4</div>
-          <h3 class="text-xl font-semibold text-slate-900">Практичность</h3>
-          <p class="mt-3 text-slate-600">
+        <div class="step-card">
+          <div class="step-card__num">4</div>
+          <h3>Практичность</h3>
+          <p>
             Насколько легко установить и использовать. Есть ли нормальная поддержка. Адекватна ли цена для возможностей.
           </p>
         </div>
@@ -158,29 +142,191 @@ const faqItems = [
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-6 py-16 sm:px-8 lg:px-12">
-    <div class="rounded-3xl bg-slate-900 px-8 py-10 text-white">
-      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Хотите настроить сами?</h2>
-      <p class="mt-4 max-w-2xl text-lg text-slate-300">
-        У нас есть подробная инструкция по настройке собственного сервера с VLESS
-      </p>
-      <div class="mt-8">
-        <a
-          href="/vless-server/"
-          class="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-base font-semibold text-slate-900 transition hover:bg-slate-100"
-        >
-          Читать инструкцию
-        </a>
+  <section class="section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Хотите настроить сами?</h2>
+        <p>У нас есть подробная инструкция по настройке собственного сервера с VLESS</p>
+        <a href="/vless-server/" class="btn cta-box__button">Читать инструкцию</a>
       </div>
     </div>
   </section>
 
-  <section class="bg-slate-50">
-    <div class="mx-auto max-w-4xl px-6 py-16 sm:px-8 lg:px-12">
-      <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Частые вопросы</h2>
-      <div class="mt-8">
-        <Faq items={faqItems} />
-      </div>
+  <section class="section section-alt">
+    <div class="container faq-wrap">
+      <h2 class="mb-3">Частые вопросы</h2>
+      <Faq items={faqItems} />
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 55%, #ecfdf5 100%);
+    padding: 4rem 0 5rem;
+  }
+
+  .hero__inner {
+    max-width: 900px;
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid #bfdbfe;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #1d4ed8;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__title {
+    font-size: 3.25rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: #0f172a;
+  }
+
+  .hero__text {
+    max-width: 760px;
+    font-size: 1.25rem;
+    color: #475569;
+    margin-bottom: 2rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .section-alt {
+    background: var(--color-bg-alt);
+  }
+
+  .section-heading {
+    max-width: 720px;
+    margin-bottom: 2rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .step-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+  }
+
+  .step-card__num {
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .step-card h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .step-card p {
+    color: var(--color-text-light);
+  }
+
+  .cta-box {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+  }
+
+  .cta-box h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .cta-box p {
+    color: #cbd5e1;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+
+  .cta-box__button {
+    background: #fff;
+    color: #0f172a;
+  }
+
+  .cta-box__button:hover {
+    color: #0f172a;
+    background: #f8fafc;
+  }
+
+  .faq-wrap {
+    max-width: 900px;
+  }
+
+  @media (max-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .steps-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero__title {
+      font-size: 2.6rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 2.5rem 0 3rem;
+    }
+
+    .hero__title {
+      font-size: 2.1rem;
+    }
+
+    .hero__text {
+      font-size: 1.05rem;
+    }
+
+    .hero__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .hero__actions .btn {
+      width: 100%;
+    }
+
+    .features-grid,
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-box {
+      padding: 1.5rem;
+    }
+  }
+</style>
