@@ -28,7 +28,7 @@ const posts = (await getCollection('blog'))
           <BlogCard
             title={post.data.title}
             description={post.data.description}
-            slug={post.id.replace(/\.md$/, '')}
+            slug={post.slug}
             date={post.data.pubDate.toISOString()}
             category={post.data.category}
           />
