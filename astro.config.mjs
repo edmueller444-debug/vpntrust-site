@@ -6,5 +6,16 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'always'
   },
-  compressHTML: true
+  compressHTML: true,
+  server: {
+    port: 4321,
+    host: true
+  },
+  vite: {
+    server: {
+      watch: {
+        usePolling: true
+      }
+    }
+  }
 });
