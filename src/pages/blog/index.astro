@@ -2,51 +2,45 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BlogCard from '@/components/BlogCard.astro';
-import { getAllPosts } from '@/data/posts';
+import { getCollection } from 'astro:content';
 
-const posts = getAllPosts();
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
-<BaseLayout 
-  title="Блог о VPN — Статьи и инструкции" 
-  description="Статьи о VPN, обходе блокировок, настройке VLESS и V2RayTun. Практические инструкции и обзоры для всех устройств."
+<BaseLayout
+  title="Блог VPNTrust"
+  description="Статьи о VPN, обходе блокировок и защите конфиденциальности. Практические инструкции и честные обзоры."
 >
-  <div class="container">
-    <Breadcrumbs items={[{ label: 'Блог' }]} />
-  </div>
-
   <section class="section">
     <div class="container">
-      <header class="blog-header">
-        <h1>Блог VPNTrust</h1>
-        <p class="blog-subtitle">
-          Статьи о VPN, обходе блокировок и защите конфиденциальности. 
-          Практические инструкции и честные обзоры.
-        </p>
-      </header>
+      <Breadcrumbs items={[{ label: 'Блог' }]} />
 
-      <div class="posts-grid">
-        {posts.map(post => (
-          <BlogCard 
-            title={post.title}
-            description={post.description}
-            slug={post.slug}
-            date={post.date}
-            category={post.category}
+      <div class="section-heading">
+        <h1 class="mb-3">Блог VPNTrust</h1>
+        <p class="text-light">
+          Статьи о VPN, обходе блокировок и защите конфиденциальности. Практические инструкции и честные обзоры.
+        </p>
+      </div>
+
+      <div class="blog-grid">
+        {posts.map((post) => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            slug={post.id}
+            date={post.data.pubDate.toISOString()}
+            category={post.data.category}
           />
         ))}
       </div>
-    </div>
-  </section>
 
-  <section class="section cta">
-    <div class="container">
-      <div class="cta-content">
+      <div class="cta-box mt-5">
         <h2>Не нашли ответ?</h2>
         <p>Посмотрите наши подробные руководства по VPN для разных устройств и сценариев</p>
-        <div class="cta-links">
-          <a href="/best-free-vpn-russia" class="btn btn-primary">Рейтинг VPN</a>
-          <a href="/v2raytun" class="btn btn-outline">Настройка V2RayTun</a>
+        <div class="hero__actions">
+          <a href="/best-free-vpn-russia/" class="btn btn-primary">Рейтинг VPN</a>
+          <a href="/v2raytun/" class="btn btn-outline">Настройка V2RayTun</a>
         </div>
       </div>
     </div>
@@ -54,57 +48,45 @@ const posts = getAllPosts();
 </BaseLayout>
 
 <style>
-  .blog-header {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 3rem;
-  }
-  
-  .blog-header h1 {
-    margin-bottom: 1rem;
-  }
-  
-  .blog-subtitle {
-    font-size: 1.125rem;
-    color: var(--color-text-light);
-    line-height: 1.6;
-  }
-  
-  .posts-grid {
+  .blog-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  
-  @media (max-width: 700px) {
-    .posts-grid {
-      grid-template-columns: 1fr;
-    }
+
+  .mt-5 {
+    margin-top: 3rem;
   }
-  
-  .cta {
-    background: var(--color-bg-alt);
-    text-align: center;
+
+  .cta-box {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 1.5rem;
+    padding: 2rem;
   }
-  
-  .cta-content {
-    max-width: 500px;
-    margin: 0 auto;
+
+  .cta-box h2 {
+    color: #fff;
+    margin-bottom: 0.75rem;
   }
-  
-  .cta-content h2 {
-    margin-bottom: 0.5rem;
+
+  .cta-box p {
+    color: #cbd5e1;
+    margin-bottom: 1.25rem;
   }
-  
-  .cta-content p {
-    color: var(--color-text-light);
-    margin-bottom: 1.5rem;
-  }
-  
-  .cta-links {
+
+  .hero__actions {
     display: flex;
     gap: 1rem;
-    justify-content: center;
     flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .hero__actions {
+      flex-direction: column;
+    }
+
+    .hero__actions .btn {
+      width: 100%;
+    }
   }
 </style>
