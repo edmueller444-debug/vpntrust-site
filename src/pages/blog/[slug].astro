@@ -1,224 +1,183 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
-import { getAllPosts, getPost } from '@/data/posts';
+import BlogCard from '@/components/BlogCard.astro';
+import { getCollection, getEntry, render } from 'astro:content';
 
-export function getStaticPaths() {
-  const posts = getAllPosts();
-  return posts.map(post => ({
-    params: { slug: post.slug },
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
   }));
 }
 
 const { slug } = Astro.params;
-const post = getPost(slug as string);
+
+if (!slug) {
+  return Astro.redirect('/404/');
+}
+
+const post = await getEntry('blog', slug);
 
 if (!post) {
-  return Astro.redirect('/404');
+  return Astro.redirect('/404/');
 }
 
-const formattedDate = new Date(post.date).toLocaleDateString('ru-RU', {
+const { Content } = await render(post);
+
+const formattedDate = post.data.pubDate.toLocaleDateString('ru-RU', {
   day: 'numeric',
   month: 'long',
-  year: 'numeric'
+  year: 'numeric',
 });
 
-// Simple markdown to HTML conversion for content
-function parseContent(content: string): string {
-  return content
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/^- (.+)$/gm, '<li>$1</li>')
-    .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
-    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
-    .replace(/^- \[ \] (.+)$/gm, '<li class="checklist">$1</li>')
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/^(?!<[hulo])/gm, '<p>')
-    .replace(/<p><\/p>/g, '')
-    .replace(/<p>(<[hulo])/g, '$1')
-    .replace(/(<\/[hulo][li]>)<\/p>/g, '$1');
-}
-
-const htmlContent = parseContent(post.content);
-
-const relatedPosts = getAllPosts()
-  .filter(p => p.slug !== post.slug)
+const relatedPosts = (await getCollection('blog'))
+  .filter((item) => item.id !== post.id)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
 ---
 
-<BaseLayout 
-  title={post.title}
-  description={post.description}
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  canonical={`/blog/${post.id}/`}
+  ogImage={post.data.heroImage}
 >
-  <div class="container">
-    <Breadcrumbs items={[
-      { label: 'Блог', href: '/blog' },
-      { label: post.title }
-    ]} />
-  </div>
+  <section class="section">
+    <div class="container article-wrap">
+      <Breadcrumbs
+        items={[
+          { label: 'Блог', href: '/blog/' },
+          { label: post.data.title },
+        ]}
+      />
 
-  <article class="article">
-    <div class="container">
-      <header class="article-header">
-        <div class="article-meta">
-          <span class="article-category">{post.category}</span>
-          <time datetime={post.date}>{formattedDate}</time>
-        </div>
-        <h1>{post.title}</h1>
-        <p class="article-desc">{post.description}</p>
-      </header>
-
-      <div class="article-content" set:html={htmlContent} />
-    </div>
-  </article>
-
-  <section class="section related">
-    <div class="container">
-      <h2>Читайте также</h2>
-      <div class="related-posts">
-        {relatedPosts.map(relatedPost => (
-          <a href={`/blog/${relatedPost.slug}`} class="related-post">
-            <span class="related-category">{relatedPost.category}</span>
-            <h3>{relatedPost.title}</h3>
-          </a>
-        ))}
+      <div class="article-meta">
+        <span class="article-category">{post.data.category}</span>
+        <span>{formattedDate}</span>
       </div>
+
+      <h1 class="article-title">{post.data.title}</h1>
+      <p class="article-description">{post.data.description}</p>
+
+      {post.data.heroImage && (
+        <img
+          src={post.data.heroImage}
+          alt={post.data.title}
+          class="article-hero"
+          loading="eager"
+        />
+      )}
+
+      <article class="article-content">
+        <Content />
+      </article>
+
+      {relatedPosts.length > 0 && (
+        <div class="related-posts">
+          <h2>Читайте также</h2>
+          <div class="blog-grid">
+            {relatedPosts.map((relatedPost) => (
+              <BlogCard
+                title={relatedPost.data.title}
+                description={relatedPost.data.description}
+                slug={relatedPost.id}
+                date={relatedPost.data.pubDate.toISOString()}
+                category={relatedPost.data.category}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .article-header {
-    max-width: 800px;
-    margin-bottom: 2rem;
+  .article-wrap {
+    max-width: 860px;
   }
-  
+
   .article-meta {
     display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1rem;
+    color: var(--color-text-light);
     margin-bottom: 1rem;
-    font-size: 0.875rem;
+    font-size: 0.95rem;
   }
-  
+
   .article-category {
-    padding: 0.25rem 0.75rem;
-    background: rgba(37, 99, 235, 0.1);
-    color: var(--color-primary);
-    border-radius: 1rem;
-    font-weight: 500;
+    display: inline-flex;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-weight: 600;
   }
-  
-  .article-meta time {
-    color: var(--color-text-light);
-  }
-  
-  .article-header h1 {
-    font-size: 2rem;
+
+  .article-title {
     margin-bottom: 1rem;
-    line-height: 1.3;
   }
-  
-  .article-desc {
-    font-size: 1.125rem;
+
+  .article-description {
+    font-size: 1.1rem;
     color: var(--color-text-light);
-    line-height: 1.6;
+    margin-bottom: 1.5rem;
   }
-  
-  .article-content {
-    max-width: 800px;
+
+  .article-hero {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1.25rem;
+    margin-bottom: 2rem;
   }
-  
+
   .article-content :global(h2) {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    font-size: 1.5rem;
   }
-  
+
   .article-content :global(h3) {
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
-    font-size: 1.25rem;
   }
-  
+
   .article-content :global(p) {
     margin-bottom: 1rem;
     line-height: 1.8;
-    color: var(--color-text);
   }
-  
+
   .article-content :global(ul),
   .article-content :global(ol) {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-    line-height: 1.8;
+    margin: 0 0 1rem 1.25rem;
   }
-  
+
   .article-content :global(li) {
     margin-bottom: 0.5rem;
   }
-  
-  .article-content :global(strong) {
-    color: var(--color-text);
+
+  .article-content :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1rem;
+    margin: 1.5rem 0;
   }
-  
-  .article-content :global(code) {
-    background: var(--color-bg-alt);
-    padding: 0.125rem 0.375rem;
-    border-radius: 0.25rem;
-    font-size: 0.875rem;
+
+  .related-posts {
+    margin-top: 3rem;
   }
-  
-  .related {
-    background: var(--color-bg-alt);
-  }
-  
-  .related h2 {
+
+  .related-posts h2 {
     margin-bottom: 1.5rem;
   }
-  
-  .related-posts {
+
+  .blog-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-  }
-  
-  @media (max-width: 800px) {
-    .related-posts {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  .related-post {
-    padding: 1.25rem;
-    background: var(--color-bg);
-    border-radius: 0.75rem;
-    color: var(--color-text);
-    transition: all 0.2s;
-  }
-  
-  .related-post:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .related-category {
-    display: inline-block;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.625rem;
-    background: rgba(37, 99, 235, 0.1);
-    color: var(--color-primary);
-    border-radius: 1rem;
-    margin-bottom: 0.75rem;
-  }
-  
-  .related-post h3 {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-  
-  .related-post:hover h3 {
-    color: var(--color-primary);
   }
 </style>
