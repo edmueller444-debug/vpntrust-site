@@ -43,6 +43,10 @@ const siteUrl = 'https://vpntrust.site';
 const canonical = `${siteUrl}/blog/${post.slug}/`;
 const title = `${post.data.title} — VPNTrust`;
 const description = post.data.description;
+const tocItems = headings.filter((heading) => heading.depth === 2);
+
+// FAQ опционален: если поля faq нет в статье, блок просто не покажется
+const faqItems = post.data.faq ?? [];
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -50,9 +54,6 @@ const articleSchema = {
   headline: post.data.title,
   description: post.data.description,
   datePublished: post.data.pubDate.toISOString(),
-  ...(post.data.updatedDate && {
-    dateModified: post.data.updatedDate.toISOString(),
-  }),
   mainEntityOfPage: canonical,
   inLanguage: 'ru-RU',
   author: {
@@ -94,7 +95,21 @@ const breadcrumbSchema = {
   ],
 };
 
-const tocItems = headings.filter((heading) => heading.depth === 2);
+const faqSchema =
+  faqItems.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqItems.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+          },
+        })),
+      }
+    : null;
 ---
 
 <BaseLayout
@@ -112,6 +127,12 @@ const tocItems = headings.filter((heading) => heading.depth === 2);
       type="application/ld+json"
       set:html={JSON.stringify(breadcrumbSchema)}
     />
+    {faqSchema && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(faqSchema)}
+      />
+    )}
   </Fragment>
 
   <main class="blog-post-page">
@@ -130,26 +151,14 @@ const tocItems = headings.filter((heading) => heading.depth === 2);
           <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
         </div>
 
-        <h1 class="blog-post-hero__title">{post.data.title}</h1>
+        <!-- Визуальный заголовок, НЕ h1 -->
+        <p class="blog-post-hero__title">{post.data.title}</p>
         <p class="blog-post-hero__description">{post.data.description}</p>
       </div>
     </section>
 
     <section class="section blog-post-content-section">
       <div class="container blog-post-layout">
-        <article class="blog-post-content">
-          {post.data.heroImage && (
-            <img
-              src={post.data.heroImage}
-              alt={post.data.title}
-              class="blog-post-content__image"
-              loading="eager"
-            />
-          )}
-
-          <Content />
-        </article>
-
         {tocItems.length > 1 && (
           <aside class="blog-post-toc" aria-label="Оглавление статьи">
             <div class="blog-post-toc__inner">
@@ -164,6 +173,34 @@ const tocItems = headings.filter((heading) => heading.depth === 2);
             </div>
           </aside>
         )}
+
+        <article class="blog-post-content">
+          {post.data.heroImage && (
+            <img
+              src={post.data.heroImage}
+              alt={post.data.title}
+              class="blog-post-content__image"
+              loading="eager"
+            />
+          )}
+
+          <Content />
+
+          {faqItems.length > 0 && (
+            <section class="blog-post-faq" aria-labelledby="faq-title">
+              <h2 id="faq-title">Частые вопросы</h2>
+
+              <div class="blog-post-faq__list">
+                {faqItems.map((item) => (
+                  <details class="blog-post-faq__item">
+                    <summary>{item.question}</summary>
+                    <p>{item.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
+        </article>
       </div>
     </section>
 
@@ -193,8 +230,12 @@ const tocItems = headings.filter((heading) => heading.depth === 2);
 </BaseLayout>
 
 <style>
+  .blog-post-page {
+    overflow-x: hidden;
+  }
+
   .blog-post-hero {
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
 
   .blog-post-hero__meta {
@@ -225,7 +266,12 @@ const tocItems = headings.filter((heading) => heading.depth === 2);
 
   .blog-post-hero__title {
     max-width: 900px;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
   }
 
   .blog-post-hero__description {
@@ -236,72 +282,9 @@ const tocItems = headings.filter((heading) => heading.depth === 2);
 
   .blog-post-layout {
     display: grid;
-    grid-template-columns: minmax(0, 760px) minmax(240px, 300px);
+    grid-template-columns: minmax(0, 280px) minmax(0, 760px);
     gap: 2rem;
     align-items: start;
-  }
-
-  .blog-post-content {
-    min-width: 0;
-  }
-
-  .blog-post-content__image {
-    width: 100%;
-    border-radius: 1rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--color-border);
-  }
-
-  .blog-post-content :global(h2) {
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .blog-post-content :global(h3) {
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .blog-post-content :global(p),
-  .blog-post-content :global(ul),
-  .blog-post-content :global(ol) {
-    margin-bottom: 1rem;
-    line-height: 1.8;
-  }
-
-  .blog-post-content :global(ul),
-  .blog-post-content :global(ol) {
-    padding-left: 1.25rem;
-  }
-
-  .blog-post-content :global(li + li) {
-    margin-top: 0.5rem;
-  }
-
-  .blog-post-content :global(blockquote) {
-    margin: 1.5rem 0;
-    padding: 1rem 1.25rem;
-    border-left: 4px solid var(--color-primary);
-    background: var(--color-bg-alt);
-    border-radius: 0.75rem;
-  }
-
-  .blog-post-content :global(table) {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-    font-size: 0.95rem;
-  }
-
-  .blog-post-content :global(th),
-  .blog-post-content :global(td) {
-    border: 1px solid var(--color-border);
-    padding: 0.75rem;
-    text-align: left;
-  }
-
-  .blog-post-content :global(th) {
-    background: var(--color-bg-alt);
   }
 
   .blog-post-toc {
@@ -334,10 +317,96 @@ const tocItems = headings.filter((heading) => heading.depth === 2);
 
   .blog-post-toc__inner a {
     color: var(--color-text-light);
+    line-height: 1.45;
   }
 
   .blog-post-toc__inner a:hover {
     color: var(--color-primary);
+  }
+
+  .blog-post-content {
+    min-width: 0;
+  }
+
+  /* скрываем только первый H1 из markdown, чтобы не было дубля */
+  .blog-post-content :global(h1:first-child) {
+    display: none;
+  }
+
+  .blog-post-content__image {
+    width: 100%;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .blog-post-content :global(h2) {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-post-content :global(h3) {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-post-content :global(p),
+  .blog-post-content :global(ul),
+  .blog-post-content :global(ol) {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .blog-post-content :global(ul),
+  .blog-post-content :global(ol) {
+    padding-left: 1.25rem;
+  }
+
+  .blog-post-content :global(li + li) {
+    margin-top: 0.5rem;
+  }
+
+  .blog-post-content :global(hr) {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .blog-post-faq {
+    margin-top: 3rem;
+    padding-top: 0.5rem;
+  }
+
+  .blog-post-faq__list {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1rem;
+  }
+
+  .blog-post-faq__item {
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    background: #fff;
+    padding: 1rem;
+  }
+
+  .blog-post-faq__item summary {
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .blog-post-faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .blog-post-faq__item p {
+    margin: 0.85rem 0 0;
+    color: var(--color-text-light);
   }
 
   .related-posts-section {
@@ -362,6 +431,7 @@ const tocItems = headings.filter((heading) => heading.depth === 2);
   @media (max-width: 1024px) {
     .blog-post-layout {
       grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
 
     .blog-post-toc {
@@ -370,9 +440,75 @@ const tocItems = headings.filter((heading) => heading.depth === 2);
     }
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
+    .blog-post-hero__meta {
+      margin-top: 0.5rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.88rem;
+    }
+
+    .blog-post-hero__title {
+      font-size: 2rem;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-post-hero__description {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .blog-post-content-section {
+      padding-top: 1.25rem;
+    }
+
+    .blog-post-toc__inner {
+      padding: 0.9rem;
+      border-radius: 0.9rem;
+    }
+
+    .blog-post-toc__inner a {
+      font-size: 0.98rem;
+    }
+
+    .blog-post-content__image {
+      margin-bottom: 1rem;
+      border-radius: 0.9rem;
+    }
+
+    .blog-post-content :global(p),
+    .blog-post-content :global(ul),
+    .blog-post-content :global(ol) {
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .blog-post-content :global(h2) {
+      margin-top: 2rem;
+      margin-bottom: 0.85rem;
+      font-size: 1.5rem;
+      line-height: 1.25;
+    }
+
+    .blog-post-content :global(h3) {
+      margin-top: 1.25rem;
+      margin-bottom: 0.65rem;
+      font-size: 1.18rem;
+      line-height: 1.35;
+    }
+
+    .blog-post-faq {
+      margin-top: 2.25rem;
+    }
+
+    .blog-post-faq__item {
+      border-radius: 0.9rem;
+      padding: 0.95rem;
+    }
+
     .related-posts__grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
   }
 </style>
