@@ -69,27 +69,13 @@ const getPageUrl = (pageNumber: number) => {
       </nav>
     )}
 
-    <div class="mt-14 rounded-2xl border p-6 md:p-8">
-      <h2 class="text-2xl font-semibold">Не нашли ответ?</h2>
-      <p class="mt-3 text-muted-foreground">
-        Посмотрите наши подробные руководства по VPN для разных устройств и сценариев
-      </p>
-
-      <div class="mt-5 flex flex-wrap gap-3">
-        <a
-          href="/best-free-vpn-russia/"
-          class="inline-flex items-center rounded-lg border px-4 py-2 text-sm transition hover:bg-muted"
-        >
-          Рейтинг VPN
-        </a>
-
-        <a
-          href="/v2raytun/"
-          class="inline-flex items-center rounded-lg border px-4 py-2 text-sm transition hover:bg-muted"
-        >
-          Настройка V2RayTun
-        </a>
-      </div>
+ <div class="cta-box mt-5">
+        <h2>Не нашли ответ?</h2>
+        <p>Посмотрите наши подробные руководства по VPN для разных устройств и сценариев</p>
+        <div class="hero__actions">
+          <a href="/best-free-vpn-russia/" class="btn btn-primary">Рейтинг VPN</a>
+          <a href="/v2raytun/" class="btn btn-outline">Настройка V2RayTun</a>
+        </div>
     </div>
   </section>
 </BaseLayout>
