@@ -34,8 +34,8 @@ VPN подключен — а толку нет.
 
 ### 1. Ops VPN
 
-🔗 Скачать бесплатный Ops VPN  
-https://t.me/opsvpnbot
+[🔗 Скачать бесплатный Ops VPN](https://t.me/opsvpnbot)
+
 
 Этот вариант чаще всего советуют не просто так.
 
@@ -51,8 +51,7 @@ https://t.me/opsvpnbot
 
 ### 2. Дурев VPN
 
-🔗 Скачать бесплатный Durev VPN  
-https://t.me/DureVpnBot
+[🔗 Скачать бесплатный Durev VPN](https://t.me/DureVpnBot)  
 
 Здесь ставка на простоту.
 
@@ -68,8 +67,7 @@ https://t.me/DureVpnBot
 
 ### 3. Дед VPN
 
-🔗 Скачать бесплатный Дед VPN  
-https://dedmax.com
+[🔗 Скачать бесплатный Дед VPN](https://dedmax.com)  
 
 Менее известный сервис, но в этом его плюс.
 
@@ -82,8 +80,7 @@ https://dedmax.com
 
 ### 4. Sota VPN
 
-🔗 Скачать бесплатный Sota VPN  
-https://t.me/sotavpnbot
+[🔗 Скачать бесплатный Sota VPN](https://t.me/sotavpnbot)  
 
 Очень удобный вариант.
 
@@ -99,8 +96,7 @@ https://t.me/sotavpnbot
 
 ### 5. Hit VPN
 
-🔗 Скачать бесплатный Hit VPN  
-https://t.me/hitvpnbot
+[🔗 Скачать бесплатный Hit VPN](https://t.me/hitvpnbot)  
 
 Не основной выбор, но хороший запасной вариант.
 
