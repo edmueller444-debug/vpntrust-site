@@ -1,14 +1,14 @@
 ---
-import type { GetStaticPaths } from "astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import Breadcrumbs from "@/components/Breadcrumbs.astro";
-import BlogCard from "@/components/BlogCard.astro";
-import { getCollection } from "astro:content";
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import { getCollection } from 'astro:content';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const POSTS_PER_PAGE = 6;
 
-  const posts = (await getCollection("blog")).sort(
+  const posts = (await getCollection('blog')).sort(
     (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
   );
 
@@ -19,31 +19,83 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page } = Astro.props;
 
+const siteUrl = 'https://vpntrust.site';
+const canonical =
+  page.currentPage === 1
+    ? `${siteUrl}/blog/`
+    : `${siteUrl}/blog/${page.currentPage}/`;
+
 const pageTitle =
   page.currentPage === 1
-    ? "Блог VPNTrust"
+    ? 'Блог VPNTrust — VPN, обход блокировок, безопасность'
     : `Блог VPNTrust — страница ${page.currentPage}`;
 
 const pageDescription =
-  "Статьи о VPN, обходе блокировок и защите конфиденциальности. Практические инструкции и честные обзоры.";
+  page.currentPage === 1
+    ? 'Гайды по VPN, обходу блокировок и защите данных. Настройки, сравнения и реальные решения без воды.'
+    : `Страница ${page.currentPage} блога VPNTrust: статьи о VPN, безопасности и обходе блокировок.`;
+
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'VPNTrust Blog',
+  description:
+    'Статьи о VPN, обходе блокировок и защите конфиденциальности. Практические инструкции и честные обзоры.',
+  url: `${siteUrl}/blog/`,
+  inLanguage: 'ru-RU',
+  publisher: {
+    '@type': 'Organization',
+    name: 'VPNTrust',
+    url: siteUrl,
+  },
+};
+
+const collectionPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: pageTitle,
+  url: canonical,
+  isPartOf: {
+    '@type': 'Blog',
+    name: 'VPNTrust Blog',
+    url: `${siteUrl}/blog/`,
+  },
+  inLanguage: 'ru-RU',
+};
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonical}
+  noindex={page.currentPage > 1}
+>
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(blogSchema)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(collectionPageSchema)}
+    />
+  </Fragment>
+
   <main class="blog-page">
     <section class="section blog-hero">
       <div class="container">
-        <Breadcrumbs items={[{ label: "Блог" }]} />
+        <Breadcrumbs items={[{ label: 'Блог' }]} />
 
         <div class="blog-hero__content">
           <h1>
             {page.currentPage === 1
-              ? "Блог VPNTrust"
-              : `Блог VPNTrust — страница ${page.currentPage}`}
+              ? 'Блог VPN и обход блокировок'
+              : `Блог VPN — страница ${page.currentPage}`}
           </h1>
 
           <p class="blog-hero__description">
             Статьи о VPN, обходе блокировок и защите конфиденциальности.
-            Практические инструкции и честные обзоры.
+            Практические инструкции, честные обзоры и рабочие решения.
           </p>
         </div>
       </div>
@@ -71,25 +123,20 @@ const pageDescription =
               </a>
             )}
 
-            {Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
-              (pageNumber) => {
-                const href = pageNumber === 1 ? "/blog/" : `/blog/${pageNumber}/`;
-                const isActive = pageNumber === page.currentPage;
+            {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((pageNumber) => {
+              const href = pageNumber === 1 ? '/blog/' : `/blog/${pageNumber}/`;
+              const isActive = pageNumber === page.currentPage;
 
-                return (
-                  <a
-                    href={href}
-                    class:list={[
-                      "blog-pagination__item",
-                      isActive && "is-active",
-                    ]}
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    {pageNumber}
-                  </a>
-                );
-              }
-            )}
+              return (
+                <a
+                  href={href}
+                  class:list={['blog-pagination__item', isActive && 'is-active']}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {pageNumber}
+                </a>
+              );
+            })}
 
             {page.url.next && (
               <a href={page.url.next} class="blog-pagination__nav">
@@ -117,10 +164,7 @@ const pageDescription =
             <a href="/best-free-vpn-russia" class="btn btn-primary blog-cta__btn">
               Рейтинг VPN
             </a>
-            <a
-              href="/v2raytun"
-              class="btn btn-outline blog-cta__btn"
-            >
+            <a href="/v2raytun" class="btn btn-outline blog-cta__btn">
               Настройка V2RayTun
             </a>
           </div>
@@ -202,7 +246,7 @@ const pageDescription =
   }
 
   .blog-pagination__item.is-active {
-    background: var(--color-primary);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
     border-color: var(--color-primary);
     color: #fff;
     box-shadow: 0 12px 24px rgba(37, 99, 235, 0.18);
@@ -220,6 +264,7 @@ const pageDescription =
       linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.03)),
       #f8fbff;
     box-shadow: 0 18px 40px rgba(37, 99, 235, 0.08);
+    margin-top: 1rem;
   }
 
   .blog-cta__content {
