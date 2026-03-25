@@ -44,8 +44,6 @@ const canonical = `${siteUrl}/blog/${post.slug}/`;
 const title = `${post.data.title} — VPNTrust`;
 const description = post.data.description;
 const tocItems = headings.filter((heading) => heading.depth === 2);
-
-// FAQ опционален: если поля faq нет в статье, блок просто не покажется
 const faqItems = post.data.faq ?? [];
 
 const articleSchema = {
@@ -54,6 +52,9 @@ const articleSchema = {
   headline: post.data.title,
   description: post.data.description,
   datePublished: post.data.pubDate.toISOString(),
+  ...(post.data.updatedDate && {
+    dateModified: post.data.updatedDate.toISOString(),
+  }),
   mainEntityOfPage: canonical,
   inLanguage: 'ru-RU',
   author: {
@@ -151,7 +152,6 @@ const faqSchema =
           <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
         </div>
 
-        <!-- Визуальный заголовок, НЕ h1 -->
         <p class="blog-post-hero__title">{post.data.title}</p>
         <p class="blog-post-hero__description">{post.data.description}</p>
       </div>
@@ -328,7 +328,6 @@ const faqSchema =
     min-width: 0;
   }
 
-  /* скрываем только первый H1 из markdown, чтобы не было дубля */
   .blog-post-content :global(h1:first-child) {
     display: none;
   }
