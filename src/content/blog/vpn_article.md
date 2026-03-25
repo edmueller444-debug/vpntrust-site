@@ -52,7 +52,9 @@ faq:
 - YouTube
 - браузинга без лагов
 
-### 2. [Durev VPN](https://t.me/DureVpnBot)
+### 2. Durev VPN
+
+[Скачать бесплатный Durev VPN](https://t.me/DureVpnBot)
 
 Более «лайтовый» вариант, но при этом работает стабильно.
 
