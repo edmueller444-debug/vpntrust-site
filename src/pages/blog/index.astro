@@ -4,89 +4,92 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import BlogCard from '@/components/BlogCard.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog'))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const POSTS_PER_PAGE = 6;
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const posts = allPosts.slice(0, POSTS_PER_PAGE);
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+
+const getPageUrl = (pageNumber: number) => {
+  return pageNumber === 1 ? '/blog/' : `/blog/${pageNumber}/`;
+};
 ---
 
 <BaseLayout
   title="Блог VPNTrust"
   description="Статьи о VPN, обходе блокировок и защите конфиденциальности. Практические инструкции и честные обзоры."
+  canonical="https://vpntrust.ru/blog/"
 >
-  <section class="section">
-    <div class="container">
-      <Breadcrumbs items={[{ label: 'Блог' }]} />
+  <section class="container mx-auto px-4 py-10">
+    <Breadcrumbs
+      items={[
+        { label: 'Главная', href: '/' },
+        { label: 'Блог', href: '/blog/' },
+      ]}
+    />
 
-      <div class="section-heading">
-        <h1 class="mb-3">Блог VPNTrust</h1>
-        <p class="text-light">
-          Статьи о VPN, обходе блокировок и защите конфиденциальности. Практические инструкции и честные обзоры.
-        </p>
-      </div>
+    <div class="mt-6 mb-10">
+      <h1 class="text-3xl md:text-4xl font-bold">Блог VPNTrust</h1>
+      <p class="mt-3 text-muted-foreground max-w-3xl">
+        Статьи о VPN, обходе блокировок и защите конфиденциальности. Практические инструкции и честные обзоры.
+      </p>
+    </div>
 
-      <div class="blog-grid">
-        {posts.map((post) => (
-          <BlogCard
-            title={post.data.title}
-            description={post.data.description}
-            slug={post.slug}
-            date={post.data.pubDate.toISOString()}
-            category={post.data.category}
-          />
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          slug={post.slug}
+          date={post.data.pubDate.toISOString()}
+          category={post.data.category}
+        />
+      ))}
+    </div>
+
+    {totalPages > 1 && (
+      <nav class="mt-10 flex flex-wrap items-center justify-center gap-2" aria-label="Пагинация блога">
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
+          <a
+            href={getPageUrl(pageNumber)}
+            class:list={[
+              'inline-flex h-10 min-w-10 items-center justify-center rounded-lg border px-4 text-sm transition',
+              pageNumber === 1
+                ? 'bg-primary text-primary-foreground border-primary'
+                : 'hover:bg-muted',
+            ]}
+            aria-current={pageNumber === 1 ? 'page' : undefined}
+          >
+            {pageNumber}
+          </a>
         ))}
-      </div>
+      </nav>
+    )}
 
-      <div class="cta-box mt-5">
-        <h2>Не нашли ответ?</h2>
-        <p>Посмотрите наши подробные руководства по VPN для разных устройств и сценариев</p>
-        <div class="hero__actions">
-          <a href="/best-free-vpn-russia/" class="btn btn-primary">Рейтинг VPN</a>
-          <a href="/v2raytun/" class="btn btn-outline">Настройка V2RayTun</a>
-        </div>
+    <div class="mt-14 rounded-2xl border p-6 md:p-8">
+      <h2 class="text-2xl font-semibold">Не нашли ответ?</h2>
+      <p class="mt-3 text-muted-foreground">
+        Посмотрите наши подробные руководства по VPN для разных устройств и сценариев
+      </p>
+
+      <div class="mt-5 flex flex-wrap gap-3">
+        <a
+          href="/best-free-vpn-russia/"
+          class="inline-flex items-center rounded-lg border px-4 py-2 text-sm transition hover:bg-muted"
+        >
+          Рейтинг VPN
+        </a>
+
+        <a
+          href="/v2raytun/"
+          class="inline-flex items-center rounded-lg border px-4 py-2 text-sm transition hover:bg-muted"
+        >
+          Настройка V2RayTun
+        </a>
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .blog-grid {
-    display: grid;
-    gap: 1.5rem;
-  }
-
-  .mt-5 {
-    margin-top: 3rem;
-  }
-
-  .cta-box {
-    background: #0f172a;
-    color: #fff;
-    border-radius: 1.5rem;
-    padding: 2rem;
-  }
-
-  .cta-box h2 {
-    color: #fff;
-    margin-bottom: 0.75rem;
-  }
-
-  .cta-box p {
-    color: #cbd5e1;
-    margin-bottom: 1.25rem;
-  }
-
-  .hero__actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  @media (max-width: 768px) {
-    .hero__actions {
-      flex-direction: column;
-    }
-
-    .hero__actions .btn {
-      width: 100%;
-    }
-  }
-</style>
