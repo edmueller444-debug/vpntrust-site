@@ -2,7 +2,7 @@
 title: "Что происходит в России с DPI и белыми списками в 2026 году"
 description: "Разбираем, как работает DPI в России в 2026 году, что такое белые списки, какие сайты блокируются и как это влияет на VPN и интернет."
 pubDate: 2026-03-25
-category: "VPN"
+category: "DPI"
 heroImage: "/images/openworld2.webp"
 
 faq:
