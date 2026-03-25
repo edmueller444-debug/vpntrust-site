@@ -2,7 +2,7 @@
 title: "Топ лучших бесплатных VPN для Windows ПК работающих в России в 2026 году"
 description: "Подробно разбираем бесплатные VPN для Windows ПК, которые реально работают в России в 2026 году: стабильность, скорость, нюансы обхода блокировок и реальные впечатления."
 pubDate: 2026-03-25
-category: "VPN"
+category: "Windows"
 heroImage: "/images/free_vpn_windows_russia_2026.webp"
 
 faq:
