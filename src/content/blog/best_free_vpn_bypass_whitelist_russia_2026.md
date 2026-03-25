@@ -2,7 +2,7 @@
 title: "Лучшие бесплатные VPN с обходом белого списка в России в 2026 году"
 description: "Подробный разбор бесплатных VPN, которые реально обходят белые списки и работают в России."
 pubDate: 2026-03-25
-category: "VPN"
+category: "TOP"
 heroImage: "/images/vpn_whitelist_2026.webp"
 
 faq:
