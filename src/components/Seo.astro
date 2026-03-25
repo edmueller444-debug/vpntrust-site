@@ -7,35 +7,48 @@ export interface Props {
   noindex?: boolean;
 }
 
-const { 
-  title, 
-  description, 
+const {
+  title,
+  description,
   canonical = Astro.url.href,
   ogImage = '/og-image.jpg',
-  noindex = false 
+  noindex = false,
 } = Astro.props;
 
 const siteName = 'VPNTrust';
+const siteUrl = 'https://vpntrust.site';
 const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+const resolvedCanonical = canonical.startsWith('http')
+  ? canonical
+  : `${siteUrl}${canonical}`;
+const resolvedOgImage = ogImage.startsWith('http')
+  ? ogImage
+  : `${siteUrl}${ogImage}`;
 ---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#2563eb" />
 
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonical} />
+<link rel="canonical" href={resolvedCanonical} />
 
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+{noindex ? (
+  <meta name="robots" content="noindex, follow" />
+) : (
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+)}
 
-<!-- Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={canonical} />
+<meta property="og:site_name" content={siteName} />
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(ogImage, Astro.site)} />
-<meta property="og:site_name" content={siteName} />
-<meta property="og:locale" content="ru_RU" />
+<meta property="og:url" content={resolvedCanonical} />
+<meta property="og:image" content={resolvedOgImage} />
+<meta property="og:type" content="website" />
 
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+<meta name="twitter:image" content={resolvedOgImage} />
