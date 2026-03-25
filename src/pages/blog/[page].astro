@@ -1,0 +1,152 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BlogCard from '@/components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const POSTS_PER_PAGE = 6;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allPosts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+  );
+
+  // первую страницу отдаёт index.astro, поэтому тут начинаем со 2-й
+  const remainingPosts = allPosts.slice(POSTS_PER_PAGE);
+
+  return paginate(remainingPosts, {
+    pageSize: POSTS_PER_PAGE,
+    params: ({ page }) => ({
+      page: String(page + 1),
+    }),
+  });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const currentPage = Number(Astro.params.page);
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+
+if (!Number.isInteger(currentPage) || currentPage < 2 || currentPage > totalPages) {
+  return Astro.redirect('/404/');
+}
+
+const getPageUrl = (pageNumber: number) => {
+  return pageNumber === 1 ? '/blog/' : `/blog/${pageNumber}/`;
+};
+---
+
+<BaseLayout
+  title={`Блог VPNTrust — страница ${currentPage}`}
+  description="Статьи о VPN, обходе блокировок и защите конфиденциальности. Практические инструкции и честные обзоры."
+  canonical={`https://vpntrust.ru/blog/${currentPage}/`}
+>
+  <section class="container mx-auto px-4 py-10">
+    <Breadcrumbs
+      items={[
+        { label: 'Главная', href: '/' },
+        { label: 'Блог', href: '/blog/' },
+      ]}
+    />
+
+    <div class="mt-6 mb-10">
+      <h1 class="text-3xl md:text-4xl font-bold">
+        Блог VPNTrust — страница {currentPage}
+      </h1>
+      <p class="mt-3 text-muted-foreground max-w-3xl">
+        Статьи о VPN, обходе блокировок и защите конфиденциальности. Практические инструкции и честные обзоры.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {page.data.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          slug={post.slug}
+          date={post.data.pubDate.toISOString()}
+          category={post.data.category}
+        />
+      ))}
+    </div>
+
+    <nav class="mt-10 flex flex-wrap items-center justify-center gap-2" aria-label="Пагинация блога">
+      {currentPage > 2 && (
+        <a
+          href="/blog/"
+          class="inline-flex h-10 items-center justify-center rounded-lg border px-4 text-sm transition hover:bg-muted"
+        >
+          Первая
+        </a>
+      )}
+
+      <a
+        href={getPageUrl(currentPage - 1)}
+        class="inline-flex h-10 items-center justify-center rounded-lg border px-4 text-sm transition hover:bg-muted"
+      >
+        ← Назад
+      </a>
+
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
+        <a
+          href={getPageUrl(pageNumber)}
+          class:list={[
+            'inline-flex h-10 min-w-10 items-center justify-center rounded-lg border px-4 text-sm transition',
+            pageNumber === currentPage
+              ? 'bg-primary text-primary-foreground border-primary'
+              : 'hover:bg-muted',
+          ]}
+          aria-current={pageNumber === currentPage ? 'page' : undefined}
+        >
+          {pageNumber}
+        </a>
+      ))}
+
+      {currentPage < totalPages && (
+        <a
+          href={getPageUrl(currentPage + 1)}
+          class="inline-flex h-10 items-center justify-center rounded-lg border px-4 text-sm transition hover:bg-muted"
+        >
+          Вперёд →
+        </a>
+      )}
+
+      {currentPage < totalPages - 1 && (
+        <a
+          href={getPageUrl(totalPages)}
+          class="inline-flex h-10 items-center justify-center rounded-lg border px-4 text-sm transition hover:bg-muted"
+        >
+          Последняя
+        </a>
+      )}
+    </nav>
+
+    <div class="mt-14 rounded-2xl border p-6 md:p-8">
+      <h2 class="text-2xl font-semibold">Не нашли ответ?</h2>
+      <p class="mt-3 text-muted-foreground">
+        Посмотрите наши подробные руководства по VPN для разных устройств и сценариев
+      </p>
+
+      <div class="mt-5 flex flex-wrap gap-3">
+        <a
+          href="/best-free-vpn-russia/"
+          class="inline-flex items-center rounded-lg border px-4 py-2 text-sm transition hover:bg-muted"
+        >
+          Рейтинг VPN
+        </a>
+
+        <a
+          href="/v2raytun/"
+          class="inline-flex items-center rounded-lg border px-4 py-2 text-sm transition hover:bg-muted"
+        >
+          Настройка V2RayTun
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
