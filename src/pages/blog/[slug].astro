@@ -43,6 +43,7 @@ const siteUrl = 'https://vpntrust.site';
 const canonical = `${siteUrl}/blog/${post.slug}/`;
 const title = `${post.data.title} — VPNTrust`;
 const description = post.data.description;
+const faqItems = post.data.faq ?? [];
 const tocItems = [
   ...headings.filter((heading) => heading.depth === 2),
   ...(faqItems.length > 0
