@@ -1,5 +1,5 @@
 ---
-title: "How to bypass mobile internet blocking in 2026"
+title: "Как обойти блокировку и замедление мобильного интернета в 2026 году"
 description: "Practical guide on bypassing mobile internet restrictions in 2026: working VPN solutions, real behavior, and what actually helps."
 pubDate: 2026-03-30
 category: "Internet"
