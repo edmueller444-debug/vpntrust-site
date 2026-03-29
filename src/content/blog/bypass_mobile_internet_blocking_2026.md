@@ -1,6 +1,6 @@
 ---
 title: "Как обойти блокировку и замедление мобильного интернета в 2026 году"
-description: "Practical guide on bypassing mobile internet restrictions in 2026: working VPN solutions, real behavior, and what actually helps."
+description: "Реальные способы обхода белых списков DPI и замедления телеграм в 2026 году."
 pubDate: 2026-03-30
 category: "Internet"
 heroImage: "/images/mobile_internet_bypass_2026.webp"
