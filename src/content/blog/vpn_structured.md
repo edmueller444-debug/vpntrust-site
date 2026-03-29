@@ -3,7 +3,7 @@ title: "Какой бесплатный VPN работает в России в 
 description: "Разбираем бесплатные VPN, которые реально работают в России в марте и апреле 2026 года: стабильность, скорость, обход блокировок и практический опыт использования."
 pubDate: 2026-03-30
 category: "VPN"
-heroImage: "/images/free_vpn_russia_2026.webp"
+heroImage: "/images/free_vpn_russia_2026_rkn.webp"
 
 faq:
   - question: "Какой VPN сейчас чаще всего выбирают для России?"
