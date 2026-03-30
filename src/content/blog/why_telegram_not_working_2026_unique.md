@@ -2,7 +2,7 @@
 title: "Почему Telegram не работает и не грузит в 2026 году"
 description: "Разбираем реальные причины, почему Telegram не открывается в 2026 году, и какие VPN помогают это исправить."
 pubDate: 2026-03-31
-category: "VPN"
+category: "Telegram"
 heroImage: "/images/telegram_not_working_2026.webp"
 
 faq:
