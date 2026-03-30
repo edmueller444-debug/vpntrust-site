@@ -1,9 +1,9 @@
 ---
 title: "Топ 30 лучших бесплатных VPN работающих в 2026 году"
-description: "Живой и честный разбор сервисов без шаблонов и перегруза."
+description: "Живой и честный разбор ВПН сервисов работающих в России."
 pubDate: 2026-03-31
 category: "VPN"
-heroImage: "/images/vpn_2026.webp"
+heroImage: "/images/vpn_2026_top30.webp"
 
 faq:
   - question: "Можно ли сейчас обойтись без VPN?"
