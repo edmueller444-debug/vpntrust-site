@@ -3,7 +3,7 @@ title: "Топ 10 лучших бесплатных VPN с обходом бел
 description: "Лучшие бесплатные VPN для телефона в 2026 году: обход белых списков, стабильность, реальные сценарии использования."
 pubDate: 2026-03-30
 category: "Mobile"
-heroImage: "/images/vpn_mobile_2026.webp"
+heroImage: "/images/vpn_mobile_obhod_wl_2026.webp"
 
 faq:
   - question: "Какой VPN реально работает в России на телефоне?"
