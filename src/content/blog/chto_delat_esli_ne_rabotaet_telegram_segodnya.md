@@ -3,7 +3,7 @@ title: "Что делать если не работает Telegram сегодн
 description: "Подробно разбираем, что делать если не работает Telegram сегодня: причины, решения и рабочие VPN в 2026 году."
 pubDate: 2026-04-03
 category: "VPN"
-heroImage: "/images/telegram_not_working_2026.webp"
+heroImage: "/images/telegram_not_working_2026_4k.webp"
 
 faq:
   - question: "Почему сегодня не работает Telegram?"
