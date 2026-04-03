@@ -3,7 +3,7 @@ title: "Новый обход белых списков в России | Как
 description: "Подробный разбор обхода белых списков в России и какие бесплатные VPN реально работают против DPI в 2026 году."
 pubDate: 2026-04-03
 category: "VPN"
-heroImage: "/images/dpi_bypass_2026.webp"
+heroImage: "/images/dpi_bypass_2026_cc3.webp"
 
 faq:
   - question: "Что такое белые списки?"
