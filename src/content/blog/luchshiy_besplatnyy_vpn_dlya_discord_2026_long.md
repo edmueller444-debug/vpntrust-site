@@ -3,7 +3,7 @@ title: "Лучший бесплатный VPN для Discord в 2026 году"
 description: "Подробный разбор лучших бесплатных VPN для Discord в 2026 году: стабильность, голос, пинг и реальные сценарии использования."
 pubDate: 2026-04-03
 category: "VPN"
-heroImage: "/images/discord_vpn_2026.webp"
+heroImage: "/images/discord_vpn_2026_3x.webp"
 
 faq:
   - question: "Почему Discord не работает без VPN?"
