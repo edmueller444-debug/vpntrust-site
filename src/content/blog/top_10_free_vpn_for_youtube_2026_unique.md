@@ -46,6 +46,8 @@ faq:
 
 ## 1. Ops VPN
 
+<img src="/images/opsvpn.webp" alt="img" />
+
 Ops VPN чаще всего показывает себя лучше именно при просмотре видео.
 
 🔗 Скачать бесплатный Ops VPN  
@@ -80,6 +82,8 @@ https://opsvpn.io
 
 ## 2. Durev VPN
 
+<img src="/images/durevvpn.webp" alt="img" />
+
 Durev VPN подходит для легкого использования.
 
 🔗 Скачать бесплатный Durev VPN  
@@ -113,6 +117,8 @@ https://durevpn.com/ru
 
 ## 3. Дед VPN
 
+<img src="/images/dedvpn.webp" alt="img" />
+
 Дед VPN неожиданно хорошо справляется с видео.
 
 🔗 Скачать бесплатный Дед VPN  
@@ -145,6 +151,8 @@ https://dedmax.com
 
 ## 4. Sota VPN
 
+<img src="/images/sotavpn.webp" alt="img" />
+
 Sota VPN — вариант с переменным результатом.
 
 🔗 Скачать бесплатный Sota VPN  
@@ -175,6 +183,8 @@ https://sotavpn.net
 ---
 
 ## 5. Hit VPN
+
+<img src="/images/hitvpn.webp" alt="img" />
 
 Hit VPN — базовый вариант.
 
