@@ -34,7 +34,7 @@ VPN подключен — а толку нет.
 
 ### 1. Ops VPN
 
-<img src="/images/opsvpn2.webp" alt="img" />
+<img src="/images/opsvpn.webp" alt="img" />
 
 
 [🔗 **Скачать бесплатный Ops VPN**](https://t.me/opsvpnbot)
