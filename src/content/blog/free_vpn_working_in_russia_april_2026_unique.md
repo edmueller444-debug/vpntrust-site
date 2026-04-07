@@ -38,6 +38,8 @@ faq:
 
 ### 1. Ops VPN
 
+<img src="/images/opsvpn.webp" alt="img" />
+
 [🔗 **Скачать бесплатный Ops VPN**](https://t.me/opsvpnbot)  
 [🌐 **Официальный сайт Ops VPN**](https://opsvpn.io)
 
@@ -75,6 +77,8 @@ faq:
 
 ### 2. Durev VPN
 
+<img src="/images/durevvpn.webp" alt="img" />
+
 [🔗 **Скачать бесплатный Durev VPN**](https://t.me/DureVpnBot)  
 [🌐 **Официальный сайт Durev VPN**](https://durevpn.com/ru)
 
@@ -109,6 +113,8 @@ faq:
 ---
 
 ### 3. Дед VPN
+
+<img src="/images/dedvpn.webp" alt="img" />
 
 [🔗 **Скачать бесплатный Дед VPN**](https://dedmax.com)  
 [🌐 **Официальный сайт Дед VPN**](https://dedmax.com)
@@ -145,6 +151,8 @@ faq:
 
 ### 4. Sota VPN
 
+<img src="/images/sotavpn.webp" alt="img" />
+
 [🔗 **Скачать бесплатный Sota VPN**](https://t.me/sotavpnbot)  
 [🌐 **Официальный сайт Sota VPN**](https://sotavpn.net)
 
@@ -179,6 +187,8 @@ faq:
 ---
 
 ### 5. Hit VPN
+
+<img src="/images/hitvpn.webp" alt="img" />
 
 [🔗 **Скачать бесплатный Hit VPN**](https://t.me/hitvpnbot)  
 [🌐 **Официальный сайт Hit VPN**](https://hitvpn.app)
