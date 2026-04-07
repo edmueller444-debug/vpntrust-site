@@ -34,6 +34,8 @@ VPN подключен — а толку нет.
 
 ### 1. Ops VPN
 
+![Ops VPN](images/vpn_whitelist_2026.webp)
+
 [🔗 **Скачать бесплатный Ops VPN**](https://t.me/opsvpnbot)
 
 
