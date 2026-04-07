@@ -34,7 +34,7 @@ VPN подключен — а толку нет.
 
 ### 1. Ops VPN
 
-<img src="/images/vpn_whitelist_2026.webp" alt="img" />
+<img src="/images/opsvpn.webp" alt="img" />
 
 [🔗 **Скачать бесплатный Ops VPN**](https://t.me/opsvpnbot)
 
@@ -53,6 +53,8 @@ VPN подключен — а толку нет.
 
 ### 2. Дурев VPN
 
+<img src="/images/durevvpn.webp" alt="img" />
+
 [🔗 **Скачать бесплатный Durev VPN**](https://t.me/DureVpnBot)  
 
 Здесь ставка на простоту.
@@ -69,6 +71,8 @@ VPN подключен — а толку нет.
 
 ### 3. Дед VPN
 
+<img src="/images/dedvpn.webp" alt="img" />
+
 [🔗 **Скачать бесплатный Дед VPN**](https://dedmax.com)  
 
 Менее известный сервис, но в этом его плюс.
@@ -81,6 +85,8 @@ VPN подключен — а толку нет.
 Иногда такие «непопсовые» решения оказываются самыми надёжными.
 
 ### 4. Sota VPN
+
+<img src="/images/sotavpn.webp" alt="img" />
 
 [🔗 **Скачать бесплатный Sota VPN**](https://t.me/sotavpnbot)  
 
@@ -97,6 +103,8 @@ VPN подключен — а толку нет.
 Да, иногда нужно переподключиться, но это сейчас нормальная практика.
 
 ### 5. Hit VPN
+
+<img src="/images/hitvpn.webp" alt="img" />
 
 [🔗 **Скачать бесплатный Hit VPN**](https://t.me/hitvpnbot)  
 
