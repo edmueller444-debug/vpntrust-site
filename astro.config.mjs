@@ -4,7 +4,7 @@ export default defineConfig({
   site: 'https://vpntrust.ru',
   output: 'static',
   prefetch: true,
-  trailingSlash: 'always',
+  trailingSlash: 'ignore',
   build: {
     inlineStylesheets: 'always',
   },
