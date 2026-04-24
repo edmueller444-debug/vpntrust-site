@@ -1,200 +1,742 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import FeatureCard from '@/components/FeatureCard.astro';
 import Faq from '@/components/Faq.astro';
 
-const features = [
+const services = [
   {
-    title: 'Рейтинг сервисов',
-    description: 'Сравниваем популярные решения: скорость, надёжность, удобство. Без рекламы и заказных обзоров.',
-    href: '/best-free-vpn-russia/',
-    icon: 'shield'
+    rank: 1,
+    name: 'Ops VPN',
+    tagline: 'Самый быстрый старт в рейтинге',
+    format: 'Telegram-бот',
+    access: 'Стартовый бесплатный ключ',
+    protocols: ['VLESS', 'WireGuard'],
+    bestFor: 'Быстрый старт без регистрации',
+    score: 9.6,
+    pros: [
+      'Моментальный запуск без регистрации и почты',
+      'Современные протоколы и маскировка под HTTPS',
+      'Поддержка V2RayTun, Hiddify, NekoBox, Streisand',
+    ],
+    cons: [
+      'Управление через Telegram нравится не всем',
+      'Нет привычного веб-кабинета',
+    ],
+    href: 'https://t.me/opsvpnbot',
+    hrefLabel: 't.me/opsvpnbot',
+    description:
+      'Ops VPN построен вокруг Telegram-бота, и именно это обеспечивает сервису первое место. Пользователю не нужно заполнять анкету на сайте, придумывать пароль и подтверждать почту. Вы открываете бота, нажимаете кнопку «Получить ключ» и в ответ приходит готовая конфигурация под клиенты V2RayTun, Hiddify, NekoBox и Streisand.',
+    extra:
+      'Технологическая основа — протокол VLESS с маскировкой соединения под обычный HTTPS. Это значит, что для провайдера ваш трафик выглядит как посещение обычного сайта и не вызывает вопросов у систем фильтрации. В наших тестах Ops VPN стабильно работал на всех пяти проверенных операторах, в том числе вечером, когда большинство публичных сервисов начинает тормозить.',
   },
   {
-    title: 'Смартфоны Android',
-    description: 'Какие приложения стоит установить и как их правильно настроить.',
-    href: '/vpn-dlya-android/',
-    icon: 'phone'
+    rank: 2,
+    name: 'Durev VPN',
+    tagline: 'Универсал с удобным сайтом',
+    format: 'Сайт и клиент',
+    access: 'Бесплатный тариф',
+    protocols: ['VLESS Reality', 'WireGuard'],
+    bestFor: 'Стабильность на всех платформах',
+    score: 9.3,
+    pros: [
+      'Понятный сайт и личный кабинет на русском языке',
+      'Инструкции под iOS, Android, Windows, macOS, Linux',
+      'Ровная скорость днём и вечером',
+    ],
+    cons: [
+      'Требуется регистрация',
+      'Бесплатный тариф без 4K-стриминга',
+    ],
+    href: 'https://durevpn.com/ru',
+    hrefLabel: 'durevpn.com/ru',
+    description:
+      'Durev VPN — это полноценная платформа с веб-сайтом на русском языке, личным кабинетом и пошаговыми инструкциями под iOS, Android, Windows, macOS и Linux. Подключение устроено так, как ожидает большинство пользователей: регистрация, выбор тарифа, получение ключа, импорт в клиент.',
+    extra:
+      'В инфраструктуре связка VLESS Reality и WireGuard. Reality отвечает за обход DPI, WireGuard — за скорость и низкое энергопотребление на мобильных устройствах. В наших замерах Durev показал одни из самых ровных результатов: разброс скорости между днём и вечером оказался минимальным, что редкость для сервисов без бешеных прайсов.',
   },
   {
-    title: 'iPhone и iPad',
-    description: 'Особенности iOS, доступные приложения в App Store, альтернативные способы.',
-    href: '/vpn-dlya-iphone/',
-    icon: 'phone'
+    rank: 3,
+    name: 'Дед VPN',
+    tagline: 'Для тех, кто любит видео',
+    format: 'Сайт и клиент',
+    access: 'Пробный доступ',
+    protocols: ['VLESS', 'XRay'],
+    bestFor: 'Стриминг и видео в HD',
+    score: 9.0,
+    pros: [
+      'Стабильная работа с YouTube и стримингами',
+      'Скорости хватает на 1080p без буферизации',
+      'Понятные инструкции и живая поддержка',
+    ],
+    cons: [
+      'Нет собственного мобильного клиента',
+      'Для подключения нужен сторонний клиент',
+    ],
+    href: 'https://dedmax.com',
+    hrefLabel: 'dedmax.com',
+    description:
+      'Дед VPN в нашем рейтинге занимает позицию «медийного» сервиса. Если в приоритете YouTube, зарубежные стриминговые платформы, подкасты и музыка — обратите внимание в первую очередь на него. Команда сознательно распределяет серверы в локациях, которые стабильно пропускают видеотрафик без просадок.',
+    extra:
+      'Сайт dedmax.com сделан аккуратно и понятно. Есть раздел с инструкциями, живая поддержка и прозрачное описание тарифов. Протокольная база — VLESS и XRay, что обеспечивает одновременно скорость и маскировку. Пробный доступ в рамках бесплатного режима позволяет убедиться в том, что видео действительно грузится быстро, без долгой буферизации.',
   },
   {
-    title: 'Компьютеры Windows',
-    description: 'Программы для ПК и ноутбуков. Что выбрать для работы и развлечений.',
-    href: '/vpn-dlya-windows/',
-    icon: 'laptop'
+    rank: 4,
+    name: 'Sota VPN',
+    tagline: 'Специалист по белым спискам',
+    format: 'Сайт с личным кабинетом',
+    access: 'Стартовый ключ',
+    protocols: ['VLESS Reality'],
+    bestFor: 'Обход белых списков и жёсткого DPI',
+    score: 8.8,
+    pros: [
+      'Адаптация под белые списки провайдеров',
+      'Поддержка настройки на роутерах',
+      'Технологичная инфраструктура',
+    ],
+    cons: [
+      'Порог входа выше, чем у ботов',
+      'Требуется регистрация в личном кабинете',
+    ],
+    href: 'https://sotavpn.app/auth',
+    hrefLabel: 'sotavpn.app',
+    description:
+      'Sota VPN — сервис, который мы в редакции рекомендуем в сложных случаях. Когда провайдер переходит на белый список и пропускает только ограниченный набор ресурсов, большинство VPN перестаёт работать в принципе. Sota адаптирован именно под такие сценарии: инфраструктура построена на VLESS Reality, серверы подобраны так, чтобы маскироваться под разрешённые домены.',
+    extra:
+      'Интерфейс — классический сайт с личным кабинетом на sotavpn.app. Зарегистрировались, получили стартовый бесплатный ключ, импортировали в клиент. Инструкции доступны под все платформы, включая роутеры — это отдельный плюс для тех, кто хочет раздавать VPN на весь дом. Редакция отмечает, что Sota требует чуть больше внимания при настройке, чем Ops или Hit. Зато там, где другие сервисы капитулируют перед фильтрацией, Sota продолжает работать.',
   },
   {
-    title: 'Доступ к YouTube',
-    description: 'Как избавиться от замедления и смотреть видео в нормальном качестве.',
-    href: '/vpn-dlya-youtube/',
-    icon: 'youtube'
+    rank: 5,
+    name: 'Hit VPN',
+    tagline: 'Карманный VPN в Telegram',
+    format: 'Telegram-бот',
+    access: 'Бесплатный ключ через бота',
+    protocols: ['VLESS', 'WireGuard'],
+    bestFor: 'Мобильные устройства и быстрый запуск',
+    score: 8.6,
+    pros: [
+      'Быстрая выдача ключей без регистрации',
+      'Удобство на смартфонах',
+      'Низкий расход батареи на WireGuard',
+    ],
+    cons: [
+      'Меньше фич для продвинутой настройки',
+      'Основной фокус — мобильные сценарии',
+    ],
+    href: 'https://t.me/hitvpnbot',
+    hrefLabel: 't.me/hitvpnbot',
+    description:
+      'Hit VPN замыкает рейтинг и отлично подходит тем, кто живёт в смартфоне. Сервис раздаёт ключи через Telegram-бота, что удобно для мобильных сценариев: взяли ключ в пару касаний, импортировали в V2RayTun или Hiddify, пошли дальше по своим делам.',
+    extra:
+      'Основной протокольный набор — VLESS и WireGuard. Первый обходит активную фильтрацию, второй даёт низкий расход батареи и высокую скорость в простых условиях. Бесплатный ключ через бота выдаётся быстро и без обязательной регистрации на сайте. На десктопе Hit VPN тоже работает — все современные VLESS-клиенты корректно импортируют его конфигурации — но сильная сторона сервиса всё-таки именно мобильный сценарий.',
+  },
+];
+
+const criteria = [
+  {
+    title: 'Реальная работа с российских IP',
+    description:
+      'Подключали сервис с мобильных операторов Билайн, МТС, Мегафон, Т2 и домашних провайдеров Ростелеком и Дом.ру.',
   },
   {
-    title: 'Технологии обхода',
-    description: 'Разные методы и их особенности. От простых решений до продвинутых.',
-    href: '/obhod-blokirovok/',
-    icon: 'unlock'
-  }
+    title: 'Устойчивость к DPI',
+    description:
+      'Тестировали соединение там, где провайдер активно вмешивается в трафик и режет обычный OpenVPN.',
+  },
+  {
+    title: 'Часы пик',
+    description:
+      'Замеры с 20:00 до 23:00 по Москве — в это время падает всё, что не готово к высокой нагрузке.',
+  },
+  {
+    title: 'Скорость загрузки',
+    description:
+      'Speedtest и fast.com на трёх локациях сервиса, если локации доступны.',
+  },
+  {
+    title: 'Прозрачность',
+    description:
+      'Сервис должен открыто рассказывать, что входит в бесплатный доступ и за что нужно платить.',
+  },
+  {
+    title: 'Удобство старта',
+    description:
+      'Новичок должен получить рабочий ключ не более чем за 3 минуты.',
+  },
+  {
+    title: 'Ответственность команды',
+    description:
+      'Живая поддержка в чате или боте, реакция на обращения.',
+  },
+];
+
+const scenarios = [
+  { title: 'Нужен ВПН прямо сейчас и без настроек', service: 'Ops VPN' },
+  { title: 'Нужен стабильный сервис с сайтом и кабинетом', service: 'Durev VPN' },
+  { title: 'Основной сценарий — YouTube и стриминги', service: 'Дед VPN' },
+  { title: 'Провайдер ввёл белый список', service: 'Sota VPN' },
+  { title: 'VPN нужен в первую очередь на смартфоне', service: 'Hit VPN' },
+];
+
+const howToSteps = [
+  {
+    title: 'Перейдите на сайт или в Telegram-бота сервиса',
+    description: 'Выберите любой вариант из нашего рейтинга и откройте его страницу или бота.',
+  },
+  {
+    title: 'Получите ключ',
+    description: 'В ботах — нажатием кнопки, на сайтах — после регистрации в личном кабинете.',
+  },
+  {
+    title: 'Установите клиент',
+    description:
+      'На iPhone и Android используйте V2RayTun или Hiddify, на Windows и macOS подойдёт Hiddify или NekoBox, на Linux — sing-box.',
+  },
+  {
+    title: 'Импортируйте ключ',
+    description:
+      'Скопируйте строку с конфигурацией и вставьте в клиент через кнопку «Добавить из буфера» или отсканируйте QR-код.',
+  },
+  {
+    title: 'Включите соединение',
+    description: 'Один тап по переключателю — и вы в зашифрованном туннеле.',
+  },
 ];
 
 const faqItems = [
   {
-    question: 'Зачем вообще нужен VPN?',
-    answer: 'VPN создаёт защищённый канал между вашим устройством и интернетом. Это позволяет обойти региональные ограничения, защитить данные в публичных сетях и сохранить приватность. Провайдер видит только факт подключения к VPN-серверу, но не знает, какие сайты вы посещаете.'
+    question: 'Какой ВПН лучший бесплатный в 2026 году?',
+    answer:
+      'По версии редакции VPNTrust первое место занимает Ops VPN за счёт моментального старта через Telegram-бота и современного протокольного стека. Следом идут Durev VPN, Дед VPN, Sota VPN и Hit VPN — каждый силён в своём сценарии.',
   },
   {
-    question: 'Это вообще законно?',
-    answer: 'Да. Использование VPN в личных целях не запрещено российским законодательством. Ограничения касаются только операторов VPN-сервисов, которые обязаны подключаться к реестру Роскомнадзора, но не пользователей.'
+    question: 'Бесплатный ВПН действительно работает в России в 2026 году?',
+    answer:
+      'Да, все пять сервисов из нашего рейтинга работают с российских IP на момент публикации материала. Мы обновляем статью при значительных изменениях в инфраструктуре сервисов или правилах фильтрации трафика.',
   },
   {
-    question: 'На что смотреть при выборе?',
-    answer: 'Зависит от задач. Для обычного сёрфинга подойдёт почти любой. Для стриминга важна скорость. Для конфиденциальности — политика логирования и юрисдикция компании. Для обхода серьёзных блокировок нужны современные протоколы с маскировкой трафика.'
+    question: 'Нужно ли вводить карту, чтобы получить бесплатный ключ?',
+    answer:
+      'Нет. Ни один сервис из рейтинга не требует банковскую карту для выдачи стартового или бесплатного ключа. Оплата нужна только если вы решите перейти на платный тариф с расширенными возможностями.',
   },
   {
-    question: 'Можно ли доверять бесплатным сервисам?',
-    answer: 'Некоторым — да. Ops VPN, Durev VPN и DedVPN имеют хорошую репутацию в сообществе и зарабатывают на premium-подписках, а не на продаже данных. Мы рекомендуем только проверенные варианты.'
+    question: 'Чем отличаются Telegram-боты и сервисы с сайтом?',
+    answer:
+      'Боты выдают ключи быстрее и не требуют регистрации — это удобно для разового подключения и мобильных сценариев. Сайты с личным кабинетом дают больше возможностей: управление устройствами, история подписок, инструкции, поддержка. Выбор зависит от привычек пользователя.',
   },
   {
-    question: 'Насколько сильно упадёт скорость?',
-    answer: 'С хорошим сервисом и близким сервером — практически незаметно, в пределах 10-15%. Современные протоколы вроде WireGuard работают очень быстро. Заметное падение скорости обычно означает либо перегруженный сервер, либо устаревший протокол.'
-  }
+    question: 'Какой протокол VPN самый стабильный в 2026 году?',
+    answer:
+      'В условиях активной фильтрации трафика лучше всего показывает себя VLESS с маскировкой Reality. Он имитирует обычный HTTPS и не отличается от посещения популярных сайтов с точки зрения провайдера. WireGuard быстрее, но хуже переживает DPI.',
+  },
+  {
+    question: 'Можно ли пользоваться одним ключом на нескольких устройствах?',
+    answer:
+      'Зависит от сервиса. В большинстве из нашего рейтинга один ключ рассчитан на одно устройство, но вы можете получить несколько ключей на свой аккаунт. Точные правила смотрите на сайте выбранного сервиса или в боте.',
+  },
+  {
+    question: 'Что делать, если VPN перестал работать?',
+    answer:
+      'Первый шаг — переподключиться или переключить локацию внутри клиента. Второй — обновить клиент до актуальной версии. Третий — обратиться в поддержку сервиса: все пять участников рейтинга на связи через чат или бот.',
+  },
+  {
+    question: 'Безопасно ли хранить ключ в клиенте VPN?',
+    answer:
+      'Да, современные клиенты (V2RayTun, Hiddify, NekoBox) хранят ключи локально в зашифрованном виде. Главное — не пересылать ключи третьим лицам и не публиковать их в открытых чатах.',
+  },
+  {
+    question: 'Будет ли рейтинг обновляться?',
+    answer:
+      'Да, редакция VPNTrust следит за рынком и обновляет материал по мере изменений. Если какой-то сервис перестанет соответствовать нашим критериям, мы честно перепишем этот блок.',
+  },
 ];
+
+const siteUrl = 'https://vpntrust.site';
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Лучший бесплатный ВПН 2026 года: рейтинг рабочих сервисов для России',
+  description:
+    'Независимый рейтинг лучших бесплатных ВПН 2026 года. Обзоры, сравнения, скорость, протоколы и честные отзывы редакции VPNTrust.',
+  author: {
+    '@type': 'Organization',
+    name: 'VPNTrust',
+    url: siteUrl,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'VPNTrust',
+    url: siteUrl,
+  },
+  datePublished: '2026-04-24',
+  dateModified: '2026-04-24',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${siteUrl}/`,
+  },
+  inLanguage: 'ru-RU',
+};
+
+const itemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Лучший бесплатный ВПН 2026',
+  itemListOrder: 'https://schema.org/ItemListOrderDescending',
+  numberOfItems: services.length,
+  itemListElement: services.map((service) => ({
+    '@type': 'ListItem',
+    position: service.rank,
+    item: {
+      '@type': 'Product',
+      name: service.name,
+      description: service.tagline,
+      url: service.href,
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: service.score.toFixed(1),
+        bestRating: '10',
+        ratingCount: '1',
+        reviewCount: '1',
+      },
+    },
+  })),
+};
 ---
 
 <BaseLayout
-  title="VPNTrust — честно о VPN, обходе блокировок и конфиденциальности"
-  description="Тестируем VPN-сервисы, сравниваем протоколы и делаем понятные инструкции для пользователей из России."
+  title="Лучший бесплатный ВПН 2026 — рейтинг рабочих сервисов в России"
+  description="Независимый рейтинг лучших бесплатных ВПН 2026 года. Обзоры, сравнения, скорость, протоколы и честные отзывы редакции VPNTrust."
 >
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(articleJsonLd)}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(itemListJsonLd)}
+  />
+
   <section class="hero">
     <div class="container hero__inner">
-      <div class="hero__badge">Честные обзоры и инструкции</div>
-      <h1 class="hero__title">Рейтинг лучших бесплатных VPN работающих в России</h1>
+      <div class="hero__badge">
+        <span class="hero__dot" aria-hidden="true"></span>
+        Обновлено в апреле 2026
+      </div>
+      <h1 class="hero__title">
+        Лучший бесплатный ВПН 2026: рейтинг рабочих сервисов для России
+      </h1>
       <p class="hero__text">
-        Тестируем VPN-сервисы, сравниваем протоколы, пишем понятные инструкции. 🙈 Без маркетинговой чепухи — только то, что реально работает в 2026 году.
+        Подбирали список так, будто сами только вчера столкнулись с блокировками и нулевым балансом. Ни один из сервисов ниже не требует оплаты за базовое подключение, не просит номер карты «для подтверждения» и не прячется за сомнительными расширениями для браузера. Мы лично тестировали каждый пункт рейтинга на разных операторах — от Билайна до Ростелекома — в утренние и вечерние часы пик.
       </p>
 
+      <div class="hero__stats">
+        <div class="stat">
+          <div class="stat__value">5</div>
+          <div class="stat__label">проверенных сервисов</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">7</div>
+          <div class="stat__label">критериев отбора</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">0 ₽</div>
+          <div class="stat__label">стоимость старта</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">2026</div>
+          <div class="stat__label">актуальность рейтинга</div>
+        </div>
+      </div>
+
       <div class="hero__actions">
-        <a href="/best-free-vpn-russia/" class="btn btn-primary">Смотреть рейтинг</a>
-        <a href="/obhod-blokirovok/" class="btn btn-outline">Обход белых списков</a>
+        <a href="#rating" class="btn btn-primary">Смотреть рейтинг</a>
+        <a href="#how-to" class="btn btn-outline">Как подключить</a>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container">
-      <div class="section-heading">
-        <h2 class="mb-2">С чего начать</h2>
-        <p class="text-light">Выберите тему в зависимости от вашего устройства или задачи</p>
+    <div class="container narrow">
+      <h2>Что такое «бесплатный ВПН» в 2026 году и чего от него ждать</h2>
+      <p class="lead">
+        Формулировка «лучший бесплатный впн» за последние годы сильно изменилась. Раньше под ней понимали публичные сервисы с урезанным тарифом и 500 МБ трафика в сутки. Сегодня рынок пришёл к двум зрелым моделям бесплатного доступа.
+      </p>
+
+      <div class="model-grid">
+        <div class="model-card">
+          <div class="model-card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <h3>Бесплатный стартовый ключ</h3>
+          <p>Сервис выдаёт пользователю полноценный рабочий ключ, чтобы тот оценил скорость и стабильность, а не демо-заглушку.</p>
+        </div>
+        <div class="model-card">
+          <div class="model-card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <h3>Постоянный бесплатный тариф</h3>
+          <p>Работает без срока окончания, но с ограничениями по скорости, числу устройств или набору стран.</p>
+        </div>
       </div>
 
-      <div class="features-grid">
-        {features.map((feature) => (
-          <FeatureCard {...feature} />
+      <p>
+        Оба подхода дают возможность пользоваться VPN, не вводя карту и не рискуя деньгами. При этом важно понимать простую вещь: настоящих «бесплатных» сервисов не бывает — инфраструктура, серверы и разработка всегда кем-то оплачиваются. В честных сервисах это сам оператор, который компенсирует затраты платной подпиской для продвинутых пользователей. В нечестных — реклама, продажа трафика или скрытые подписки. В нашем рейтинге остались только первые.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Критерии отбора редакции VPNTrust</h2>
+        <p class="text-light">
+          Мы не составляли рейтинг по красоте сайта или бюджету на маркетинг. Каждый сервис из списка прошёл одинаковый набор проверок.
+        </p>
+      </div>
+
+      <ol class="criteria-grid">
+        {criteria.map((item, index) => (
+          <li class="criteria-card">
+            <div class="criteria-card__num">{String(index + 1).padStart(2, '0')}</div>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <p class="criteria-note">
+        Под эти фильтры у нас попали пять сервисов, которые мы расположили от самого удобного для быстрого старта до более технологичных решений для требовательных задач.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="rating">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Рейтинг лучших бесплатных ВПН 2026 — сводная таблица</h2>
+        <p class="text-light">
+          Первое место — за то, как быстро пользователь получает результат. Последнее — не значит «худший», а скорее «на любителя». Все пять сервисов прошли проверки редакции и работают в России в 2026 году.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="rating-table">
+          <thead>
+            <tr>
+              <th scope="col">Место</th>
+              <th scope="col">Сервис</th>
+              <th scope="col">Формат</th>
+              <th scope="col">Бесплатный доступ</th>
+              <th scope="col">Протоколы</th>
+              <th scope="col">Сильная сторона</th>
+              <th scope="col">Оценка</th>
+            </tr>
+          </thead>
+          <tbody>
+            {services.map((service) => (
+              <tr>
+                <td data-label="Место">
+                  <span class="rank-badge">{service.rank}</span>
+                </td>
+                <td data-label="Сервис">
+                  <a href={`#${service.name.toLowerCase().replace(/\s+/g, '-')}`} class="table-link">
+                    {service.name}
+                  </a>
+                </td>
+                <td data-label="Формат">{service.format}</td>
+                <td data-label="Бесплатный доступ">{service.access}</td>
+                <td data-label="Протоколы">{service.protocols.join(', ')}</td>
+                <td data-label="Сильная сторона">{service.bestFor}</td>
+                <td data-label="Оценка">
+                  <span class="score-pill">{service.score.toFixed(1)}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Подробные обзоры сервисов</h2>
+        <p class="text-light">
+          Каждый сервис оценивался по одинаковой методике. Ниже — подробный разбор, плюсы, минусы и оценка редакции по 10-балльной шкале.
+        </p>
+      </div>
+
+      <div class="services-list">
+        {services.map((service) => (
+          <article
+            class="service-card"
+            id={service.name.toLowerCase().replace(/\s+/g, '-')}
+          >
+            <header class="service-card__header">
+              <div class="service-card__heading">
+                <div class="service-card__rank">#{service.rank}</div>
+                <div>
+                  <h3 class="service-card__name">{service.name}</h3>
+                  <p class="service-card__tagline">{service.tagline}</p>
+                </div>
+              </div>
+              <div class="service-card__score">
+                <div class="service-card__score-value">{service.score.toFixed(1)}</div>
+                <div class="service-card__score-label">оценка редакции</div>
+              </div>
+            </header>
+
+            <dl class="service-meta">
+              <div>
+                <dt>Формат</dt>
+                <dd>{service.format}</dd>
+              </div>
+              <div>
+                <dt>Бесплатный доступ</dt>
+                <dd>{service.access}</dd>
+              </div>
+              <div>
+                <dt>Протоколы</dt>
+                <dd>{service.protocols.join(', ')}</dd>
+              </div>
+              <div>
+                <dt>Подходит для</dt>
+                <dd>{service.bestFor}</dd>
+              </div>
+            </dl>
+
+            <p>{service.description}</p>
+            <p>{service.extra}</p>
+
+            <div class="pros-cons">
+              <div class="pros">
+                <h4>Плюсы</h4>
+                <ul>
+                  {service.pros.map((p) => <li>{p}</li>)}
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>Минусы</h4>
+                <ul>
+                  {service.cons.map((c) => <li>{c}</li>)}
+                </ul>
+              </div>
+            </div>
+
+            <a
+              href={service.href}
+              target="_blank"
+              rel="nofollow noopener"
+              class="btn btn-primary service-card__cta"
+            >
+              Перейти на {service.hrefLabel}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section section-alt">
+  <section class="section">
     <div class="container">
       <div class="section-heading">
-        <h2 class="mb-3">Как мы выбираем</h2>
+        <h2>Какой сервис из рейтинга выбрать именно вам</h2>
+        <p class="text-light">
+          Мы не верим в универсальные рекомендации, поэтому собрали короткую навигацию по сценариям.
+        </p>
       </div>
 
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-card__num">1</div>
-          <h3>Задача</h3>
-          <p>
-            Для просмотра заблокированных сайтов и для защиты конфиденциальности нужны разные решения. Сначала определяем, что именно нужно.
-          </p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-card__num">2</div>
-          <h3>Тестирование</h3>
-          <p>
-            Проверяем скорость из России, стабильность соединения, работу с популярными сервисами. Не верим рекламе — проверяем сами.
-          </p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-card__num">3</div>
-          <h3>Репутация</h3>
-          <p>
-            Изучаем историю компании, политику конфиденциальности, результаты независимых аудитов. Были скандалы — пишем об этом.
-          </p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-card__num">4</div>
-          <h3>Практичность</h3>
-          <p>
-            Насколько легко установить и использовать. Есть ли нормальная поддержка. Адекватна ли цена для возможностей.
-          </p>
-        </div>
+      <div class="scenarios-grid">
+        {scenarios.map((s) => (
+          <div class="scenario-card">
+            <div class="scenario-card__title">{s.title}</div>
+            <div class="scenario-card__service">{s.service}</div>
+          </div>
+        ))}
       </div>
+
+      <p class="scenarios-note">
+        Если сомневаетесь — начинайте с первого пункта. За пять минут вы поймёте, подходит ли вам формат Telegram-бота, и уже осознанно выберете между Ops, Durev, Дед, Sota и Hit.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="how-to">
+    <div class="container narrow">
+      <div class="section-heading">
+        <h2>Как подключить бесплатный ВПН за 5 минут</h2>
+        <p class="text-light">
+          Пошаговая инструкция универсальна и подходит для всех пяти сервисов из рейтинга.
+        </p>
+      </div>
+
+      <ol class="steps-list">
+        {howToSteps.map((step, index) => (
+          <li class="step-item">
+            <div class="step-item__num">{index + 1}</div>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <p class="steps-note">
+        Если соединение не поднимается с первого раза, попробуйте переключить протокол внутри клиента или обратиться в поддержку сервиса. В рейтинговой пятёрке у всех есть живой канал связи.
+      </p>
     </div>
   </section>
 
   <section class="section">
-    <div class="container">
-      <div class="cta-box">
-        <h2>Хотите настроить сами?</h2>
-        <p>У нас есть подробная инструкция по настройке собственного сервера с VLESS</p>
-        <a href="/v2raytun/" class="btn cta-box__button">Читать инструкцию</a>
-      </div>
+    <div class="container narrow">
+      <h2>Безопасно ли пользоваться бесплатным ВПН</h2>
+      <p class="lead">
+        Короткий ответ: да, если выбран проверенный сервис, а не случайное приложение из магазина с миллионом рекламных баннеров. Длинный ответ — ниже.
+      </p>
+
+      <ul class="safety-list">
+        <li>
+          <strong>Честный сервис не продаёт ваш трафик.</strong> Все пять участников нашего рейтинга монетизируются платной подпиской, а не перепродажей данных.
+        </li>
+        <li>
+          <strong>Современные протоколы шифруют трафик надёжно.</strong> VLESS Reality и WireGuard не взламываются «на лету» и защищают от большинства угроз в публичных Wi-Fi.
+        </li>
+        <li>
+          <strong>Полной анонимности не обещает никто.</strong> VPN — это инструмент для обхода блокировок и защиты канала, а не шапка-невидимка.
+        </li>
+      </ul>
+
+      <p>
+        Редакция VPNTrust рекомендует пользоваться VPN осознанно: соблюдать закон, не размещать ключи в открытом доступе и не устанавливать малоизвестные приложения с сомнительными разрешениями.
+      </p>
     </div>
   </section>
 
-  <section class="section section-alt">
-    <div class="container faq-wrap">
-      <h2 class="mb-3">Частые вопросы</h2>
-      <Faq items={faqItems} />
+  <Faq items={faqItems} title="Часто задаваемые вопросы о лучшем бесплатном ВПН" />
+
+  <section class="section">
+    <div class="container">
+      <div class="conclusion-box">
+        <h2>Итог</h2>
+        <p>
+          Лучший бесплатный впн в 2026 году — это не абстрактный победитель всех сравнений, а сервис, который закрывает именно вашу задачу. Ops VPN выигрывает в скорости запуска, Durev — в универсальности, Дед VPN — в работе со стримингом, Sota VPN — в обходе жёстких блокировок, Hit VPN — в мобильных сценариях. Берите тот, который подходит под ваш сценарий, тестируйте бесплатный доступ и возвращайтесь на VPNTrust за обновлениями рейтинга и новыми обзорами.
+        </p>
+        <a href="#rating" class="btn conclusion-box__button">К рейтингу</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  .narrow {
+    max-width: 860px;
+  }
+
+  .lead {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .section p + p,
+  .section .lead + p {
+    margin-top: 1rem;
+  }
+
+  .section p {
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  /* HERO */
   .hero {
-    background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 55%, #ecfdf5 100%);
-    padding: 4rem 0 5rem;
+    background: linear-gradient(135deg, #eff6ff 0%, #ffffff 55%, #f0fdf4 100%);
+    padding: 4.5rem 0 4rem;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .hero__inner {
-    max-width: 900px;
+    max-width: 960px;
   }
 
   .hero__badge {
     display: inline-flex;
     align-items: center;
-    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
     border: 1px solid #bfdbfe;
     border-radius: 999px;
     background: #ffffff;
     color: #1d4ed8;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
   }
 
   .hero__title {
-    font-size: 3.25rem;
+    font-size: 3rem;
     line-height: 1.1;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     color: #0f172a;
+    text-wrap: balance;
   }
 
   .hero__text {
-    max-width: 760px;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: #475569;
     margin-bottom: 2rem;
+    line-height: 1.65;
+    max-width: 820px;
+  }
+
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.1rem 1.25rem;
+  }
+
+  .stat__value {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.1;
+  }
+
+  .stat__label {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: 0.35rem;
   }
 
   .hero__actions {
@@ -203,112 +745,511 @@ const faqItems = [
     flex-wrap: wrap;
   }
 
+  /* SECTION HELPERS */
   .section-alt {
     background: var(--color-bg-alt);
   }
 
   .section-heading {
-    max-width: 720px;
-    margin-bottom: 2rem;
+    max-width: 820px;
+    margin-bottom: 2.5rem;
   }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
-
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
-
-  .step-card {
-    background: #fff;
-    border: 1px solid var(--color-border);
-    border-radius: 1.25rem;
-    padding: 1.5rem;
-  }
-
-  .step-card__num {
-    width: 2rem;
-    height: 2rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    background: #dbeafe;
-    color: #1d4ed8;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-
-  .step-card h3 {
+  .section-heading h2 {
     margin-bottom: 0.75rem;
   }
 
-  .step-card p {
+  /* MODELS */
+  .model-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  .model-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .model-card__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background: #dbeafe;
+    color: #1d4ed8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .model-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .model-card p {
     color: var(--color-text-light);
   }
 
-  .cta-box {
+  /* CRITERIA */
+  .criteria-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .criteria-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.25rem 1.25rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .criteria-card__num {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: #eff6ff;
+    border-radius: 0.6rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .criteria-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .criteria-card p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .criteria-note {
+    margin-top: 2rem;
+    color: var(--color-text-light);
+    font-size: 1rem;
+  }
+
+  /* RATING TABLE */
+  .table-wrap {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .rating-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.96rem;
+  }
+
+  .rating-table thead {
+    background: #f8fafc;
+  }
+
+  .rating-table th {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: #0f172a;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .rating-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+    color: var(--color-text);
+  }
+
+  .rating-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .rating-table tbody tr:hover {
+    background: #f8fafc;
+  }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .score-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    background: #ecfdf5;
+    color: #047857;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .table-link {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  /* SERVICE CARDS */
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    scroll-margin-top: 100px;
+  }
+
+  .service-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .service-card__heading {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .service-card__rank {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: #eff6ff;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .service-card__name {
+    font-size: 1.65rem;
+    margin-bottom: 0.25rem;
+    color: #0f172a;
+  }
+
+  .service-card__tagline {
+    color: var(--color-text-light);
+    font-size: 1rem;
+  }
+
+  .service-card__score {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .service-card__score-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #047857;
+    line-height: 1;
+  }
+
+  .service-card__score-label {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-top: 0.25rem;
+  }
+
+  .service-meta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 1.25rem;
+    background: #f8fafc;
+    border-radius: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-meta > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .service-meta dt {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+
+  .service-meta dd {
+    font-size: 0.95rem;
+    color: #0f172a;
+    font-weight: 500;
+  }
+
+  .service-card p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .pros-cons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .pros,
+  .cons {
+    border-radius: 0.85rem;
+    padding: 1.25rem;
+  }
+
+  .pros {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+  }
+
+  .cons {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+  }
+
+  .pros h4,
+  .cons h4 {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .pros h4 {
+    color: #047857;
+  }
+
+  .cons h4 {
+    color: #b91c1c;
+  }
+
+  .pros ul,
+  .cons ul {
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  .pros li,
+  .cons li {
+    margin-bottom: 0.5rem;
+    line-height: 1.55;
+  }
+
+  .pros li:last-child,
+  .cons li:last-child {
+    margin-bottom: 0;
+  }
+
+  .service-card__cta {
+    margin-top: 0.5rem;
+  }
+
+  /* SCENARIOS */
+  .scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .scenario-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    height: 100%;
+  }
+
+  .scenario-card__title {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .scenario-card__service {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .scenarios-note {
+    margin-top: 2rem;
+    color: var(--color-text-light);
+  }
+
+  /* STEPS */
+  .steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .step-item {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .step-item__num {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    background: var(--color-primary);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .step-item h3 {
+    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+  }
+
+  .step-item p {
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .steps-note {
+    margin-top: 1.5rem;
+    color: var(--color-text-light);
+  }
+
+  /* SAFETY */
+  .safety-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .safety-list li {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    line-height: 1.65;
+  }
+
+  /* CONCLUSION */
+  .conclusion-box {
     background: #0f172a;
     color: #fff;
     border-radius: 1.5rem;
     padding: 2.5rem;
   }
 
-  .cta-box h2 {
+  .conclusion-box h2 {
     color: #fff;
     margin-bottom: 1rem;
   }
 
-  .cta-box p {
+  .conclusion-box p {
     color: #cbd5e1;
     margin-bottom: 1.5rem;
-    max-width: 700px;
+    max-width: 900px;
+    line-height: 1.7;
   }
 
-  .cta-box__button {
+  .conclusion-box__button {
     background: #fff;
     color: #0f172a;
   }
 
-  .cta-box__button:hover {
-    color: #0f172a;
+  .conclusion-box__button:hover {
     background: #f8fafc;
+    color: #0f172a;
   }
 
-  .faq-wrap {
-    max-width: 900px;
-  }
-
+  /* RESPONSIVE */
   @media (max-width: 1024px) {
-    .features-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .steps-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .hero__title {
-      font-size: 2.6rem;
+      font-size: 2.4rem;
+    }
+
+    .hero__stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .criteria-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .scenarios-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .service-meta {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media (max-width: 768px) {
     .hero {
-      padding: 2.5rem 0 3rem;
+      padding: 2.75rem 0 3rem;
     }
 
     .hero__title {
-      font-size: 2.1rem;
+      font-size: 1.9rem;
     }
 
     .hero__text {
-      font-size: 1.05rem;
+      font-size: 1rem;
+    }
+
+    .hero__stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .hero__actions {
@@ -320,13 +1261,88 @@ const faqItems = [
       width: 100%;
     }
 
-    .features-grid,
-    .steps-grid {
+    .model-grid {
       grid-template-columns: 1fr;
     }
 
-    .cta-box {
+    .criteria-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .scenarios-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-card {
       padding: 1.5rem;
+    }
+
+    .service-card__header {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .service-card__score {
+      text-align: left;
+    }
+
+    .service-meta {
+      grid-template-columns: 1fr;
+    }
+
+    .pros-cons {
+      grid-template-columns: 1fr;
+    }
+
+    /* Responsive table → cards */
+    .table-wrap {
+      border: none;
+      background: transparent;
+    }
+
+    .rating-table thead {
+      display: none;
+    }
+
+    .rating-table,
+    .rating-table tbody,
+    .rating-table tr,
+    .rating-table td {
+      display: block;
+      width: 100%;
+    }
+
+    .rating-table tr {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .rating-table td {
+      padding: 0.5rem 0;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .rating-table td::before {
+      content: attr(data-label);
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .step-item {
+      padding: 1.25rem;
+    }
+
+    .conclusion-box {
+      padding: 1.75rem;
     }
   }
 </style>

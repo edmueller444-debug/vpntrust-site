@@ -309,6 +309,20 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"vpn_article_best_free_vpn.md": {
+	id: "vpn_article_best_free_vpn.md";
+  slug: "vpn_article_best_free_vpn";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"vpn_ios_article_updated.md": {
+	id: "vpn_ios_article_updated.md";
+  slug: "vpn_ios_article_updated";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "vpn_not_working_story_unique_v5.md": {
 	id: "vpn_not_working_story_unique_v5.md";
   slug: "vpn_not_working_story_unique_v5";
@@ -319,6 +333,13 @@ declare module 'astro:content' {
 "vpn_structured.md": {
 	id: "vpn_structured.md";
   slug: "vpn_structured";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"vpn_whitelist_april_2026.md": {
+	id: "vpn_whitelist_april_2026.md";
+  slug: "vpn_whitelist_april_2026";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
